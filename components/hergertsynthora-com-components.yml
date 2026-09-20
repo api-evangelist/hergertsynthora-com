@@ -1,0 +1,18 @@
+generated: '2026-09-19'
+method: searched
+source: https://hergertsynthora.com/ (homepage embeds the live globe via an iframe) and https://mundo.hergertsynthora.com/ (served HTML, loader script /embed.js, Cesium runtime)
+description: >-
+  One client-side embeddable surface: the SYNTHORA live world map ("Mapa mundial en tiempo real"), a Cesium 3D
+  globe with 84 live layers (flights, vessels, earthquakes, satellites, space weather, sea floor) that the
+  provider embeds in its own homepage with ?embed=1. No web-component library, no hosted checkout and no
+  embedded dashboards beyond this. Distinct from SDKs (none exist).
+families:
+- name: Live world map embed
+  kind: iframe embed
+  url: https://mundo.hergertsynthora.com/?embed=1
+  loader: https://mundo.hergertsynthora.com/embed.js
+  runtime: Cesium (self-hosted at /cesium/Cesium.js); tiles from services.arcgisonline.com, gibs.earthdata.nasa.gov, wms.gebco.net
+  data_api: https://mundo.hergertsynthora.com/mapstate (public JSON), https://mundo.hergertsynthora.com/api/capa/<slug> (public per-layer JSON)
+  observed: The homepage <iframe src="https://mundo.hergertsynthora.com/?embed=1"> on 2026-09-19; the mundo HTML inlines a window.__PLANETA_INICIAL__ snapshot (active agents, mesh nodes 601/624, card_version 1.3.2, uptime hours) regenerated each minute.
+  documented_for_third_parties: false
+  note: The provider documents the data API for third parties at https://hergertsynthora.com/api/ but does not publish an embed guide; the embed parameter is observed from its own usage.

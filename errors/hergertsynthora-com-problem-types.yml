@@ -1,0 +1,79 @@
+generated: '2026-09-19'
+method: derived
+source: >-
+  Derived from the 402/200 responses declared in openapi/hergertsynthora-com-mesh-aggregate-openapi.yml
+  (components.responses.PaymentRequired, SignedResult) and the 59 per-service specs, enriched with the error
+  bodies actually observed on 2026-09-19: anonymous POSTs to notary.hergertsynthora.com/service and
+  api.hergertsynthora.com/v1/wallet-enrich (402), GETs to unknown paths on notary./mcp./pay. (404), the A2A
+  JSON-RPC TaskNotFound (-32001), the docs statement at https://hergertsynthora.com/api/ that core endpoints
+  answer 403 without an X-WALLET key, and the SLA/terms text on failed delivery.
+description: >-
+  How the SYNTHORA mesh signals failure. There is no problem-details format and no error catalog page; errors
+  are a handful of JSON shapes, and the most important "error" is not an error at all - HTTP 402 is the normal
+  first response to every paid call and carries the price list.
+format: custom-json
+rfc9457: false
+envelopes:
+  success:
+    status: 200
+    shape: '{ ok: true, niche: <product id>, result: <object>, receipt: { alg, pubkey, sig, canon, ... payment reference } }'
+    stability: SLA says the {ok, niche, result, receipt} envelope is stable and only grows additively.
+  payment_required:
+    status: 402
+    shape: '{ x402Version: 2, error: "Payment required", resource: { url, description, mimeType, serviceName?, tags? }, accepts: [ { scheme, network, asset, amount, maxAmountRequired, payTo, resource, maxTimeoutSeconds, extra } ], extensions: { bazaar: { info: { input, output }, schema } }, signature?, delivery?, freeTier: { callsPerWallet, header, note }, menu? }'
+    headers: [payment-required (base64url JSON copy of the body), www-authenticate (x402 challenge; api gateway only), x-402-asset, x-402-network, x-402-payto (notary host), x-free-tier]
+    note: The 402 body doubles as the machine contract for the product (input/output schema under extensions.bazaar) and as the invoice terms.
+  not_found:
+    status: 404
+    shape: '{ "error": "not found" }'
+    variants:
+    - host: mcp.hergertsynthora.com
+      body: '{ "error": "MCP endpoint: POST JSON-RPC" }'
+    - host: pay.hergertsynthora.com (/.well-known/agent.json)
+      body: '{ error: "product not available at this host", detail: "This endpoint was discontinued...", catalogue, gateway, publicKey }'
+    - host: hergertsynthora.com (apex)
+      body: text/html 404 page, 13,589 bytes
+    - host: api.hergertsynthora.com
+      body: HTTP 200 with an EMPTY body for unknown paths (a soft-200, not a 404)
+  json_rpc:
+    transports: [A2A https://api.hergertsynthora.com/a2a, MCP https://mcp.hergertsynthora.com/mcp, MCP https://notary.hergertsynthora.com/mcp]
+    shape: '{ jsonrpc: "2.0", id, error: { code, message, data? } }'
+problem_types:
+- code: 402
+  title: Payment required (x402 challenge)
+  http_status: 402
+  when: Any paid operation called without a valid X-PAYMENT header, or with the free tier exhausted.
+  remediation: 'Read accepts[0] (amount in USDC atomic units, payTo, network eip155:8453), produce an EIP-3009 authorization, retry with X-PAYMENT. Or send X-WALLET: 0x<Base address> for the free trial.'
+  source: components.responses.PaymentRequired; observed live
+- code: 402-undeliverable
+  title: Result could not be produced (not charged)
+  http_status: 402
+  when: Service failure - invalid input, timeout, stale cache, withdrawn product, malformed output.
+  remediation: Per SLA and terms the call is NOT settled; check your wallet on Base for the absence of a transfer. Retry later or with corrected input.
+  source: https://api.hergertsynthora.com/sla/ (delivery_policy) and 402 body delivery.policy "no-charge-on-service-failure"
+- code: 403
+  title: Missing X-WALLET key on core (nucleo) endpoints
+  http_status: 403
+  when: GET .../state or .../meshgraph without the X-WALLET header.
+  remediation: Supply the apiKey scheme header named in the agent card (X-WALLET). The docs elide the host of these endpoints; mundo.hergertsynthora.com/state and /meshgraph return 404.
+  source: https://hergertsynthora.com/api/ section 02
+- code: 404
+  title: Not found
+  http_status: 404
+  when: Unknown path on a product host, or a discontinued product host.
+  remediation: Resolve the product through https://catalog.hergertsynthora.com/catalog.json or the x402 manifest; the discontinued pay.hergertsynthora.com/.well-known/agent.json points at the live catalogue.
+- code: -32001
+  title: TaskNotFoundError (A2A)
+  http_status: 200
+  when: tasks/get for an unknown or expired task id on the A2A endpoint.
+  remediation: The endpoint is stateless ("las tareas heartbeat no se persisten"); do not poll task ids, treat each message/send as complete.
+  source: observed live 2026-09-19
+- code: refused-unauthorized-target
+  title: Execution refused - third-party target without proof of control
+  http_status: unspecified
+  when: Any assessment/scan/audit against infrastructure the caller does not own, without a DNS TXT / meta-tag challenge under _synthora-auth.<domain>.
+  remediation: Prove control first; unsettled calls are not charged.
+  source: https://hergertsynthora.com/terms/ section 3
+gaps:
+- No documented error code list beyond the shapes above; 4xx other than 402/403/404 and 5xx are not declared in any spec (each spec declares only 200 and 402).
+- Error strings are a mix of English and Spanish.

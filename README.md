@@ -64,5 +64,12 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Hergert Synthora is a company surfaced via the API Evangelist harvest backlog (source: a2a-registry) and added to the network as a stub for full-pipeline profiling.
-- https://hergertsynthora.com/
+HERGERT SYNTHORA S.L. (Las Palmas de Gran Canaria, Spain) operates SYNTHORA, an autonomous agent mesh that sells machine-payable intelligence: 121 pay-per-call verdict products under `*.hergertsynthora.com`, an Agent Notary, a 30-tool hosted MCP server at `mcp.hergertsynthora.com/mcp` and a JWS-signed A2A agent card, all settled per call in USDC on Base over x402 with Ed25519-signed receipts and an ERC-8004 on-chain identity. First seen via the a2aregistry.org listing; profiled by the API Evangelist enrichment pipeline on 2026-09-19.
+
+- Website: https://hergertsynthora.com/
+- API docs: https://hergertsynthora.com/api/
+- Aggregate OpenAPI: https://api.hergertsynthora.com/openapi.json (plus 59 per-service specs under `openapi/services/`)
+- Agent card: https://hergertsynthora.com/.well-known/agent-card.json
+- MCP: https://mcp.hergertsynthora.com/mcp · Notary MCP: https://notary.hergertsynthora.com/mcp
+- x402 discovery manifest: https://api.hergertsynthora.com/.well-known/x402.json
+- Machine SLA: https://api.hergertsynthora.com/sla/ · Terms: https://hergertsynthora.com/terms/

@@ -1,0 +1,190 @@
+generated: '2026-09-19'
+method: probed
+source: https://hergertsynthora.com/.well-known/agent-card.json
+card:
+  file: a2a/hergertsynthora-com-agent-card.json
+discovery:
+  path: /.well-known/agent-card.json
+  canonical: true
+  host: hergertsynthora.com
+  note: >-
+    Served from the apex host (the marketing site, an Astro static build on Hostinger DNS-parking nameservers)
+    and byte-identical on www.hergertsynthora.com, api.hergertsynthora.com/.well-known/agent-card.json, the
+    legacy /.well-known/agent.json on both hosts, /agent-card.json at the apex root, and as the GET body of the
+    declared JSON-RPC endpoint https://api.hergertsynthora.com/a2a. The apex answers every unknown path with a
+    text/html 404 page (13,589 bytes, title "Pagina no encontrada"), so the 200 application/json on this path
+    is a served document and not a catch-all. Ownership is not in question: provider.organization is
+    "Hergert Synthora" with provider.url https://hergertsynthora.com/, the aggregate OpenAPI on
+    api.hergertsynthora.com carries contact info@hergertsynthora.com, the legal notice names HERGERT SYNTHORA
+    (C/ Ruiz de Alda 12, Las Palmas de Gran Canaria, CNAE 6201), and the card's JWS kid
+    "synthora-mesh-attest" matches the Ed25519 key served at api.hergertsynthora.com/.well-known/jwks.json.
+    The a2aregistry.org listing that seeded this harvest cites api.hergertsynthora.com/.well-known/agent.json as
+    the wellKnownURI; that path serves the same 14,019-byte body.
+x-evidence:
+  fetched: '2026-09-19'
+  url: https://hergertsynthora.com/.well-known/agent-card.json
+  http_status: 200
+  content_type: application/json
+  body_bytes: 14019
+  body_parses_as: >-
+    JSON object with AgentCard shape (protocolVersion, name, description, url, preferredTransport, provider,
+    iconUrl, version, documentationUrl, capabilities, defaultInputModes, defaultOutputModes, securitySchemes,
+    security, skills, metadata, supportedInterfaces, signatures)
+  corroborating_probes:
+  - url: https://www.hergertsynthora.com/.well-known/agent-card.json
+    http_status: 200
+    note: Identical body.
+  - url: https://hergertsynthora.com/.well-known/agent.json
+    http_status: 200
+    note: Legacy pre-0.3 path, identical body.
+  - url: https://api.hergertsynthora.com/.well-known/agent-card.json
+    http_status: 200
+    note: Identical body on the API host named by card.url.
+  - url: https://hergertsynthora.com/.well-known/jwks.json
+    http_status: 404
+    note: >-
+      The card's metadata.jwks_url and skill evidence point here, but the apex serves its HTML 404 page. The
+      JWKS actually lives at https://api.hergertsynthora.com/.well-known/jwks.json (200, one OKP/Ed25519 key,
+      kid synthora-mesh-attest) - saved as well-known/hergertsynthora-com-jwks.json.
+  - url: https://hergertsynthora.com/.well-known/agent-registration.json
+    http_status: 200
+    note: >-
+      ERC-8004 registration-v1 file naming the A2A card, the MCP endpoint (mcp.hergertsynthora.com/mcp,
+      version 2025-06-18), x402Support true, agentId 84581 on registry eip155:8453:0x8004A169FB4a3325136EB29fA0ceB6D2e539a432.
+      Saved as well-known/hergertsynthora-com-agent-registration.json.
+  - url: https://api.hergertsynthora.com/a2a
+    method: POST
+    body: '{"jsonrpc":"2.0","id":1,"method":"tasks/get","params":{"id":"apievangelist-probe-nonexistent"}}'
+    http_status: 200
+    response: '{"jsonrpc": "2.0", "id": 1, "error": {"code": -32001, "message": "Task not found (endpoint stateless; las tareas heartbeat no se persisten)"}}'
+    note: >-
+      A real A2A JSON-RPC responder - TaskNotFoundError (-32001) is the A2A-defined code for an unknown task
+      id, and the message discloses that the endpoint is stateless. No message was sent and nothing was
+      purchased.
+  - url: https://a2aregistry.org/api/agents?search=synthora
+    http_status: 200
+    note: >-
+      Four listings by this operator (Hergert Synthora, SYNTHORA regwatch, SYNTHORA Open Interest Oracle,
+      Tx Intent Classifier). The registry was the lead; every card above was fetched from the provider's own hosts.
+conformance:
+  standard: A2A 1.0.0
+  grade: conformant
+  checks:
+    capabilities_is_object: true
+    protocol_version_present: true
+    skills_is_array: true
+    preferred_transport_present: true
+    default_input_modes_present: true
+    default_output_modes_present: true
+    url_present: true
+    provider_present: true
+  deviations:
+  - protocolVersion is the string "1.0" rather than a full semver "1.0.0"; the interface entries use the 1.0
+    vocabulary (supportedInterfaces[].protocolBinding) consistently.
+  - securitySchemes.x402 is declared as type http with scheme "x402", which is not an IANA-registered HTTP
+    authentication scheme; the live 402 does carry a WWW-Authenticate x402 challenge on the api gateway, so the
+    declaration matches runtime behaviour even though it is outside the HTTP auth registry.
+  - Skills carry non-spec keys (x402 pricing blocks, evidence[], contratacion, precio_orientativo,
+    disclaimer_legal); a strict 1.0 parser will ignore them, a lenient one may reject the skill objects.
+  - metadata is a large vendor extension block (erc8004, reputation, payment, mcp, catalog, samples,
+    pricing_tiers, calibration, productos_nuevos) rather than the small opaque map the spec anticipates.
+  - >-
+    ERC-8004 identity is inconsistent across the provider's own documents: metadata.erc8004.agentIds lists
+    56572 and 56577 (and disowns 61548), while agent-registration.json and the homepage cite agentId 84581 on
+    the same registry. Recorded as observed; not resolved here.
+  - Descriptions are Spanish while the per-service cards below are English; not a conformance defect, noted for consumers.
+  signatures:
+    present: true
+    kid: synthora-mesh-attest
+    alg: EdDSA
+    verified_by_api_evangelist: true
+    verification: >-
+      Verified 2026-09-19 with python cryptography: the detached JWS (protected header
+      {"alg":"EdDSA","kid":"synthora-mesh-attest","typ":"JWS"}) validates over the card minus its signatures
+      array, serialised as compact JSON with sorted keys and base64url-encoded as the JWS payload, against the
+      OKP/Ed25519 key x=E4OrcbktkbjWLez1AY7lKWkz4SglaCXQ5uQ2tC5msnI served at
+      https://api.hergertsynthora.com/.well-known/jwks.json. The card is therefore cryptographically bound to
+      the key the provider publishes on its API host.
+additional_cards:
+  note: >-
+    Every x402 product host also serves its own card at /.well-known/agent-card.json, all at protocolVersion
+    0.3.0 with preferredTransport HTTP+JSON and a single skill carrying a real inputSchema. The notary card is
+    saved verbatim because it is a distinct product with its own OpenAPI and MCP endpoint; the others are
+    listed by host with the status observed.
+  cards:
+  - host: notary.hergertsynthora.com
+    name: Agent Notary
+    protocolVersion: 0.3.0
+    http_status: 200
+    file: a2a/hergertsynthora-com-notary-agent-card.json
+    grade_note: >-
+      capabilities is an object, protocolVersion present, skills is an array, preferredTransport and default
+      modes present - structurally conformant to 0.3.0; uses additionalInterfaces (the 0.3 name). Its x402
+      block names payTo 0x6D9F318463168fF637b50E5b9a21392e97c7c167 while notary.hergertsynthora.com/llms.txt
+      names 0xEf879BFD6C4AccB8F795136de90246e1EC245e06; the live 402 agrees with the card.
+  - {host: regwatch.hergertsynthora.com, name: SYNTHORA regwatch, protocolVersion: 0.3.0, http_status: 200}
+  - {host: openinterest.hergertsynthora.com, name: SYNTHORA Open Interest Oracle, protocolVersion: 0.3.0, http_status: 200}
+  - {host: txintent.hergertsynthora.com, name: Tx Intent Classifier, protocolVersion: 0.3.0, http_status: 200}
+  - {host: pre-trade-safety.hergertsynthora.com, name: SYNTHORA pre-trade-safety, protocolVersion: 0.3.0, http_status: 200}
+  - {host: amlscreen.hergertsynthora.com, protocolVersion: 0.3.0, http_status: 200}
+  - {host: ais-sanctions-signal.hergertsynthora.com, name: SYNTHORA AIS x sanctions LIVE SIGNAL, protocolVersion: 0.3.0, http_status: 200}
+  - {host: stablecoin-depeg.hergertsynthora.com, name: SYNTHORA stablecoin-depeg, protocolVersion: 0.3.0, http_status: 200}
+  - {host: market-dominance.hergertsynthora.com, name: SYNTHORA market-dominance, protocolVersion: 0.3.0, http_status: 200}
+  - {host: vessel-sanctions.hergertsynthora.com, name: SYNTHORA vessel-sanctions, protocolVersion: 0.3.0, http_status: 200}
+  - {host: ransomware-gleif.hergertsynthora.com, protocolVersion: 0.3.0, http_status: 200}
+  - {host: prediction-market-signal.hergertsynthora.com, name: SYNTHORA daily prediction-market signal, protocolVersion: 0.3.0, http_status: 200}
+  - {host: demand-radar.hergertsynthora.com, name: SYNTHORA demand-radar, protocolVersion: 0.3.0, http_status: 200}
+  - {host: agentcard.hergertsynthora.com, name: Agent Card Validator (A2A), protocolVersion: 0.3.0, http_status: 200}
+  - {host: bridgerisk.hergertsynthora.com, protocolVersion: 0.3.0, http_status: 200}
+  - host: pay.hergertsynthora.com
+    path: /.well-known/agent.json
+    http_status: 404
+    note: 'JSON body: "This endpoint was discontinued" pointing at api.hergertsynthora.com/.well-known/x402.json - a retired card, recorded in lifecycle/.'
+  - host: mundo.hergertsynthora.com
+    http_status: 404
+  - host: mcp.hergertsynthora.com
+    http_status: 404
+    note: 'Every GET on the MCP host answers {"error": "MCP endpoint: POST JSON-RPC"}.'
+agent_card:
+  name: Hergert Synthora
+  description: >-
+    Palantir descentralizado: mercado de inteligencia calibrada para agentes autonomos. Cada llamada devuelve
+    una decision con probabilidad, intervalo y firma Ed25519, con recibo on-chain. Pago por llamada x402 (USDC
+    en Base, eip155:8453).
+  url: https://api.hergertsynthora.com/a2a
+  version: 1.3.2
+  protocol_version: '1.0'
+  preferred_transport: JSONRPC
+  provider:
+    organization: Hergert Synthora
+    url: https://hergertsynthora.com/
+  documentation_url: https://api.hergertsynthora.com/llms.txt
+  icon_url: https://hergertsynthora.com/logo.png
+  capabilities:
+    streaming: true
+    push_notifications: false
+    state_transition_history: false
+  default_input_modes: [application/json, text/plain]
+  default_output_modes: [application/json]
+  security_schemes:
+    x402: {type: http, scheme: x402}
+    wallet: {type: apiKey, in: header, name: X-WALLET}
+  security: [{x402: []}, {wallet: []}]
+  supported_interfaces:
+  - {url: https://api.hergertsynthora.com/a2a, protocolBinding: JSONRPC, protocolVersion: '1.0'}
+  mcp: https://mcp.hergertsynthora.com/mcp
+  catalog: https://catalog.hergertsynthora.com/catalog.json
+  skill_count: 12
+  skills:
+  - {id: pre-trade-safety, name: Pre-Trade Safety, price_usdc: '0.25', endpoint: https://pre-trade-safety.hergertsynthora.com/service}
+  - {id: aml-sanctions-screen, name: AML / Sanctions Screen, price_usdc: '0.10', endpoint: https://amlscreen.hergertsynthora.com/service}
+  - {id: ais-sanctions-signal, name: AIS Sanctions Signal, price_usdc: '2', endpoint: https://ais-sanctions-signal.hergertsynthora.com/service}
+  - {id: stablecoin-depeg-radar, name: Stablecoin Depeg Radar, price_usdc: '0.006', endpoint: https://stablecoin-depeg.hergertsynthora.com/service}
+  - {id: market-dominance, name: Market Dominance, price_usdc: '0.05', endpoint: https://market-dominance.hergertsynthora.com/service}
+  - {id: vessel-sanctions-ais, name: Vessel Sanctions AIS, price_usdc: '0.03', endpoint: https://vessel-sanctions.hergertsynthora.com/service}
+  - {id: ransomware-gleif, name: Ransomware x GLEIF, price_usdc: '2', endpoint: https://ransomware-gleif.hergertsynthora.com/service}
+  - {id: prediction-market-signal, name: Prediction Market Signal, price_usdc: '0.25', endpoint: https://prediction-market-signal.hergertsynthora.com/service}
+  - {id: verificacion-multifuente-firmada, name: Verificacion multi-fuente firmada Ed25519, price_usdc: null, note: evidence-only skill (pubkey, jwks, samples)}
+  - {id: decisiones-calibradas-brier, name: Decisiones calibradas con track record Brier publico, price_usdc: null, note: evidence-only skill (track_record.json, panel)}
+  - {id: demand-radar, name: Demand Radar, price_usdc: '0.25', endpoint: https://demand-radar.hergertsynthora.com/service}
+  - {id: security-assessment, name: Security Assessment (pentest autorizado), price_usdc: null, note: 'quote-based (desde 2.900 EUR + IVA), explicitly NOT an x402 endpoint'}

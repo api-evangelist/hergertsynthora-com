@@ -1,0 +1,12 @@
+{
+ "alg": "ed25519",
+ "public_key_hex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272",
+ "public_key_b64url": "E4OrcbktkbjWLez1AY7lKWkz4SglaCXQ5uQ2tC5msnI",
+ "kid": "did:web:{domain}#key-1",
+ "did": "did:web:{domain}",
+ "did_document": "https://{domain}/.well-known/did.json",
+ "jwks": "https://{domain}/.well-known/jwks.json",
+ "canonicalization": "jcs-lite-sortkeys",
+ "signed_field": "result",
+ "howto": "Recanonicaliza el objeto firmado con json.dumps(sort_keys=True, separators=(',',':')) y verifica receipt.sig con esta clave."
+}

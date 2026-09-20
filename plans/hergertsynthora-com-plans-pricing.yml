@@ -1,0 +1,58 @@
+generated: '2026-09-19'
+method: probed
+source: https://catalog.hergertsynthora.com/catalog.json (machine-readable, 113 priced products, updated_at 2026-09-03T14:00:13Z; saved verbatim as plans/hergertsynthora-com-catalog.json) and https://api.hergertsynthora.com/.well-known/x402.json (per-resource prices in USDC atomic units)
+secondary_source: https://hergertsynthora.com/muestras/ (human pricing table, "Precios") and the agent card metadata.pricing_tiers
+description: >-
+  Pay-per-call pricing in USDC on Base via x402: no subscription, no account, no API key. Prices are published
+  per product in the machine catalog and repeated in each product's 402 challenge, so the price an agent pays
+  is always the one the endpoint states at call time. The tier table below is the provider's own grouping.
+currency: USDC (eip155:8453, asset 0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913)
+billing: per call, settled on-chain before delivery; the settlement tx hash is the invoice; no refunds once delivered; undeliverable results are not charged
+free_tier: 3 free calls per Base wallet (catalog features.free_trial); the api llms.txt states 1 per wallet (+3/day/IP) on data products; live x-free-tier header carries the per-product value
+plan_count: 6
+plans:
+- name: Productos atomicos (atomic data products)
+  price: 0.001 - 1.60 USDC per call (muestras page says 0.001 - 0.50; card says 0.001 - 1.60 over 112 endpoints)
+  billing_period: per call
+  included: '+80 verified data endpoints (onchain, macro, weather, OSINT, sanctions); catalog.json lists 113 priced products with price_usd from 0.001'
+  limits: free trial 3 calls per wallet; then pay per call
+  source: https://hergertsynthora.com/muestras/ + catalog.json
+- name: Flash (informe relampago)
+  price: 0.25 USDC per report
+  billing_period: per call
+  included: One question, one calibrated decision with probability and interval
+  source: https://hergertsynthora.com/muestras/
+- name: Estandar
+  price: 2 - 5 USDC per report
+  billing_period: per call
+  included: Cross-source analysis with evidence and signature
+  source: https://hergertsynthora.com/muestras/
+- name: Profundo
+  price: 10 - 50 USDC per report
+  billing_period: per call
+  included: Custom investigation - OSINT, sanctions, darknet, geospatial
+  source: https://hergertsynthora.com/muestras/
+- name: Monitorizacion
+  price: 50 - 500 USDC per month
+  billing_period: monthly
+  included: Continuous watch on one question or entity, with signed alerts
+  source: https://hergertsynthora.com/muestras/
+- name: Security Assessment (authorized pentest)
+  price: from 2,900 EUR + IVA (base fee) plus a capped bonus per verified critical finding
+  billing_period: per engagement, by quote
+  included: OSINT -> recon -> vulnerability analysis -> controlled exploitation -> signed report -> remediation -> re-test; contract + ROE required
+  limits: explicitly NOT an x402 endpoint; contact/quote only
+  source: agent card skill security-assessment
+sample_product_prices:
+- {product: contractGuard (contract safety), price_usdc: '0.005', source: aggregate OpenAPI x-payment-info}
+- {product: payToPreflight, price_usdc: '0.010', source: aggregate OpenAPI}
+- {product: walletEnrich, price_usdc: '0.15', source: aggregate OpenAPI + live 402 (amount 150000 atomic)}
+- {product: polymarket_whales, price_usdc: '0.15', source: aggregate OpenAPI}
+- {product: polymarket_odds_movers, price_usdc: '0.10', source: aggregate OpenAPI}
+- {product: dispute_risk, price_usdc: '0.05', source: aggregate OpenAPI}
+- {product: insider_radar, price_usdc: '0.03', source: aggregate OpenAPI}
+- {product: market_resolution, price_usdc: '0.01', source: aggregate OpenAPI}
+- {product: notary (trust_notary), price_usdc: '0.002', source: live 402 (amount 2000 atomic)}
+- {product: agentcard validator, price_usdc: '0.01', source: catalog.json}
+- {product: bioquantum dataset (full pack), price_usdc: '49', source: api llms.txt}
+enterprise_contact: info@hergertsynthora.com (the company states it does not sell services to third parties beyond the machine channel; the contact page is for investment, partnership, hiring or M&A)

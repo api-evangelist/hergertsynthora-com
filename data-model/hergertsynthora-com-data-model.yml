@@ -1,0 +1,48 @@
+generated: '2026-09-19'
+method: derived
+source: >-
+  Derived from components.schemas of openapi/hergertsynthora-com-mesh-aggregate-openapi.yml (ServiceRequest,
+  SignedResult, PaymentRequirements), the inline request/response schemas of the 59 per-service specs under
+  openapi/services/, the notary inputSchema (A2A card, MCP tool and 402 body agree), and the x402 manifest.
+description: >-
+  A deliberately small model: every product takes one request object and returns one signed verdict envelope;
+  the only cross-object references are the payment references that tie a result to a settlement on Base.
+entities:
+- name: ServiceRequest
+  source: aggregate components.schemas.ServiceRequest
+  fields: {input: 'string (required) - primary argument, e.g. a 0x contract address on Base'}
+  note: Per-service specs replace this with product-specific bodies (e.g. wallet-enrich {address}, notary {op, content|hash|input|output|party_a|party_b|terms|receipt_id}, regwatch {since, slug, limit}).
+- name: SignedResult
+  source: aggregate components.schemas.SignedResult
+  fields: {ok: boolean, niche: 'string (product id)', result: object, receipt: 'object - Ed25519 signature over result plus payment reference'}
+- name: Receipt
+  source: pubkey endpoint + 402 body signature block
+  fields: {alg: ed25519, pubkey: hex, sig: 'hex (64B raw)', canon: 'json:sort_keys+separators(,:)+ensure_ascii+utf8', payment_reference: 'settlement tx hash on Base (per terms, the invoice)'}
+- name: PaymentRequirements
+  source: aggregate components.schemas.PaymentRequirements; x402 manifest accepts[]
+  fields: {scheme: 'const exact', network: 'const eip155:8453', asset: 'const 0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913 (USDC on Base)', amount: 'string, USDC base units (6 decimals)', maxAmountRequired: string, payTo: 'address (Safe 0xEf879BFD6C4AccB8F795136de90246e1EC245e06 for the mesh; 0x6D9F318463168fF637b50E5b9a21392e97c7c167 for the notary)', maxTimeoutSeconds: integer, resource: url}
+- name: X402Resource
+  source: well-known/hergertsynthora-com-x402.json resources[]
+  fields: {resource: url, accepts: 'PaymentRequirements[]', extensions.bazaar: 'input/output example + JSON Schema', freeTier: '{callsPerWallet, header}'}
+- name: CatalogProduct
+  source: plans/hergertsynthora-com-catalog.json products[]
+  fields: {id: string, name: string, endpoint: url, price_usd: number, price_atomic: integer, category: string, description: string, tags: 'string[]', example_input: object, verifiable: boolean, free_trial_calls: integer, certified: boolean, network: eip155:8453, asset: USDC}
+- name: NotaryReceipt
+  source: notary 402 body extensions.bazaar.info.output.example
+  fields: {receipt_id: 'string (nt-...)', sha256: hex, kind: string, notarized_at: 'ISO 8601', statement: string}
+- name: AgentCardSkill
+  source: a2a/hergertsynthora-com-agent-card.json skills[]
+  fields: {id, name, description, tags, examples, 'x402 {priceUSDC, endpoint, payTo, network, asset}': 'vendor extension'}
+relationships:
+- {from: SignedResult, to: Receipt, type: has_one, via: 'receipt'}
+- {from: Receipt, to: PaymentRequirements, type: belongs_to, via: 'payment_reference -> payTo/asset/network (settlement on Base)'}
+- {from: X402Resource, to: PaymentRequirements, type: has_many, via: 'accepts'}
+- {from: X402Resource, to: CatalogProduct, type: has_one, via: 'resource == products[].endpoint'}
+- {from: CatalogProduct, to: ServiceRequest, type: has_one, via: 'example_input / extensions.bazaar.schema.input'}
+- {from: AgentCardSkill, to: X402Resource, type: belongs_to, via: 'x402.endpoint == resource'}
+- {from: NotaryReceipt, to: NotaryReceipt, type: has_one, via: '''receipt_id (op=verify looks a receipt up by id)'''}
+id_prefixes:
+  receipt_id: 'nt-'
+  kid: synthora-mesh-attest
+  product_id: 'slug of the product host (e.g. wallet-enrich, txintent, regwatch)'
+render: none (no subway/ diagram)

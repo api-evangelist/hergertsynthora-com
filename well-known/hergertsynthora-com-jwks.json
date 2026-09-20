@@ -1,0 +1,12 @@
+{
+ "keys": [
+  {
+   "kty": "OKP",
+   "crv": "Ed25519",
+   "kid": "synthora-mesh-attest",
+   "x": "E4OrcbktkbjWLez1AY7lKWkz4SglaCXQ5uQ2tC5msnI",
+   "alg": "EdDSA",
+   "use": "sig"
+  }
+ ]
+}

@@ -1,0 +1,416 @@
+{
+ "protocolVersion": "1.0",
+ "name": "Hergert Synthora",
+ "description": "Palantir descentralizado: mercado de inteligencia calibrada para agentes autonomos. Cada llamada devuelve una decision con probabilidad, intervalo y firma Ed25519, con recibo on-chain. Pago por llamada x402 (USDC en Base, eip155:8453). No compres datos; subcontrata la brecha. Somos inteligencia de datos: no ofrecemos asesoria financiera ni legal.",
+ "url": "https://api.hergertsynthora.com/a2a",
+ "preferredTransport": "JSONRPC",
+ "provider": {
+  "organization": "Hergert Synthora",
+  "url": "https://hergertsynthora.com/"
+ },
+ "iconUrl": "https://hergertsynthora.com/logo.png",
+ "version": "1.3.2",
+ "documentationUrl": "https://api.hergertsynthora.com/llms.txt",
+ "capabilities": {
+  "streaming": true,
+  "pushNotifications": false,
+  "stateTransitionHistory": false
+ },
+ "defaultInputModes": [
+  "application/json",
+  "text/plain"
+ ],
+ "defaultOutputModes": [
+  "application/json"
+ ],
+ "securitySchemes": {
+  "x402": {
+   "type": "http",
+   "scheme": "x402",
+   "description": "Pago por llamada x402: USDC en Base (eip155:8453). La primera llamada devuelve HTTP 402 con los terminos de pago; el pago se verifica on-chain y la respuesta incluye recibo firmado."
+  },
+  "wallet": {
+   "type": "apiKey",
+   "in": "header",
+   "name": "X-WALLET",
+   "description": "Cabecera X-WALLET con direccion Base 0x... del llamante: identifica la wallet para free trial y atribucion de recibos."
+  }
+ },
+ "security": [
+  {
+   "x402": []
+  },
+  {
+   "wallet": []
+  }
+ ],
+ "skills": [
+  {
+   "id": "pre-trade-safety",
+   "name": "Pre-Trade Safety",
+   "description": "Verificacion de seguridad pre-operacion: riesgo de contrato, honeypot, sanciones y liquidez antes de ejecutar un trade. Aviso: esto es inteligencia de datos; no es asesoria financiera ni legal.",
+   "tags": [
+    "seguridad",
+    "trade",
+    "contratos",
+    "aml"
+   ],
+   "examples": [
+    "Es seguro comprar el token 0x... ahora?"
+   ],
+   "x402": {
+    "priceUSDC": "0.25",
+    "endpoint": "https://pre-trade-safety.hergertsynthora.com/service",
+    "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06",
+    "network": "eip155:8453",
+    "asset": "USDC"
+   }
+  },
+  {
+   "id": "aml-sanctions-screen",
+   "name": "AML / Sanctions Screen",
+   "description": "Screening OFAC/UN/UE/UK de wallets y entidades con veredicto firmado Ed25519. Aviso: esto es inteligencia de datos; no es asesoria financiera ni legal.",
+   "tags": [
+    "aml",
+    "sanciones",
+    "ofac",
+    "cumplimiento"
+   ],
+   "examples": [
+    "Screenea esta wallet contra listas de sanciones"
+   ],
+   "x402": {
+    "priceUSDC": "0.10",
+    "endpoint": "https://amlscreen.hergertsynthora.com/service",
+    "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06",
+    "network": "eip155:8453",
+    "asset": "USDC"
+   }
+  },
+  {
+   "id": "ais-sanctions-signal",
+   "name": "AIS Sanctions Signal",
+   "description": "Senal AIS x listas de sanciones: buques sancionados u opacos activos, con evidencia y ts. Veredicto firmado. Aviso: esto es inteligencia de datos; no es asesoria financiera ni legal.",
+   "tags": [
+    "ais",
+    "sanciones",
+    "maritimo",
+    "osint"
+   ],
+   "examples": [
+    "Buques sancionados activos cerca de Gibraltar esta semana"
+   ],
+   "x402": {
+    "priceUSDC": "2",
+    "endpoint": "https://ais-sanctions-signal.hergertsynthora.com/service",
+    "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06",
+    "network": "eip155:8453",
+    "asset": "USDC"
+   }
+  },
+  {
+   "id": "stablecoin-depeg-radar",
+   "name": "Stablecoin Depeg Radar",
+   "description": "Radar de despegue de stablecoins: desviacion del peg, liquidez y senales tempranas de riesgo. Decision calibrada con probabilidad e intervalo.",
+   "tags": [
+    "stablecoins",
+    "depeg",
+    "riesgo",
+    "onchain"
+   ],
+   "examples": [
+    "Evalua el riesgo de depeg de USDC a 24h"
+   ],
+   "x402": {
+    "priceUSDC": "0.006",
+    "endpoint": "https://stablecoin-depeg.hergertsynthora.com/service",
+    "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06",
+    "network": "eip155:8453",
+    "asset": "USDC"
+   }
+  },
+  {
+   "id": "market-dominance",
+   "name": "Market Dominance",
+   "description": "Dominancia de mercado (BTC/ETH/stablecoins) con contexto historico y lectura calibrada del regimen actual.",
+   "tags": [
+    "dominancia",
+    "mercado",
+    "macro",
+    "cripto"
+   ],
+   "examples": [
+    "Dominancia BTC actual y regimen"
+   ],
+   "x402": {
+    "priceUSDC": "0.05",
+    "endpoint": "https://market-dominance.hergertsynthora.com/service",
+    "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06",
+    "network": "eip155:8453",
+    "asset": "USDC"
+   }
+  },
+  {
+   "id": "vessel-sanctions-ais",
+   "name": "Vessel Sanctions AIS",
+   "description": "Cruce AIS x listas de sanciones: buques sancionados o de bandera opaca y su actividad reciente.",
+   "tags": [
+    "ais",
+    "sanciones",
+    "maritimo",
+    "osint"
+   ],
+   "examples": [
+    "Buques sancionados activos cerca de Gibraltar"
+   ],
+   "x402": {
+    "priceUSDC": "0.03",
+    "endpoint": "https://vessel-sanctions.hergertsynthora.com/service",
+    "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06",
+    "network": "eip155:8453",
+    "asset": "USDC"
+   }
+  },
+  {
+   "id": "ransomware-gleif",
+   "name": "Ransomware x GLEIF",
+   "description": "Victimas de ransomware enriquecidas con identidad legal GLEIF (LEI): quien es la victima de verdad.",
+   "tags": [
+    "ransomware",
+    "gleif",
+    "osint",
+    "victimas"
+   ],
+   "examples": [
+    "Victimas recientes de ransomware con match GLEIF"
+   ],
+   "x402": {
+    "priceUSDC": "2",
+    "endpoint": "https://ransomware-gleif.hergertsynthora.com/service",
+    "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06",
+    "network": "eip155:8453",
+    "asset": "USDC"
+   }
+  },
+  {
+   "id": "prediction-market-signal",
+   "name": "Prediction Market Signal",
+   "description": "Senales de mercados de prediccion geopoliticos: desalineaciones contra baseline calibrado.",
+   "tags": [
+    "prediccion",
+    "mercados",
+    "geopolitica",
+    "calibracion"
+   ],
+   "examples": [
+    "Mercados de prediccion geo desalineados hoy"
+   ],
+   "x402": {
+    "priceUSDC": "0.25",
+    "endpoint": "https://prediction-market-signal.hergertsynthora.com/service",
+    "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06",
+    "network": "eip155:8453",
+    "asset": "USDC"
+   }
+  },
+  {
+   "id": "verificacion-multifuente-firmada",
+   "name": "Verificacion multi-fuente firmada Ed25519",
+   "description": "Toda afirmacion clave cruza fuentes independientes y la respuesta va firmada Ed25519; cualquiera puede verificar la firma con la clave publica de la malla.",
+   "tags": [
+    "verificacion",
+    "firma",
+    "ed25519",
+    "transparencia"
+   ],
+   "examples": [
+    "Verifica la firma Ed25519 de cualquier informe con la pubkey publica"
+   ],
+   "evidence": [
+    "https://api.hergertsynthora.com/pubkey",
+    "https://hergertsynthora.com/.well-known/jwks.json",
+    "https://hergertsynthora.com/muestras/"
+   ]
+  },
+  {
+   "id": "decisiones-calibradas-brier",
+   "name": "Decisiones calibradas con track record Brier publico",
+   "description": "Cada decision lleva probabilidad e intervalo, y la calibracion se mide en publico: Brier 0.0258, OPERANT 17/20, mini-CBB 20/20.",
+   "tags": [
+    "calibracion",
+    "brier",
+    "track-record",
+    "honestidad"
+   ],
+   "examples": [
+    "Consulta el track record publico de calibracion"
+   ],
+   "evidence": [
+    "https://api.hergertsynthora.com/track_record.json",
+    "https://api.hergertsynthora.com/panel"
+   ]
+  },
+  {
+   "id": "demand-radar",
+   "name": "Demand Radar",
+   "description": "Radar de demanda medido sobre la propia malla x402 (logs de acceso reales, agregado semanal): endpoints mas sondeados, interes sin pagar (402), conversiones (200), IPs unicas y precios publicados. Respuesta firmada Ed25519.",
+   "tags": [
+    "demanda",
+    "analytics",
+    "x402",
+    "market-intel"
+   ],
+   "examples": [
+    "Que endpoints x402 se miran y no se pagan?"
+   ],
+   "x402": {
+    "priceUSDC": "0.25",
+    "endpoint": "https://demand-radar.hergertsynthora.com/service",
+    "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06",
+    "network": "eip155:8453",
+    "asset": "USDC"
+   }
+  },
+  {
+   "id": "security-assessment",
+   "name": "Security Assessment (pentest autorizado)",
+   "description": "Evaluacion de seguridad ofensiva sobre infraestructura del cliente, SOLO con contrato y ROE firmados (scope, ventanas horarias, contactos de emergencia, limites explicitos; fuera de scope = prohibido). Metodologia: OSINT -> recon -> analisis de vulnerabilidades -> explotacion controlada -> informe ejecutivo+tecnico firmado Ed25519 -> remediacion -> re-test incluido. Precio orientativo: desde 2.900 EUR (fee base + bonus por hallazgo critico verificado, con tope).",
+   "tags": [
+    "pentest",
+    "security-assessment",
+    "red-team-autorizado",
+    "osint",
+    "owasp"
+   ],
+   "examples": [
+    "Solicita un presupuesto de Security Assessment para tu perimetro web/API"
+   ],
+   "contratacion": "contacto/quote — los pentests se contratan tras acordar scope y ROE; NO es un endpoint x402 de cobro automatico",
+   "precio_orientativo": "desde 2.900 EUR + IVA (fee base) + bonus por critico verificado (tope)",
+   "evidence": [
+    "https://hergertsynthora.com/muestras/security-assessment-muestra-2026-09-03.md",
+    "https://hergertsynthora.com/.well-known/jwks.json"
+   ],
+   "disclaimer_legal": "Nada se ataca sin autorizacion escrita firmada (marco legal ofensivo de la malla, constitucion marco_legal_ofensivo). Plantillas de contrato y ROE con revision de abogado humano obligatoria."
+  }
+ ],
+ "metadata": {
+  "erc8004": {
+   "registry": "eip155:8453:0x8004A169FB4a3325136EB29fA0ceB6D2e539a432",
+   "agentIds": [
+    "56572",
+    "56577"
+   ],
+   "identity": "ERC-8004 #56572 / #56577 (Base)",
+   "nota": "Materiales antiguos citaban #61548; ese tokenId pertenece a otro agente. Los nuestros son 56572 y 56577, verificables on-chain (owner 0xb5d3f68c...fee6)."
+  },
+  "reputation": {
+   "paymentsOnChain": 272,
+   "uniqueWallets": 49,
+   "note": "Reputacion verificable on-chain en Base: 272 pagos de 49 wallets unicas."
+  },
+  "payment": {
+   "protocol": "x402",
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+  },
+  "mcp": "https://mcp.hergertsynthora.com/mcp",
+  "catalog": "https://catalog.hergertsynthora.com/catalog.json",
+  "samples": {
+   "url": "https://hergertsynthora.com/muestras/",
+   "free": true,
+   "items": [
+    {
+     "titulo": "Exploits nuevos en CISA KEV esta semana",
+     "url": "https://hergertsynthora.com/muestras/cisa-kev-nuevos-exploits-semana-2026-09-03.md",
+     "fecha": "2026-09-03",
+     "firma": "Ed25519 (kid synthora-mesh-attest)",
+     "gate_calidad": "APROBADO"
+    },
+    {
+     "titulo": "Estado de los exploits CISA KEV y su relacion con victimas de ransomware",
+     "url": "https://hergertsynthora.com/muestras/cisa-kev-estado-exploits-2026-09-02.md",
+     "fecha": "2026-09-02",
+     "firma": "Ed25519 (kid synthora-mesh-attest)",
+     "gate_calidad": "APROBADO"
+    },
+    {
+     "titulo": "Muestra anonimizada de informe Security Assessment (autoataque propio)",
+     "url": "https://hergertsynthora.com/muestras/security-assessment-muestra-2026-09-03.md",
+     "fecha": "2026-09-03",
+     "firma": "Ed25519 (kid synthora-mesh-attest)",
+     "gate_calidad": "APROBADO"
+    }
+   ]
+  },
+  "pricing_tiers": {
+   "productos_atomicos": "0.001-1.60 USDC/llamada (112 endpoints, ver catalog)",
+   "flash": "0.25 USDC/informe",
+   "estandar": "2-5 USDC/informe",
+   "profundo": "10-50 USDC/informe",
+   "monitorizacion": "50-500 USDC/mes",
+   "security_assessment": "desde 2.900 EUR (contacto/quote, no x402; fee base + bonus critico con tope)"
+  },
+  "fuentes_verificadas": 206,
+  "fuentes_nota": "Origenes distintos vivos verificados en matriz_sectores.json (12 sectores), 2026-09-03.",
+  "calibration": {
+   "modelo": "synthora-mente (deepseek-r1:32b, instancia propia)",
+   "fecha": "2026-09-01",
+   "brier_publico": 0.0258,
+   "operantEquivalente": {
+    "aciertos": 17,
+    "total": 20,
+    "accuracy": 0.85
+   },
+   "miniCBB": {
+    "aciertos": 20,
+    "total": 20,
+    "accuracy": 1.0,
+    "brier": 0.0258
+   },
+   "nota": "Benchmark interno: 20 casos de decision operativa (PROCEED/REFUSE/ESCALATE) + 20 items facticos con confianza declarada. Brier corregido 0.026 < 0.25."
+  },
+  "productos_nuevos": [
+   {
+    "nombre": "ais-sanctions-signal",
+    "url": "https://ais-sanctions-signal.hergertsynthora.com/service",
+    "precio_usdc": "2",
+    "estado": "vivo",
+    "evidencia": "402 payTo=Safe amount=2000000; free tier: 532 buques, 16 senales MEDIA, ts 2026-09-02T22:09:02Z",
+    "verificado_402": "2026-09-03"
+   },
+   {
+    "nombre": "ransomware-gleif",
+    "url": "https://ransomware-gleif.hergertsynthora.com/service",
+    "precio_usdc": "2",
+    "estado": "vivo",
+    "evidencia": "402 payTo=Safe amount=2000000; free tier: 20 victimas enriquecidas, 4 con match GLEIF",
+    "verificado_402": "2026-09-03"
+   },
+   {
+    "nombre": "prediction-market-signal",
+    "url": "https://prediction-market-signal.hergertsynthora.com/service",
+    "precio_usdc": "0.25",
+    "estado": "vivo",
+    "evidencia": "402 payTo=Safe amount=250000; free tier: 17 mercados geo, baseline inicial (aun sin senales), ts 2026-09-02T21:43:16Z",
+    "verificado_402": "2026-09-03"
+   }
+  ],
+  "jwks_url": "https://hergertsynthora.com/.well-known/jwks.json",
+  "osint_framework_cobertura": "28/33 categorías OSINT Framework con fuente viva propia"
+ },
+ "supportedInterfaces": [
+  {
+   "url": "https://api.hergertsynthora.com/a2a",
+   "protocolBinding": "JSONRPC",
+   "protocolVersion": "1.0"
+  }
+ ],
+ "signatures": [
+  {
+   "protected": "eyJhbGciOiJFZERTQSIsImtpZCI6InN5bnRob3JhLW1lc2gtYXR0ZXN0IiwidHlwIjoiSldTIn0",
+   "signature": "u23qsFXJ_RK4L-fJ5l0im8FqO30V4-H_pmlW783IWFS4vGfKQitbjQodVJMATrIS1tDP1nAIQvVVn2mBxGuKBw"
+  }
+ ]
+}

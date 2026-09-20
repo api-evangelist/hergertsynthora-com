@@ -1,0 +1,130 @@
+generated: '2026-09-19'
+method: searched
+source: >-
+  Read from the contracts and live responses themselves on 2026-09-19: the aggregate OpenAPI at
+  https://api.hergertsynthora.com/openapi.json (x-payment-info on every operation, the /.well-known/x402.json
+  operation, PaymentRequirements schema), the 59 per-service OpenAPIs under openapi/services/, the served
+  /.well-known/x402.json manifest, the A2A agent card and its JWS, the MCP initialize handshake, the ERC-8004
+  agent-registration.json, the JWKS, and anonymous 402 responses on notary.hergertsynthora.com/service and
+  api.hergertsynthora.com/v1/wallet-enrich. Nothing below is a marketing claim; each entry points at the
+  location where the contract or the wire says it.
+description: >-
+  Cross-cutting and domain standards the SYNTHORA mesh conforms to (or does not). This is a machine-to-machine
+  commerce surface: the standards that matter are x402 (HTTP 402 micropayments), A2A, MCP, ERC-8004 agent
+  identity and detached Ed25519 signatures - not OAuth, OIDC or RFC 9457, none of which the provider uses.
+conformance:
+- id: x402
+  name: x402 protocol, version 2 (HTTP 402 payment challenge, exact scheme, USDC on Base)
+  conforms: true
+  domain_standard: true
+  evidence:
+  - location: openapi/hergertsynthora-com-mesh-aggregate-openapi.yml -> components.securitySchemes.x402Payment (X-PAYMENT header, EIP-3009 transferWithAuthorization), components.schemas.PaymentRequirements (scheme const exact, network const eip155:8453, asset const 0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913), x-payment-info on all 11 operations, responses.402 PaymentRequired, operation discoveryManifest GET /.well-known/x402.json
+  - location: well-known/hergertsynthora-com-x402.json (served at api., pay. and notary.hergertsynthora.com) - x402Version 2, resources[] with accepts[]
+  - location: live POST https://notary.hergertsynthora.com/service -> HTTP 402, body x402Version 2 with accepts[{scheme exact, network eip155:8453, amount 2000, payTo, maxTimeoutSeconds 300}], headers payment-required (base64 JSON), x-402-asset, x-402-network, x-402-payto
+  - location: live POST https://api.hergertsynthora.com/v1/wallet-enrich -> HTTP 402 with WWW-Authenticate x402 network="eip155:8453", asset=..., pay_to=..., max_amount="150000", resource=...
+  note: >-
+    Terms (https://hergertsynthora.com/terms/ section 4) name Coinbase CDP as the payment facilitator screening
+    settlements for OFAC/KYT. No payment was made by API Evangelist; conformance is read from the challenge.
+- id: a2a
+  name: A2A Agent Card (1.0 on the primary card; 0.3.0 on the fifteen per-product cards) and JSON-RPC binding
+  conforms: true
+  domain_standard: true
+  evidence:
+  - location: a2a/hergertsynthora-com-agent-card.json - protocolVersion "1.0", capabilities object, skills array, supportedInterfaces[].protocolBinding JSONRPC, signatures[] (JWS verified against the JWKS, see a2a/hergertsynthora-com-a2a.yml)
+  - location: live POST https://api.hergertsynthora.com/a2a tasks/get -> JSON-RPC error -32001 TaskNotFoundError
+  - location: openapi/hergertsynthora-com-mesh-aggregate-openapi.yml -> operation agentCard GET /.well-known/agent.json (declared in the contract itself)
+  grade: conformant (see a2a/hergertsynthora-com-a2a.yml for deviations)
+- id: mcp
+  name: Model Context Protocol, streamable HTTP, protocolVersion 2025-03-26
+  conforms: true
+  domain_standard: true
+  evidence:
+  - location: live POST https://mcp.hergertsynthora.com/mcp initialize -> serverInfo synthora-mcp 1.0.1, protocolVersion 2025-03-26, capabilities.tools; tools/list -> 30 tools with inputSchema, outputSchema and annotations (readOnlyHint, destructiveHint, idempotentHint, openWorldHint)
+  - location: live POST https://notary.hergertsynthora.com/mcp tools/list -> 1 tool (notario)
+  - location: well-known/hergertsynthora-com-agent-registration.json -> services[].MCP endpoint https://mcp.hergertsynthora.com/mcp, version 2025-06-18 (declared version differs from the 2025-03-26 the server negotiates)
+- id: erc-8004
+  name: ERC-8004 trustless agent identity registration (registration-v1 file + on-chain registry on Base)
+  conforms: true
+  domain_standard: true
+  evidence:
+  - location: well-known/hergertsynthora-com-agent-registration.json - type https://eips.ethereum.org/EIPS/eip-8004#registration-v1, registrations[].agentRegistry eip155:8453:0x8004A169FB4a3325136EB29fA0ceB6D2e539a432, agentId 84581, supportedTrust [reputation], x402Support true
+  - location: a2a/hergertsynthora-com-agent-card.json -> metadata.erc8004 (agentIds 56572, 56577 on the same registry)
+  - location: https://8004scan.io/agents/base/84581 (HTTP 200, third-party registry explorer)
+  note: The three documents disagree on WHICH agentId(s) belong to the mesh (84581 vs 56572/56577); recorded, not resolved.
+- id: jws-ed25519
+  name: Detached JWS / Ed25519 (EdDSA) signatures over responses and the agent card, key published as a JWKS (RFC 7517/8037)
+  conforms: true
+  domain_standard: true
+  evidence:
+  - location: well-known/hergertsynthora-com-jwks.json - kty OKP, crv Ed25519, kid synthora-mesh-attest, alg EdDSA, use sig
+  - location: well-known/hergertsynthora-com-pubkey.json - same key as hex/b64url with canonicalization "jcs-lite-sortkeys", signed_field "result"
+  - location: a2a/hergertsynthora-com-agent-card.json -> signatures[0] verified by API Evangelist on 2026-09-19
+  - location: openapi/hergertsynthora-com-mesh-aggregate-openapi.yml -> components.schemas.SignedResult.receipt ("Ed25519 signature over the result, plus payment reference")
+  note: >-
+    The did:web document the pubkey endpoint advertises (https://{domain}/.well-known/did.json) is NOT served:
+    hergertsynthora.com/.well-known/did.json is the HTML 404 page and api.hergertsynthora.com/.well-known/did.json
+    is an empty 200. The {domain} placeholder is also left unexpanded in the pubkey body.
+- id: json-rpc-2.0
+  name: JSON-RPC 2.0
+  conforms: true
+  evidence:
+  - location: A2A endpoint https://api.hergertsynthora.com/a2a and MCP endpoints (both hosts) answer well-formed JSON-RPC 2.0 envelopes with id echo and error objects
+- id: oauth2
+  name: OAuth 2.0
+  conforms: false
+  evidence:
+  - location: no securityScheme of type oauth2 in any of the 61 saved OpenAPIs; /.well-known/oauth-authorization-server and /.well-known/oauth-protected-resource absent on every host (404 or empty 200). Access is wallet-native (x402 + X-WALLET header), by design.
+- id: oidc
+  name: OpenID Connect
+  conforms: false
+  evidence:
+  - location: /.well-known/openid-configuration absent on every host probed
+- id: rfc9457
+  name: RFC 9457 Problem Details
+  conforms: false
+  evidence:
+  - location: >-
+      error bodies are {"error": "<message>"} (404s), x402 challenge objects (402s) and JSON-RPC error objects; no application/problem+json anywhere in the saved specs or observed responses. See errors/hergertsynthora-com-problem-types.yml.
+- id: rfc9116
+  name: RFC 9116 security.txt
+  conforms: false
+  evidence:
+  - location: /.well-known/security.txt absent on all 8 hosts probed (see well-known/hergertsynthora-com-well-known.yml)
+- id: rfc9727
+  name: RFC 9727 api-catalog
+  conforms: false
+  evidence:
+  - location: /.well-known/api-catalog absent on all hosts; the provider's catalog is the non-standard https://catalog.hergertsynthora.com/catalog.json and the x402 manifest
+- id: pagination
+  name: Pagination conventions
+  conforms: false
+  applicable: false
+  evidence:
+  - location: every operation is a single-shot POST /service returning one verdict; no list endpoints, no cursor or page parameters in any saved spec
+- id: idempotency
+  name: Idempotency keys
+  conforms: false
+  evidence:
+  - location: no Idempotency-Key header in any spec or doc; MCP tools all carry idempotentHint true and readOnlyHint true (a hint, not a replay mechanism). See conventions/hergertsynthora-com-conventions.yml.
+- id: openapi-3.1
+  name: OpenAPI 3.1.0
+  conforms: true
+  evidence:
+  - location: all 61 saved contracts declare openapi 3.1.0 and parse; the aggregate uses JSON Schema const/required per 3.1
+- id: eip-3009
+  name: EIP-3009 transferWithAuthorization (USDC gasless authorization used by the x402 exact scheme)
+  conforms: true
+  domain_standard: true
+  evidence:
+  - location: openapi/hergertsynthora-com-mesh-aggregate-openapi.yml -> components.securitySchemes.x402Payment.description names the EIP-3009 payload; 402 bodies carry extra {name "USD Coin", version "2"} (the EIP-712 domain of USDC on Base)
+domain_standards_summary: >-
+  For a machine-payable intelligence mesh the market standards are x402 v2, A2A, MCP and ERC-8004, and the
+  contract DECLARES all four (x402 in every operation's x-payment-info and securitySchemes; A2A and x402
+  discovery as operations in the spec itself; MCP and ERC-8004 in the registration file the apex serves).
+  No sector regulatory schema (FHIR, PSD2, SCIM, OData) applies to this provider and none is claimed.
+compliance_program:
+  certifications_held: []
+  note: >-
+    The Actividades page lists ISO 27001, ENS, RGPD, NIST and SOC 2 as things the company OFFERS to audit
+    against (a cybersecurity service line), not as certifications it holds. No trust center, no attestation
+    report and no certificate is published, so no Compliance pointer is emitted.

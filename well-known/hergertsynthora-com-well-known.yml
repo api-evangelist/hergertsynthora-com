@@ -1,0 +1,482 @@
+generated: '2026-09-19'
+method: probed
+description: 'Results of probing the /.well-known/ discovery surface on every host the record knows: the registrable
+  domain and www, the card/OpenAPI/gateway host api.hergertsynthora.com, the aggregate servers[] host pay.hergertsynthora.com,
+  the Agent Notary host, the MCP host, the catalog host and the public world-map host. Status is the HTTP code observed
+  on 2026-09-19. Only documents that returned a real, correctly-typed payload were saved verbatim (or are referenced
+  where they live under a2a/); the apex answers unknown paths with an HTML 404 page and api.hergertsynthora.com
+  answers them with a zero-byte 200, both recorded as misses. No security.txt, openid-configuration, oauth-authorization-server,
+  oauth-protected-resource, api-catalog or ai-plugin.json is served anywhere. What IS served: the A2A agent card
+  (apex, www, api, notary + 14 product hosts), a JWKS on api., the x402 v2 discovery manifest on api./pay./notary.,
+  and an ERC-8004 agent-registration.json on the apex.'
+summary:
+  hosts_probed: 8
+  served_documents:
+  - /.well-known/agent-card.json
+  - /.well-known/agent.json
+  - /.well-known/jwks.json (api host)
+  - /.well-known/x402.json (api, pay, notary)
+  - /.well-known/agent-registration.json (apex)
+  security_txt: absent on every host
+  oauth_metadata: absent on every host (no OAuth surface exists; payment is x402)
+  api_catalog: absent
+hosts:
+- host: https://hergertsynthora.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    real_document: false
+    result: miss
+    content_type: text/html
+    note: text/html 404 page (13,589 bytes, "Pagina no encontrada")
+  - path: /.well-known/openid-configuration
+    status: 404
+    real_document: false
+    result: miss
+    content_type: text/html
+    note: text/html 404 page (13,589 bytes, "Pagina no encontrada")
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    real_document: false
+    result: miss
+    content_type: text/html
+    note: text/html 404 page (13,589 bytes, "Pagina no encontrada")
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    real_document: false
+    result: miss
+    content_type: text/html
+    note: text/html 404 page (13,589 bytes, "Pagina no encontrada")
+  - path: /.well-known/api-catalog
+    status: 404
+    real_document: false
+    result: miss
+    content_type: text/html
+    note: text/html 404 page (13,589 bytes, "Pagina no encontrada")
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    real_document: false
+    result: miss
+    content_type: text/html
+    note: text/html 404 page (13,589 bytes, "Pagina no encontrada")
+  - path: /.well-known/mcp.json
+    status: 404
+    real_document: false
+    result: miss
+    content_type: text/html
+    note: text/html 404 page (13,589 bytes, "Pagina no encontrada")
+  - path: /.well-known/agent-card.json
+    status: 200
+    type: application/json
+    file: ../a2a/hergertsynthora-com-agent-card.json
+    note: A2A agent card, 14,019 bytes, JWS-signed (kid synthora-mesh-attest).
+  - path: /.well-known/agent.json
+    status: 200
+    type: application/json
+    file: ../a2a/hergertsynthora-com-agent-card.json
+    note: A2A agent card, 14,019 bytes; the legacy agent.json path serves the identical body.
+  - path: /.well-known/jwks.json
+    status: 404
+    real_document: false
+    result: miss
+    content_type: text/html
+    note: text/html 404 page (13,589 bytes, "Pagina no encontrada")
+  - path: /.well-known/did.json
+    status: 404
+    real_document: false
+    result: miss
+    content_type: text/html
+    note: text/html 404 page (13,589 bytes, "Pagina no encontrada")
+  - path: /.well-known/x402.json
+    status: 404
+    real_document: false
+    result: miss
+    content_type: text/html
+    note: text/html 404 page (13,589 bytes, "Pagina no encontrada")
+  - path: /.well-known/agent-registration.json
+    status: 200
+    type: application/json
+    file: hergertsynthora-com-agent-registration.json
+    note: ERC-8004 registration-v1 (agentId 84581 on eip155:8453:0x8004A169FB4a3325136EB29fA0ceB6D2e539a432); names
+      the A2A card and the MCP endpoint.
+- host: https://www.hergertsynthora.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    real_document: false
+    result: miss
+    content_type: text/html
+    note: text/html 404 page (13,589 bytes, "Pagina no encontrada")
+  - path: /.well-known/openid-configuration
+    status: 404
+    real_document: false
+    result: miss
+    content_type: text/html
+    note: text/html 404 page (13,589 bytes, "Pagina no encontrada")
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    real_document: false
+    result: miss
+    content_type: text/html
+    note: text/html 404 page (13,589 bytes, "Pagina no encontrada")
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    real_document: false
+    result: miss
+    content_type: text/html
+    note: text/html 404 page (13,589 bytes, "Pagina no encontrada")
+  - path: /.well-known/api-catalog
+    status: 404
+    real_document: false
+    result: miss
+    content_type: text/html
+    note: text/html 404 page (13,589 bytes, "Pagina no encontrada")
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    real_document: false
+    result: miss
+    content_type: text/html
+    note: text/html 404 page (13,589 bytes, "Pagina no encontrada")
+  - path: /.well-known/mcp.json
+    status: 404
+    real_document: false
+    result: miss
+    content_type: text/html
+    note: text/html 404 page (13,589 bytes, "Pagina no encontrada")
+  - path: /.well-known/agent-card.json
+    status: 200
+    type: application/json
+    file: ../a2a/hergertsynthora-com-agent-card.json
+    note: A2A agent card, 14,019 bytes, JWS-signed (kid synthora-mesh-attest).
+  - path: /.well-known/agent.json
+    status: 200
+    type: application/json
+    file: ../a2a/hergertsynthora-com-agent-card.json
+    note: A2A agent card, 14,019 bytes; the legacy agent.json path serves the identical body.
+  - path: /.well-known/jwks.json
+    status: 404
+    real_document: false
+    result: miss
+    content_type: text/html
+    note: text/html 404 page (13,589 bytes, "Pagina no encontrada")
+  - path: /.well-known/did.json
+    status: 404
+    real_document: false
+    result: miss
+    content_type: text/html
+    note: text/html 404 page (13,589 bytes, "Pagina no encontrada")
+  - path: /.well-known/x402.json
+    status: 404
+    real_document: false
+    result: miss
+    content_type: text/html
+    note: text/html 404 page (13,589 bytes, "Pagina no encontrada")
+  - path: /.well-known/agent-registration.json
+    status: 200
+    real_document: false
+    result: miss
+    content_type: application/json
+    note: Not re-probed on www; apex copy saved.
+- host: https://api.hergertsynthora.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    real_document: false
+    result: miss
+    note: Host answers HTTP 200 with a zero-byte body for every unknown path (a soft-200); no document is served
+      here. Treated as absent.
+  - path: /.well-known/openid-configuration
+    status: 200
+    real_document: false
+    result: miss
+    note: Host answers HTTP 200 with a zero-byte body for every unknown path (a soft-200); no document is served
+      here. Treated as absent.
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    real_document: false
+    result: miss
+    note: Host answers HTTP 200 with a zero-byte body for every unknown path (a soft-200); no document is served
+      here. Treated as absent.
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    real_document: false
+    result: miss
+    note: Host answers HTTP 200 with a zero-byte body for every unknown path (a soft-200); no document is served
+      here. Treated as absent.
+  - path: /.well-known/api-catalog
+    status: 200
+    real_document: false
+    result: miss
+    note: Host answers HTTP 200 with a zero-byte body for every unknown path (a soft-200); no document is served
+      here. Treated as absent.
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    real_document: false
+    result: miss
+    note: Host answers HTTP 200 with a zero-byte body for every unknown path (a soft-200); no document is served
+      here. Treated as absent.
+  - path: /.well-known/mcp.json
+    status: 200
+    real_document: false
+    result: miss
+    note: Host answers HTTP 200 with a zero-byte body for every unknown path (a soft-200); no document is served
+      here. Treated as absent.
+  - path: /.well-known/agent-card.json
+    status: 200
+    type: application/json
+    file: ../a2a/hergertsynthora-com-agent-card.json
+    note: Identical to the apex card; card.url names this host.
+  - path: /.well-known/agent.json
+    status: 200
+    type: application/json
+    file: ../a2a/hergertsynthora-com-agent-card.json
+    note: Identical to the apex card; card.url names this host.
+  - path: /.well-known/jwks.json
+    status: 200
+    type: application/json
+    file: hergertsynthora-com-jwks.json
+    note: One OKP/Ed25519 key, kid synthora-mesh-attest, alg EdDSA, use sig - the key every response receipt and
+      the agent card JWS are signed with. The companion https://api.hergertsynthora.com/pubkey (saved as hergertsynthora-com-pubkey.json)
+      carries the same key as hex + b64url with the canonicalization rule.
+  - path: /.well-known/did.json
+    status: 200
+    real_document: false
+    result: miss
+    note: Host answers HTTP 200 with a zero-byte body for every unknown path (a soft-200); no document is served
+      here. Treated as absent.
+  - path: /.well-known/x402.json
+    status: 200
+    type: application/json
+    file: hergertsynthora-com-x402.json
+    note: 'x402 v2 discovery manifest, 390,344 bytes: every payable resource with accepts[] (scheme exact, eip155:8453,
+      USDC asset 0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913, payTo, price in atomic units) and a bazaar extension
+      carrying input/output schemas. Byte-identical on pay.hergertsynthora.com and notary.hergertsynthora.com.'
+  - path: /.well-known/agent-registration.json
+    status: 200
+    real_document: false
+    result: miss
+    note: Host answers HTTP 200 with a zero-byte body for every unknown path (a soft-200); no document is served
+      here. Treated as absent.
+  note: Card url host, OpenAPI host, A2A JSON-RPC host and x402 gateway (/v1/{id}). Unknown paths return 200 with
+    an empty body, so only entries with a saved file are documents.
+- host: https://pay.hergertsynthora.com
+  documents:
+  - path: /.well-known/x402.json
+    status: 200
+    type: application/json
+    file: hergertsynthora-com-x402.json
+    note: Identical manifest to api.hergertsynthora.com; this is the servers[] host of the aggregate OpenAPI and
+      its externalDocs target.
+  - path: /.well-known/agent.json
+    status: 404
+    real_document: false
+    result: miss
+    content_type: application/json
+    note: JSON body says the endpoint was discontinued and points at api.hergertsynthora.com/.well-known/x402.json.
+  note: Only the two paths the aggregate OpenAPI names were probed on this host.
+- host: https://notary.hergertsynthora.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    real_document: false
+    result: miss
+    content_type: application/json
+    note: 'JSON body {"error": "not found"}'
+  - path: /.well-known/openid-configuration
+    status: 404
+    real_document: false
+    result: miss
+    content_type: application/json
+    note: 'JSON body {"error": "not found"}'
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    real_document: false
+    result: miss
+    content_type: application/json
+    note: 'JSON body {"error": "not found"}'
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    real_document: false
+    result: miss
+    content_type: application/json
+    note: 'JSON body {"error": "not found"}'
+  - path: /.well-known/api-catalog
+    status: 404
+    real_document: false
+    result: miss
+    content_type: application/json
+    note: 'JSON body {"error": "not found"}'
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    real_document: false
+    result: miss
+    content_type: application/json
+    note: 'JSON body {"error": "not found"}'
+  - path: /.well-known/mcp.json
+    status: 404
+    real_document: false
+    result: miss
+    content_type: application/json
+    note: 'JSON body {"error": "not found"}'
+  - path: /.well-known/agent-card.json
+    status: 200
+    type: application/json
+    file: ../a2a/hergertsynthora-com-notary-agent-card.json
+    note: Agent Notary card (A2A 0.3.0), 2,728 bytes, identical on both paths.
+  - path: /.well-known/agent.json
+    status: 200
+    type: application/json
+    file: ../a2a/hergertsynthora-com-notary-agent-card.json
+    note: Agent Notary card (A2A 0.3.0), 2,728 bytes, identical on both paths.
+  - path: /.well-known/x402.json
+    status: 200
+    type: application/json
+    file: hergertsynthora-com-x402.json
+    note: Same 390,344-byte mesh-wide manifest as api.hergertsynthora.com.
+- host: https://mcp.hergertsynthora.com
+  documents:
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    real_document: false
+    result: miss
+    content_type: application/json
+    note: '{"error": "MCP endpoint: POST JSON-RPC"} - the MCP host answers every GET this way; RFC 9728 protected-resource
+      metadata is NOT served, consistent with the server needing no OAuth (tools/list is anonymous, calls are x402-paid).'
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    real_document: false
+    result: miss
+    content_type: application/json
+    note: '{"error": "MCP endpoint: POST JSON-RPC"} - the MCP host answers every GET this way; RFC 9728 protected-resource
+      metadata is NOT served, consistent with the server needing no OAuth (tools/list is anonymous, calls are x402-paid).'
+  - path: /.well-known/openid-configuration
+    status: 404
+    real_document: false
+    result: miss
+    content_type: application/json
+    note: '{"error": "MCP endpoint: POST JSON-RPC"} - the MCP host answers every GET this way; RFC 9728 protected-resource
+      metadata is NOT served, consistent with the server needing no OAuth (tools/list is anonymous, calls are x402-paid).'
+  - path: /.well-known/security.txt
+    status: 404
+    real_document: false
+    result: miss
+    content_type: application/json
+    note: '{"error": "MCP endpoint: POST JSON-RPC"} - the MCP host answers every GET this way; RFC 9728 protected-resource
+      metadata is NOT served, consistent with the server needing no OAuth (tools/list is anonymous, calls are x402-paid).'
+  - path: /.well-known/api-catalog
+    status: 404
+    real_document: false
+    result: miss
+    content_type: application/json
+    note: '{"error": "MCP endpoint: POST JSON-RPC"} - the MCP host answers every GET this way; RFC 9728 protected-resource
+      metadata is NOT served, consistent with the server needing no OAuth (tools/list is anonymous, calls are x402-paid).'
+  - path: /.well-known/mcp.json
+    status: 404
+    real_document: false
+    result: miss
+    content_type: application/json
+    note: '{"error": "MCP endpoint: POST JSON-RPC"} - the MCP host answers every GET this way; RFC 9728 protected-resource
+      metadata is NOT served, consistent with the server needing no OAuth (tools/list is anonymous, calls are x402-paid).'
+  - path: /.well-known/agent-card.json
+    status: 404
+    real_document: false
+    result: miss
+    content_type: application/json
+    note: '{"error": "MCP endpoint: POST JSON-RPC"} - the MCP host answers every GET this way; RFC 9728 protected-resource
+      metadata is NOT served, consistent with the server needing no OAuth (tools/list is anonymous, calls are x402-paid).'
+  - path: /.well-known/agent.json
+    status: 404
+    real_document: false
+    result: miss
+    content_type: application/json
+    note: '{"error": "MCP endpoint: POST JSON-RPC"} - the MCP host answers every GET this way; RFC 9728 protected-resource
+      metadata is NOT served, consistent with the server needing no OAuth (tools/list is anonymous, calls are x402-paid).'
+- host: https://catalog.hergertsynthora.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    real_document: false
+    result: miss
+    note: Empty 404; the host serves only /catalog.json (saved as plans/hergertsynthora-com-catalog.json).
+  - path: /.well-known/openid-configuration
+    status: 404
+    real_document: false
+    result: miss
+    note: Empty 404; the host serves only /catalog.json (saved as plans/hergertsynthora-com-catalog.json).
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    real_document: false
+    result: miss
+    note: Empty 404; the host serves only /catalog.json (saved as plans/hergertsynthora-com-catalog.json).
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    real_document: false
+    result: miss
+    note: Empty 404; the host serves only /catalog.json (saved as plans/hergertsynthora-com-catalog.json).
+  - path: /.well-known/api-catalog
+    status: 404
+    real_document: false
+    result: miss
+    note: Empty 404; the host serves only /catalog.json (saved as plans/hergertsynthora-com-catalog.json).
+  - path: /.well-known/mcp.json
+    status: 404
+    real_document: false
+    result: miss
+    note: Empty 404; the host serves only /catalog.json (saved as plans/hergertsynthora-com-catalog.json).
+  - path: /.well-known/agent-card.json
+    status: 404
+    real_document: false
+    result: miss
+    note: Empty 404; the host serves only /catalog.json (saved as plans/hergertsynthora-com-catalog.json).
+  - path: /.well-known/agent.json
+    status: 404
+    real_document: false
+    result: miss
+    note: Empty 404; the host serves only /catalog.json (saved as plans/hergertsynthora-com-catalog.json).
+- host: https://mundo.hergertsynthora.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    real_document: false
+    result: miss
+    note: Empty 404.
+  - path: /.well-known/openid-configuration
+    status: 404
+    real_document: false
+    result: miss
+    note: Empty 404.
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    real_document: false
+    result: miss
+    note: Empty 404.
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    real_document: false
+    result: miss
+    note: Empty 404.
+  - path: /.well-known/api-catalog
+    status: 404
+    real_document: false
+    result: miss
+    note: Empty 404.
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    real_document: false
+    result: miss
+    note: Empty 404.
+  - path: /.well-known/mcp.json
+    status: 404
+    real_document: false
+    result: miss
+    note: Empty 404.
+  - path: /.well-known/agent-card.json
+    status: 404
+    real_document: false
+    result: miss
+    note: Empty 404.
+  - path: /.well-known/agent.json
+    status: 404
+    real_document: false
+    result: miss
+    note: Empty 404.

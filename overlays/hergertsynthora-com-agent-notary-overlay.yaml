@@ -1,0 +1,38 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist overlay for the SYNTHORA Agent Notary OpenAPI
+  version: '2026-09-19'
+  description: 'Non-destructive enhancements on top of openapi/hergertsynthora-com-agent-notary-openapi.yml (fetched
+    verbatim from https://notary.hergertsynthora.com/openapi.json on 2026-09-19). The source declares no tags, no
+    components and no securitySchemes; the overlay adds a tag, termsOfService, externalDocs to the notary llms.txt
+    and cross-links the A2A card and MCP endpoint that expose the same operation. It does NOT add a security scheme:
+    the x402 requirement is stated in info.x-payment and the 402 response, and declaring a scheme the provider did
+    not declare would change the contract.'
+extends: hergertsynthora-com-agent-notary-openapi.yml
+actions:
+- target: $.info
+  update:
+    termsOfService: https://hergertsynthora.com/terms/
+    x-apievangelist:
+      profile: https://github.com/api-evangelist/hergertsynthora-com
+      generated: '2026-09-19'
+      method: searched
+      source: https://notary.hergertsynthora.com/openapi.json
+      a2a_card: a2a/hergertsynthora-com-notary-agent-card.json
+      mcp: https://notary.hergertsynthora.com/mcp
+      llms_txt: llms/hergertsynthora-com-notary-llms.txt
+- target: $
+  update:
+    externalDocs:
+      description: Notary llms.txt (endpoints, discovery, payTo)
+      url: https://notary.hergertsynthora.com/llms.txt
+    tags:
+    - name: notary
+      description: Proof-of-existence, proof-of-execution and proof-of-agreement receipts, Ed25519-signed.
+- target: $.paths['/service'].post
+  update:
+    tags:
+    - notary
+    x-apievangelist-note: 'Observed 2026-09-19: anonymous POST returns 402 with x402Version 2, amount 2000 (0.002
+      USDC), payTo 0x6D9F318463168fF637b50E5b9a21392e97c7c167, headers payment-required (base64 JSON), x-402-asset,
+      x-402-network, x-402-payto, x-free-tier: 3.'

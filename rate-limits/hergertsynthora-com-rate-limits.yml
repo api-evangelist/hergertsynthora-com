@@ -1,0 +1,35 @@
+generated: '2026-09-19'
+method: probed
+source: >-
+  Live anonymous responses on 2026-09-19 - POST https://notary.hergertsynthora.com/service (402, header
+  x-free-tier: 3, body freeTier.callsPerWallet 3) and POST https://api.hergertsynthora.com/v1/wallet-enrich
+  (402, header x-free-tier: 1, body freeTier.callsPerWallet 1) - plus the published statements at
+  https://api.hergertsynthora.com/llms.txt ("Free tier: 1 llamada por wallet (+3/dia/IP) en productos de
+  datos") and https://catalog.hergertsynthora.com/catalog.json (features.free_trial "3 free calls per Base wallet").
+description: >-
+  The mesh has no request-rate limit in the usual sense: throughput is metered by payment. The only quota is
+  the free trial, keyed on the caller's wallet address (and, per llms.txt, on IP per day), after which every
+  call must carry an x402 payment. No 429 is documented; exhaustion surfaces as HTTP 402.
+limit_count: 2
+limits:
+- scope: per wallet (X-WALLET header), per product
+  window: lifetime of the free trial (not time-boxed in any published text)
+  limit: 3 free calls (catalog, notary, most products); 1 free call on some gateway products (wallet-enrich observed)
+  burst: n/a
+  exhaustion_status: 402
+  signal_headers: [x-free-tier (integer, the product's free-call allowance), payment-required (base64url x402 challenge), www-authenticate (x402 challenge; api gateway)]
+  source: live 402 responses + catalog.json
+- scope: per IP, data products
+  window: per day
+  limit: +3 calls per day per IP on top of the per-wallet trial
+  burst: n/a
+  exhaustion_status: 402
+  signal_headers: none specific
+  source: https://api.hergertsynthora.com/llms.txt
+headers:
+  observed_on_402: [payment-required, www-authenticate, x-402-asset, x-402-network, x-402-payto, x-free-tier, access-control-expose-headers: '*']
+  x_ratelimit_family: none (no X-RateLimit-*, RateLimit-* or Retry-After observed or documented)
+  status_on_exhaustion: 402
+notes:
+- The provider's own Demand Radar product reports mesh-wide traffic (550,410 requests over 50 endpoints since 2026-09-07 with 0.036% converting to payment, per the public ops panel) - a hint that unpaid probing is tolerated at volume rather than rate-limited.
+- A 402 is also returned when a paid result cannot be produced (not charged); read the body's error/delivery fields to tell quota exhaustion from service failure.

@@ -1,0 +1,98 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist overlay for the SYNTHORA Machine-Payable API Mesh (aggregate) OpenAPI
+  version: '2026-09-19'
+  description: 'Non-destructive enhancements API Evangelist applies on top of the provider-published spec (openapi/hergertsynthora-com-mesh-aggregate-openapi.yml,
+    fetched verbatim from https://api.hergertsynthora.com/openapi.json on 2026-09-19). The original is never mutated.
+    Actions: declare the 20 tags the operations use but the spec does not declare (only safety and discovery are
+    declared); add termsOfService from the info.x-terms extension the spec already carries; add externalDocs to
+    llms.txt; record where the per-service OpenAPIs live.'
+extends: hergertsynthora-com-mesh-aggregate-openapi.yml
+actions:
+- target: $.info
+  update:
+    termsOfService: https://hergertsynthora.com/terms/
+    x-apievangelist:
+      profile: https://github.com/api-evangelist/hergertsynthora-com
+      generated: '2026-09-19'
+      method: searched
+      source: https://api.hergertsynthora.com/openapi.json
+      sla: https://api.hergertsynthora.com/sla/
+      per_service_openapis: openapi/services/ (59 saved verbatim; 53 product hosts return 404 on /openapi.json;
+        9 hosts mirror this aggregate)
+- target: $.info.description
+  description: Point readers at the llms.txt the provider maintains for the api host.
+  update: ' Agent guide: https://api.hergertsynthora.com/llms.txt'
+- target: $.tags
+  update:
+  - name: compliance
+    x-apievangelist-note: Tag used by operations but not declared in the source spec; declared here so tag-split
+      tooling has a home for it.
+  - name: dispute
+    x-apievangelist-note: Tag used by operations but not declared in the source spec; declared here so tag-split
+      tooling has a home for it.
+  - name: insider
+    x-apievangelist-note: Tag used by operations but not declared in the source spec; declared here so tag-split
+      tooling has a home for it.
+  - name: kyt
+    x-apievangelist-note: Tag used by operations but not declared in the source spec; declared here so tag-split
+      tooling has a home for it.
+  - name: market-status
+    x-apievangelist-note: Tag used by operations but not declared in the source spec; declared here so tag-split
+      tooling has a home for it.
+  - name: momentum
+    x-apievangelist-note: Tag used by operations but not declared in the source spec; declared here so tag-split
+      tooling has a home for it.
+  - name: odds
+    x-apievangelist-note: Tag used by operations but not declared in the source spec; declared here so tag-split
+      tooling has a home for it.
+  - name: polymarket
+    x-apievangelist-note: Tag used by operations but not declared in the source spec; declared here so tag-split
+      tooling has a home for it.
+  - name: prediction-markets
+    x-apievangelist-note: Tag used by operations but not declared in the source spec; declared here so tag-split
+      tooling has a home for it.
+  - name: resolution
+    x-apievangelist-note: Tag used by operations but not declared in the source spec; declared here so tag-split
+      tooling has a home for it.
+  - name: resolution-risk
+    x-apievangelist-note: Tag used by operations but not declared in the source spec; declared here so tag-split
+      tooling has a home for it.
+  - name: risk
+    x-apievangelist-note: Tag used by operations but not declared in the source spec; declared here so tag-split
+      tooling has a home for it.
+  - name: sanctions
+    x-apievangelist-note: Tag used by operations but not declared in the source spec; declared here so tag-split
+      tooling has a home for it.
+  - name: smart-money
+    x-apievangelist-note: Tag used by operations but not declared in the source spec; declared here so tag-split
+      tooling has a home for it.
+  - name: trading-signal
+    x-apievangelist-note: Tag used by operations but not declared in the source spec; declared here so tag-split
+      tooling has a home for it.
+  - name: uma
+    x-apievangelist-note: Tag used by operations but not declared in the source spec; declared here so tag-split
+      tooling has a home for it.
+  - name: usdc
+    x-apievangelist-note: Tag used by operations but not declared in the source spec; declared here so tag-split
+      tooling has a home for it.
+  - name: wallet-enrichment
+    x-apievangelist-note: Tag used by operations but not declared in the source spec; declared here so tag-split
+      tooling has a home for it.
+  - name: whale-tracking
+    x-apievangelist-note: Tag used by operations but not declared in the source spec; declared here so tag-split
+      tooling has a home for it.
+  - name: x402
+    x-apievangelist-note: Tag used by operations but not declared in the source spec; declared here so tag-split
+      tooling has a home for it.
+- target: $.paths['/service'].post
+  update:
+    x-apievangelist-note: The same POST /service shape is served on every product host under *.hergertsynthora.com;
+      this aggregate documents the flagship contract-guard product on pay.hergertsynthora.com. The gateway form
+      is POST https://api.hergertsynthora.com/v1/{id}.
+- target: $.paths['/.well-known/agent.json'].get
+  update:
+    deprecated: true
+    x-apievangelist-note: 'Observed 2026-09-19: https://pay.hergertsynthora.com/.well-known/agent.json returns 404
+      with a JSON body stating the endpoint was discontinued; the live card is at https://hergertsynthora.com/.well-known/agent-card.json
+      and https://api.hergertsynthora.com/.well-known/agent-card.json.'

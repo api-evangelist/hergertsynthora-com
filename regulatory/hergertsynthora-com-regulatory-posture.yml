@@ -1,0 +1,78 @@
+generated: '2026-09-19'
+method: searched
+source: >-
+  Harvested only. (a) artifacts from this run: well-known/ (no security.txt), lifecycle/ (SLA schema policy),
+  conformance/; (b) live probes of conventional paths on hergertsynthora.com: /accessibility, /accessibility/vpat,
+  /legal/subprocessors, /legal/dpa, /privacy/requests, /transparency, /security/sbom, /docs/data-residency,
+  /ai/transparency, /legal/report-content - all returned the site's HTML 404 page; (c) the legal pages the site
+  does publish: /legal/aviso-legal/, /legal/privacidad/, /legal/cookies/, /terms/.
+description: >-
+  Horizontal regulatory signals a reader can verify on the provider's own pages. Which regimes apply is decided
+  by the Kin Score regime map, not here. Most signals are absent; the ones present are the GDPR data-subject
+  rights statement in the privacy policy and a deletion commitment in the machine-services terms.
+company:
+  legal_name: HERGERT SYNTHORA S.L.
+  jurisdiction: Spain (Las Palmas de Gran Canaria); legal notice cites LSSI-CE (Ley 34/2002) and CNAE 6201
+  supervisory_authority_named: Agencia Espanola de Proteccion de Datos (aepd.es), in the privacy policy
+signals:
+  data_subject_request:
+    present: true
+    url: https://hergertsynthora.com/legal/privacidad/
+    substance: >-
+      Section 6 "Tus derechos": access, rectification, erasure, objection, restriction and portability by email
+      to info@hergertsynthora.com, with the right to complain to the AEPD; legal bases named (art. 6.1.f and
+      6.1.b GDPR); retention stated qualitatively. Last updated June 2026. Section 5 of the machine-services
+      terms adds: "Deletion requests for off-chain stored artifacts are honored on request."
+    channel: email (info@hergertsynthora.com); no web form or portal
+  incident_notification:
+    present: false
+  subprocessors:
+    present: false
+    note: Privacy policy says corporate email is hosted by third parties "subject to their own privacy policies" and terms name Coinbase CDP as payment facilitator, but no subprocessor list is published.
+  data_residency:
+    present: false
+    note: Marketing copy says "infraestructura propia" and "Trust Layer EU"; the ops panel shows a rented GPU instance (vast.ai). No residency commitment page exists.
+  accessibility_conformance:
+    present: false
+  sbom:
+    present: false
+  support_lifetime:
+    present: false
+    note: The SLA's ">= 30 days deprecation notice" is a deprecation rule, not a product support period.
+  training_data_summary:
+    present: false
+    note: The provider says it trains its own LLMs; no training-data summary is published. The bioquantum dataset manifest discloses which fields are simulated vs real, which is a dataset card, not a model training summary.
+  ai_transparency:
+    present: false
+    note: The card publishes a calibration block (Brier score, model "synthora-mente (deepseek-r1:32b, instancia propia)") and https://api.hergertsynthora.com/track_record.json - a live accuracy record, not an AI-transparency notice in the regulatory sense.
+  global_privacy_control:
+    present: false
+    honored: null
+    note: No statement; not tested by sending Sec-GPC.
+  age_assurance:
+    present: false
+  notice_and_action:
+    present: false
+    note: Terms section 3 is an acceptable-use / abuse policy with a reporting outcome ("may be reported to the payment facilitator") but no content-reporting channel for third parties.
+  transparency_report:
+    present: false
+  exit_assistance:
+    present: false
+cookie_consent:
+  present: true
+  url: https://hergertsynthora.com/legal/cookies/
+  substance: Site banner states first-party, anonymous, self-hosted analytics only ("datos propios ... sin terceros") with Rechazar/Aceptar controls.
+probes:
+- {url: https://hergertsynthora.com/accessibility, status: 404}
+- {url: https://hergertsynthora.com/legal/subprocessors, status: 404}
+- {url: https://hergertsynthora.com/legal/dpa, status: 404}
+- {url: https://hergertsynthora.com/privacy/requests, status: 404}
+- {url: https://hergertsynthora.com/transparency, status: 404}
+- {url: https://hergertsynthora.com/security/sbom, status: 404}
+- {url: https://hergertsynthora.com/docs/data-residency, status: 404}
+- {url: https://hergertsynthora.com/ai/transparency, status: 404}
+- {url: https://hergertsynthora.com/legal/report-content, status: 404}
+- {url: https://hergertsynthora.com/legal/privacidad/, status: 200}
+- {url: https://hergertsynthora.com/legal/aviso-legal/, status: 200}
+- {url: https://hergertsynthora.com/legal/cookies/, status: 200}
+- {url: https://hergertsynthora.com/terms/, status: 200}

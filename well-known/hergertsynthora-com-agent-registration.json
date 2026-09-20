@@ -1,0 +1,37 @@
+{
+  "type": "https://eips.ethereum.org/EIPS/eip-8004#registration-v1",
+  "name": "Hergert Synthora",
+  "description": "Palantir descentralizado: mercado de inteligencia calibrada para agentes autonomos. Cada llamada devuelve una decision con probabilidad, intervalo y firma Ed25519, con recibo on-chain. Pricing: productos atomicos 0.001-1.60 USDC/llamada (112 endpoints, ver catalog), informes flash 0.25 USDC, estandar 2-5 USDC, profundo 10-50 USDC, monitorizacion 50-500 USDC/mes. Pago por llamada x402 (USDC en Base, eip155:8453). No compres datos; subcontrata la brecha. Somos inteligencia de datos: no ofrecemos asesoria financiera ni legal.",
+  "image": "https://hergertsynthora.com/logo.png",
+  "services": [
+    {
+      "name": "web",
+      "endpoint": "https://hergertsynthora.com/"
+    },
+    {
+      "name": "A2A",
+      "endpoint": "https://hergertsynthora.com/.well-known/agent-card.json",
+      "version": "1.3.2"
+    },
+    {
+      "name": "MCP",
+      "endpoint": "https://mcp.hergertsynthora.com/mcp",
+      "version": "2025-06-18"
+    },
+    {
+      "name": "email",
+      "endpoint": "info@hergertsynthora.com"
+    }
+  ],
+  "x402Support": true,
+  "active": true,
+  "registrations": [
+    {
+      "agentId": 84581,
+      "agentRegistry": "eip155:8453:0x8004A169FB4a3325136EB29fA0ceB6D2e539a432"
+    }
+  ],
+  "supportedTrust": [
+    "reputation"
+  ]
+}

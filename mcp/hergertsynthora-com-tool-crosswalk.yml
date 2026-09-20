@@ -1,0 +1,370 @@
+generated: '2026-09-19'
+method: derived
+source: 'Derived by binding the live tools/list of https://mcp.hergertsynthora.com/mcp (30 tools, anonymous) to
+  the aggregate OpenAPI at api.hergertsynthora.com/openapi.json (11 operations) and the 59 per-service OpenAPIs
+  saved under openapi/services/. Every MCP tool declares the same {input: string} schema, so the per-service OpenAPI
+  requestBody is the only place the real parameters are written down.'
+purpose: Make the MCP tool the discovery unit and bind it to the REST operation it fronts, so an agent can read
+  real parameters from the OpenAPI instead of the opaque {input} string the MCP schema exposes.
+surfaces:
+  rest_openapi: openapi/hergertsynthora-com-mesh-aggregate-openapi.yml (aggregate, servers https://pay.hergertsynthora.com;
+    gateway https://api.hergertsynthora.com/v1/{id}) + openapi/services/*.json (one POST /service each)
+  mcp: https://mcp.hergertsynthora.com/mcp (open tools/list; tools/call x402-paid)
+  mcp_notary: https://notary.hergertsynthora.com/mcp (1 tool)
+  graphql: null
+  a2a: https://api.hergertsynthora.com/a2a (JSON-RPC, stateless)
+crosswalk:
+- tool: codeaudit
+  category: x402-paid verdict
+  rest:
+  - codeaudit (openapi/services/hergertsynthora-com-codeaudit-openapi.json)
+  binding: rest
+  confidence: high
+  note: Backing REST operation is POST /service on the product host (and POST /v1/<id> on the api gateway); the
+    tool inherits that operation's requestBody. Matched by product slug.
+- tool: identity_risk
+  category: x402-paid verdict
+  rest:
+  - identity_risk (openapi/services/hergertsynthora-com-identity-risk-openapi.json)
+  binding: rest
+  confidence: high
+  note: Backing REST operation is POST /service on the product host (and POST /v1/<id> on the api gateway); the
+    tool inherits that operation's requestBody. Matched by product slug.
+- tool: polymarket_whales
+  category: x402-paid verdict
+  rest:
+  - polymarket_whales
+  - polymarket_whales (openapi/services/hergertsynthora-com-polymarket-whales-openapi.json)
+  binding: rest
+  confidence: high
+  note: Same operationId in the aggregate OpenAPI.
+- tool: wallet_enrich
+  category: x402-paid verdict
+  rest:
+  - walletEnrich
+  - wallet_enrich (openapi/services/hergertsynthora-com-wallet-enrich-openapi.json)
+  binding: rest
+  confidence: high
+  note: Backing REST operation is POST /service on the product host (and POST /v1/<id> on the api gateway); the
+    tool inherits that operation's requestBody. Matched by product slug.
+- tool: txintent
+  category: x402-paid verdict
+  rest:
+  - txintent (openapi/services/hergertsynthora-com-txintent-openapi.json)
+  binding: rest
+  confidence: high
+  note: Backing REST operation is POST /service on the product host (and POST /v1/<id> on the api gateway); the
+    tool inherits that operation's requestBody. Matched by product slug.
+- tool: polymarket_odds_movers
+  category: x402-paid verdict
+  rest:
+  - polymarket_odds_movers
+  - polymarket_odds_movers (openapi/services/hergertsynthora-com-polymarket-odds-movers-openapi.json)
+  binding: rest
+  confidence: high
+  note: Same operationId in the aggregate OpenAPI.
+- tool: polymarket_resolution_watch
+  category: x402-paid verdict
+  rest:
+  - polymarket_resolution_watch
+  - polymarket_resolution_watch (openapi/services/hergertsynthora-com-polymarket-resolution-watch-openapi.json)
+  binding: rest
+  confidence: high
+  note: Same operationId in the aggregate OpenAPI.
+- tool: dispute_risk
+  category: x402-paid verdict
+  rest:
+  - dispute_risk
+  - dispute_risk (openapi/services/hergertsynthora-com-dispute-risk-openapi.json)
+  binding: rest
+  confidence: high
+  note: Same operationId in the aggregate OpenAPI.
+- tool: sanctions_screen
+  category: x402-paid verdict
+  rest:
+  - sanctions_screen (openapi/services/hergertsynthora-com-sanctions-screen-openapi.json)
+  binding: rest
+  confidence: high
+  note: Backing REST operation is POST /service on the product host (and POST /v1/<id> on the api gateway); the
+    tool inherits that operation's requestBody. Matched by product slug.
+- tool: insider_radar
+  category: x402-paid verdict
+  rest:
+  - insider_radar
+  - insider_radar (openapi/services/hergertsynthora-com-insider-radar-openapi.json)
+  binding: rest
+  confidence: high
+  note: Same operationId in the aggregate OpenAPI.
+- tool: volume_anomaly
+  category: x402-paid verdict
+  rest:
+  - volume_anomaly (openapi/services/hergertsynthora-com-volume-anomaly-openapi.json)
+  binding: rest
+  confidence: high
+  note: Backing REST operation is POST /service on the product host (and POST /v1/<id> on the api gateway); the
+    tool inherits that operation's requestBody. Matched by product slug.
+- tool: emerging_protocols
+  category: x402-paid verdict
+  rest:
+  - emerging_protocols (openapi/services/hergertsynthora-com-emerging-protocols-openapi.json)
+  binding: rest
+  confidence: high
+  note: Backing REST operation is POST /service on the product host (and POST /v1/<id> on the api gateway); the
+    tool inherits that operation's requestBody. Matched by product slug.
+- tool: tvl_concentration
+  category: x402-paid verdict
+  rest:
+  - tvl_concentration (openapi/services/hergertsynthora-com-tvl-concentration-openapi.json)
+  binding: rest
+  confidence: high
+  note: Backing REST operation is POST /service on the product host (and POST /v1/<id> on the api gateway); the
+    tool inherits that operation's requestBody. Matched by product slug.
+- tool: space_weather_risk
+  category: x402-paid verdict
+  rest:
+  - space_weather_risk (openapi/services/hergertsynthora-com-space-weather-risk-openapi.json)
+  binding: rest
+  confidence: high
+  note: Backing REST operation is POST /service on the product host (and POST /v1/<id> on the api gateway); the
+    tool inherits that operation's requestBody. Matched by product slug.
+- tool: market_sentiment
+  category: x402-paid verdict
+  rest:
+  - market_sentiment (openapi/services/hergertsynthora-com-market-sentiment-openapi.json)
+  binding: rest
+  confidence: high
+  note: Backing REST operation is POST /service on the product host (and POST /v1/<id> on the api gateway); the
+    tool inherits that operation's requestBody. Matched by product slug.
+- tool: registry_watch
+  category: x402-paid verdict
+  rest:
+  - registry_watch (openapi/services/hergertsynthora-com-registry-watch-openapi.json)
+  binding: rest
+  confidence: high
+  note: Backing REST operation is POST /service on the product host (and POST /v1/<id> on the api gateway); the
+    tool inherits that operation's requestBody. Matched by product slug.
+- tool: notario
+  category: notarization
+  rest:
+  - trust_notary (openapi/hergertsynthora-com-agent-notary-openapi.yml)
+  binding: rest
+  confidence: high
+  note: Notary MCP tool inputSchema is identical to the A2A skill inputSchema and to the x402 402 body schema (op
+    enum notarize/execution/agreement/verify).
+  server: https://notary.hergertsynthora.com/mcp
+mcp_only:
+- tool: daily_intel_brief
+  reason: 'No per-service OpenAPI is served for this product (its host returns {"error": "not found"} on /openapi.json)
+    and the aggregate spec does not list it; the tool is still callable through the gateway https://api.hergertsynthora.com/v1/<id>
+    per the x402 discovery manifest.'
+- tool: macrobundle
+  reason: 'No per-service OpenAPI is served for this product (its host returns {"error": "not found"} on /openapi.json)
+    and the aggregate spec does not list it; the tool is still callable through the gateway https://api.hergertsynthora.com/v1/<id>
+    per the x402 discovery manifest.'
+- tool: chokepoint_risk
+  reason: 'No per-service OpenAPI is served for this product (its host returns {"error": "not found"} on /openapi.json)
+    and the aggregate spec does not list it; the tool is still callable through the gateway https://api.hergertsynthora.com/v1/<id>
+    per the x402 discovery manifest.'
+- tool: resolution_source_feed
+  reason: 'No per-service OpenAPI is served for this product (its host returns {"error": "not found"} on /openapi.json)
+    and the aggregate spec does not list it; the tool is still callable through the gateway https://api.hergertsynthora.com/v1/<id>
+    per the x402 discovery manifest.'
+- tool: shipping_alpha
+  reason: 'No per-service OpenAPI is served for this product (its host returns {"error": "not found"} on /openapi.json)
+    and the aggregate spec does not list it; the tool is still callable through the gateway https://api.hergertsynthora.com/v1/<id>
+    per the x402 discovery manifest.'
+- tool: resolution_verdict
+  reason: 'No per-service OpenAPI is served for this product (its host returns {"error": "not found"} on /openapi.json)
+    and the aggregate spec does not list it; the tool is still callable through the gateway https://api.hergertsynthora.com/v1/<id>
+    per the x402 discovery manifest.'
+- tool: macro_surprise
+  reason: 'No per-service OpenAPI is served for this product (its host returns {"error": "not found"} on /openapi.json)
+    and the aggregate spec does not list it; the tool is still callable through the gateway https://api.hergertsynthora.com/v1/<id>
+    per the x402 discovery manifest.'
+- tool: vessel_sanctions
+  reason: 'No per-service OpenAPI is served for this product (its host returns {"error": "not found"} on /openapi.json)
+    and the aggregate spec does not list it; the tool is still callable through the gateway https://api.hergertsynthora.com/v1/<id>
+    per the x402 discovery manifest.'
+- tool: rwa_gap_watch
+  reason: 'No per-service OpenAPI is served for this product (its host returns {"error": "not found"} on /openapi.json)
+    and the aggregate spec does not list it; the tool is still callable through the gateway https://api.hergertsynthora.com/v1/<id>
+    per the x402 discovery manifest.'
+- tool: domain_risk
+  reason: 'No per-service OpenAPI is served for this product (its host returns {"error": "not found"} on /openapi.json)
+    and the aggregate spec does not list it; the tool is still callable through the gateway https://api.hergertsynthora.com/v1/<id>
+    per the x402 discovery manifest.'
+- tool: tx_simulator
+  reason: 'No per-service OpenAPI is served for this product (its host returns {"error": "not found"} on /openapi.json)
+    and the aggregate spec does not list it; the tool is still callable through the gateway https://api.hergertsynthora.com/v1/<id>
+    per the x402 discovery manifest.'
+- tool: threat_exposure
+  reason: 'No per-service OpenAPI is served for this product (its host returns {"error": "not found"} on /openapi.json)
+    and the aggregate spec does not list it; the tool is still callable through the gateway https://api.hergertsynthora.com/v1/<id>
+    per the x402 discovery manifest.'
+- tool: funding_spread
+  reason: 'No per-service OpenAPI is served for this product (its host returns {"error": "not found"} on /openapi.json)
+    and the aggregate spec does not list it; the tool is still callable through the gateway https://api.hergertsynthora.com/v1/<id>
+    per the x402 discovery manifest.'
+- tool: asset_risk
+  reason: 'No per-service OpenAPI is served for this product (its host returns {"error": "not found"} on /openapi.json)
+    and the aggregate spec does not list it; the tool is still callable through the gateway https://api.hergertsynthora.com/v1/<id>
+    per the x402 discovery manifest.'
+rest_only:
+- operationId: contractGuard
+  method: POST
+  path: /service
+  summary: On-chain contract safety check (0.005 USDC)
+- operationId: payToPreflight
+  method: POST
+  path: /preflight
+  summary: Verify-before-pay check on any x402 endpoint (0.010 USDC)
+- operationId: discoveryManifest
+  method: GET
+  path: /.well-known/x402.json
+  summary: x402 discovery manifest (free)
+- operationId: agentCard
+  method: GET
+  path: /.well-known/agent.json
+  summary: A2A Agent Card (free)
+- operationId: market_resolution
+  method: POST
+  path: /v1/market-resolution
+  summary: 'Canonical Polymarket market resolution status: state, UMA status, sources and estimated payout (0.01
+    USDC)'
+services_without_mcp_tool:
+- service: agentcard
+  operationId: agentcard
+  file: openapi/services/hergertsynthora-com-agentcard-openapi.json
+- service: amlscreen
+  operationId: amlscreen
+  file: openapi/services/hergertsynthora-com-amlscreen-openapi.json
+- service: bridgerisk
+  operationId: bridgerisk
+  file: openapi/services/hergertsynthora-com-bridgerisk-openapi.json
+- service: businessrisk
+  operationId: business_risk
+  file: openapi/services/hergertsynthora-com-businessrisk-openapi.json
+- service: coingecko-crypto-price-history
+  operationId: coingecko_crypto_price_history
+  file: openapi/services/hergertsynthora-com-coingecko-crypto-price-history-openapi.json
+- service: commodity-macro
+  operationId: commodity_macro
+  file: openapi/services/hergertsynthora-com-commodity-macro-openapi.json
+- service: contractwatch
+  operationId: contractwatch
+  file: openapi/services/hergertsynthora-com-contractwatch-openapi.json
+- service: cryptonews
+  operationId: cryptonews
+  file: openapi/services/hergertsynthora-com-cryptonews-openapi.json
+- service: defidata
+  operationId: defidata
+  file: openapi/services/hergertsynthora-com-defidata-openapi.json
+- service: deliver
+  operationId: holding_ag_earner_deliverability
+  file: openapi/services/hergertsynthora-com-deliver-openapi.json
+- service: demand-radar
+  operationId: demand_radar
+  file: openapi/services/hergertsynthora-com-demand-radar-openapi.json
+- service: derivbundle
+  operationId: derivbundle
+  file: openapi/services/hergertsynthora-com-derivbundle-openapi.json
+- service: dex-pair-price
+  operationId: dex_pair_price
+  file: openapi/services/hergertsynthora-com-dex-pair-price-openapi.json
+- service: fear-greed
+  operationId: fear_greed
+  file: openapi/services/hergertsynthora-com-fear-greed-openapi.json
+- service: funding-rates
+  operationId: funding_rates
+  file: openapi/services/hergertsynthora-com-funding-rates-openapi.json
+- service: inference
+  operationId: inference
+  file: openapi/services/hergertsynthora-com-inference-openapi.json
+- service: lifi-bridge-route-quote
+  operationId: lifi_bridge_route_quote
+  file: openapi/services/hergertsynthora-com-lifi-bridge-route-quote-openapi.json
+- service: llm-fast
+  operationId: llm_fast_chat_completions
+  file: openapi/services/hergertsynthora-com-llm-fast-openapi.json
+- service: llm-smart
+  operationId: llm_smart_chat_completions
+  file: openapi/services/hergertsynthora-com-llm-smart-openapi.json
+- service: market-dominance
+  operationId: market_dominance
+  file: openapi/services/hergertsynthora-com-market-dominance-openapi.json
+- service: market-resolution
+  operationId: market_resolution
+  file: openapi/services/hergertsynthora-com-market-resolution-openapi.json
+- service: mcpscan
+  operationId: mcpscan
+  file: openapi/services/hergertsynthora-com-mcpscan-openapi.json
+- service: mtasts
+  operationId: mtasts
+  file: openapi/services/hergertsynthora-com-mtasts-openapi.json
+- service: ohlcv-candles
+  operationId: ohlcv_candles
+  file: openapi/services/hergertsynthora-com-ohlcv-candles-openapi.json
+- service: onchain
+  operationId: holding_ag_earner_onchain
+  file: openapi/services/hergertsynthora-com-onchain-openapi.json
+- service: openinterest
+  operationId: openinterest
+  file: openapi/services/hergertsynthora-com-openinterest-openapi.json
+- service: payto-preflight
+  operationId: payto_preflight
+  file: openapi/services/hergertsynthora-com-payto-preflight-openapi.json
+- service: perps
+  operationId: perps
+  file: openapi/services/hergertsynthora-com-perps-openapi.json
+- service: polymarket-markets
+  operationId: polymarket_markets
+  file: openapi/services/hergertsynthora-com-polymarket-markets-openapi.json
+- service: prediction-markets
+  operationId: prediction_markets
+  file: openapi/services/hergertsynthora-com-prediction-markets-openapi.json
+- service: prediction
+  operationId: prediction
+  file: openapi/services/hergertsynthora-com-prediction-openapi.json
+- service: protocol-revenue
+  operationId: protocol_revenue
+  file: openapi/services/hergertsynthora-com-protocol-revenue-openapi.json
+- service: protocol-tvl
+  operationId: protocol_tvl
+  file: openapi/services/hergertsynthora-com-protocol-tvl-openapi.json
+- service: regwatch
+  operationId: registryFeed
+  file: openapi/services/hergertsynthora-com-regwatch-openapi.json
+- service: safe-to-trade
+  operationId: safe_to_trade
+  file: openapi/services/hergertsynthora-com-safe-to-trade-openapi.json
+- service: sentiment
+  operationId: sentiment
+  file: openapi/services/hergertsynthora-com-sentiment-openapi.json
+- service: slippage
+  operationId: slippage
+  file: openapi/services/hergertsynthora-com-slippage-openapi.json
+- service: tokenrisk
+  operationId: tokenrisk
+  file: openapi/services/hergertsynthora-com-tokenrisk-openapi.json
+- service: translate
+  operationId: holding_ag_earner_translate
+  file: openapi/services/hergertsynthora-com-translate-openapi.json
+- service: usgs-realtime-streamflow
+  operationId: usgs_realtime_streamflow
+  file: openapi/services/hergertsynthora-com-usgs-realtime-streamflow-openapi.json
+- service: walletrep
+  operationId: walletrep
+  file: openapi/services/hergertsynthora-com-walletrep-openapi.json
+- service: websearch
+  operationId: websearch
+  file: openapi/services/hergertsynthora-com-websearch-openapi.json
+- service: yahoo-equity-delayed-quote
+  operationId: yahoo_equity_delayed_quote
+  file: openapi/services/hergertsynthora-com-yahoo-equity-delayed-quote-openapi.json
+coverage:
+  mcp_tools: 31
+  bound_to_rest: 17
+  mcp_only: 14
+  aggregate_rest_ops: 11
+  per_service_specs: 59
+  per_service_specs_bound: 16

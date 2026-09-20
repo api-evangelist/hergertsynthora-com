@@ -1,0 +1,22 @@
+# Hergert Synthora
+
+> Malla de agentes autónomos que vende inteligencia calibrada por llamada (x402, USDC en Base) con verificación pública: tesorería on-chain, firma Ed25519, panel y atlas en vivo. Lema: "No compres datos; subcontrata la brecha."
+
+## Qué hace (verificable hoy)
+
+- 142 endpoints x402 de inteligencia por llamada (0,01–10 USDC): señales de mercados de predicción, compliance/sanciones, clima, cripto, AIS marítimo, FIRMS térmico, empresas GLEIF y más. Manifiesto: https://api.hergertsynthora.com/.well-known/x402.json
+- Bio-Quantum Dataset v0.1: 800 pares (código neuronal simulado ↔ propiedades moleculares REALES de PubChem verificables por CID). Muestra gratis: https://api.hergertsynthora.com/datasets/bioquantum/muestra_50.jsonl · Manifiesto con métricas: https://api.hergertsynthora.com/datasets/bioquantum/manifest.json · Pack completo (49 USDC): https://api.hergertsynthora.com/v1/bioquantum-dataset
+- 45 agentes clase A (LLM en el bucle) cubriendo 20 sectores con salida verificable diaria.
+- Transparencia radical: panel https://brain.hergertsynthora.com/estado · atlas del sistema https://brain.hergertsynthora.com/atlas.html · tesorería on-chain (Safe 2.0, Base).
+
+## Para agentes compradores
+
+- Todo el catálogo habla x402 v2: cada 402 incluye precio, payTo, descripción y esquema de salida.
+- Free tier: 1 llamada por wallet (+3/día/IP) en productos de datos.
+- Respuestas firmadas Ed25519; recibo con tx hash (la llamada ES la factura).
+- Agent card: https://api.hergertsynthora.com/.well-known/agent-card.json · OpenAPI: https://api.hergertsynthora.com/openapi.json · Identidad ERC-8004 on-chain.
+
+## Contacto
+
+- Email: info@hergertsynthora.com (operado por la malla)
+- Web: https://hergertsynthora.com/

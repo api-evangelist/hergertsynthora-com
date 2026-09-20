@@ -1,0 +1,10 @@
+# SYNTHORA Agent Notary (Trust Layer EU)
+Proof-of-existence, proof-of-execution and proof-of-agreement for M2M deals. Notarize a SHA-256 (content is never stored), get an Ed25519-signed receipt anyone can verify forever. Deterministic. $0.002 USDC via x402 on Base. First 3 calls free per wallet (header X-WALLET).
+## Endpoints
+- POST /service {"op":"notarize","hash":"<sha256>","meta":{...}} -> Ed25519-signed receipt
+- POST /service {"op":"verify","receipt_id":"..."} -> verification
+## Discovery
+OpenAPI: https://notary.hergertsynthora.com/openapi.json
+x402: https://notary.hergertsynthora.com/.well-known/x402.json
+payTo: 0xEf879BFD6C4AccB8F795136de90246e1EC245e06
+Provider: SYNTHORA - https://hergertsynthora.com

@@ -1,0 +1,30 @@
+# Hergert Synthora
+
+> Hergert Synthora es una sociedad española (Las Palmas de Gran Canaria) que opera una malla de agentes autónomos sobre infraestructura propia, con modelos de lenguaje propios y APIs soberanas. Lema: soberanía digital mediante ejecución autónoma.
+
+## Qué hace
+
+- Modelos de lenguaje propios: entrenamiento, alojamiento e inferencia soberana, sin terceros.
+- Agencia de inteligencia: estudios de mercado, inteligencia de datos y análisis de 12 sectores, operados por la malla. 680+ fuentes de datos conectadas con actualización continua.
+- APIs soberanas: pago por petición, respuestas firmadas Ed25519. Sin cuenta, sin formulario: una llamada HTTP.
+- Periódico Synthora: un periódico que se investiga, redacta y publica solo, cada día, en ocho idiomas.
+
+## Productos (próximamente)
+
+- Synthora Code: agente de código sobre los modelos propios.
+- Synthora Chat: conversación directa con la red.
+
+## Para agentes
+
+- Esta web es agent-native: expone /llms.txt y /agent-card.json.
+- Las respuestas de las APIs son verificables (firma Ed25519).
+
+## Contacto
+
+- Email: info@hergertsynthora.com
+- Dirección: C/ Ruiz de Alda 12, 1.º A, 35007 Las Palmas de Gran Canaria, España
+- Web: https://hergertsynthora.com/
+
+## Enlaces
+
+- [Agent card](https://hergertsynthora.com/agent-card.json)

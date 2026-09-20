@@ -1,0 +1,96 @@
+generated: '2026-09-19'
+method: searched
+source: >-
+  https://hergertsynthora.com/api/ (docs), https://api.hergertsynthora.com/llms.txt, https://api.hergertsynthora.com/sla/sla.json,
+  https://hergertsynthora.com/terms/, the aggregate and per-service OpenAPIs, the A2A card, and live 402/200
+  responses observed on 2026-09-19 (headers recorded verbatim).
+description: >-
+  Cross-cutting runtime semantics of the SYNTHORA machine-payable API mesh: one request shape (POST /service
+  with a JSON body) repeated across 121 product hosts and a /v1/{id} gateway, paid per call over x402, with
+  every result Ed25519-signed. Cross-links errors/, lifecycle/, authentication/, rate-limits/ and plans/.
+base_urls:
+  gateway: https://api.hergertsynthora.com/v1/{id}
+  per_product: https://<product>.hergertsynthora.com/service
+  aggregate_servers: https://pay.hergertsynthora.com (as declared in the aggregate OpenAPI)
+  notary: https://notary.hergertsynthora.com/service
+  public_map: https://mundo.hergertsynthora.com (/mapstate, /api/capa/<slug>)
+api_style: JSON over HTTPS; a single POST per product; JSON-RPC 2.0 for A2A and MCP
+authentication:
+  style: wallet-native x402 micropayment; no accounts, no API keys, no sign-up
+  paid_call: X-PAYMENT header carrying an EIP-3009 transferWithAuthorization payload (USDC on Base), obtained by reading the 402 challenge
+  free_tier: 'X-WALLET: 0x<Base address> header (identifies the wallet for the free trial and receipt attribution)'
+  core_endpoints: X-WALLET as an apiKey scheme on the "nucleo" state/meshgraph endpoints (403 without it)
+  detail: authentication/hergertsynthora-com-authentication.yml
+idempotency:
+  supported: false
+  coverage: none
+  mechanism: null
+  docs: null
+  note: >-
+    No Idempotency-Key or equivalent is documented anywhere. The surface is almost entirely read-only verdicts
+    (all 30 MCP tools declare readOnlyHint true and idempotentHint true, which is a hint about semantics, not a
+    replay-protection mechanism). The one state-creating write is the notary's op=notarize, which mints a new
+    receipt per call; nothing documents de-duplication of a retried notarization. Payment replay is prevented
+    by the x402/EIP-3009 authorization nonce, not by the API.
+pagination:
+  style: none
+  note: Every operation returns a single verdict object; there are no list endpoints, cursors or page parameters in any of the 61 saved specs.
+field_expansion:
+  supported: false
+sparse_fields:
+  supported: false
+metadata:
+  supported: false
+request_tracing:
+  request_id_header: none observed
+  receipt: >-
+    Every paid 200 carries a receipt object (Ed25519 signature over result plus the payment reference); the
+    x402 settlement transaction hash on Base is the invoice and the trace (terms section 2 and 7).
+  signature_verification: >-
+    Recanonicalise the signed field with json.dumps(sort_keys=True, separators=(',',':')) and verify receipt.sig
+    with the Ed25519 key at https://api.hergertsynthora.com/pubkey or the JWKS (kid synthora-mesh-attest).
+versioning:
+  scheme: date-versioned aggregate (2026.09.03), semver per service; /v1 prefix on the gateway
+  header: none
+  detail: lifecycle/hergertsynthora-com-lifecycle.yml
+error_envelope:
+  media_type: application/json
+  rfc9457: false
+  shape: '402 -> x402 challenge object; 404 -> {"error": "..."}; JSON-RPC -> {jsonrpc, id, error{code,message,data?}}'
+  detail: errors/hergertsynthora-com-problem-types.yml
+rate_limits:
+  signal_status: 402 (free tier exhausted -> payment required); no 429 documented
+  headers_observed: [x-free-tier, payment-required, www-authenticate]
+  published_limits: 'free tier 1 call per wallet (+3/day/IP) on data products (api llms.txt); 3 free calls per wallet (catalog, notary)'
+  detail: rate-limits/hergertsynthora-com-rate-limits.yml
+dry_run_mode:
+  status: partial
+  mechanism: 'POST /preflight (operationId payToPreflight, 0.010 USDC) - "Verify-before-pay check on any x402 endpoint"'
+  note: A paid preflight that validates a payment target before committing funds; not a per-operation dry_run/simulate parameter on the verdict endpoints themselves.
+reversibility:
+  status: na
+  note: >-
+    The verdict surface is read-only: a paid call returns data and changes no state on the provider side, so
+    there is nothing to reverse. The commercial act (the USDC settlement) is explicitly non-reversible: terms
+    section 2 "A payment is non-refundable once the response has been delivered", with the one stated
+    exception that an undeliverable result is never settled (SLA delivery_policy). The notary's op=notarize
+    creates a permanent receipt by design (proof-of-existence); no revoke/void operation exists in the
+    contract and none is documented, and no window is stated - an inherent property of a notary, recorded as
+    na rather than none.
+  write_surfaces:
+  - operationId: trust_notary (op=notarize | execution | agreement)
+    reversal_operation: none
+    window: not stated
+    docs: https://notary.hergertsynthora.com/llms.txt
+  refunds:
+    policy: none once delivered; not charged if not delivered
+    docs: https://hergertsynthora.com/terms/
+response_signing:
+  algorithm: Ed25519 (EdDSA)
+  key: https://api.hergertsynthora.com/.well-known/jwks.json (kid synthora-mesh-attest)
+  canonicalization: 'JSON sort_keys + separators (",",":") ("jcs-lite-sortkeys")'
+  applies_to: every paid result (receipt.sig), sample reports, the agent card (JWS)
+cors:
+  observed: 'access-control-allow-origin: *; access-control-allow-methods: GET, POST, OPTIONS; access-control-expose-headers: *'
+localisation:
+  note: Docs, llms.txt and the primary agent card are Spanish; per-service cards, specs, terms and SLA are English.

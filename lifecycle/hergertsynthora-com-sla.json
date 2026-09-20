@@ -1,0 +1,19 @@
+{
+ "service": "SYNTHORA machine-payable API mesh",
+ "sla_version": "1.0",
+ "effective": "2026-09-03T21:43:48Z",
+ "uptime_target": "99% monthly per service (measured by external probe, see probe feed)",
+ "latency": {
+  "metric": "HTTP 402 payment-challenge response time",
+  "p50_ms": 198,
+  "p95_ms": 305,
+  "measured_at": "2026-09-03T21:43:48Z",
+  "sample_size": 121
+ },
+ "schema_policy": "No breaking schema changes without a new versioned resource. Response envelopes {ok, niche, result, receipt} are stable; new fields are additive only. Deprecations announced >= 30 days in llms.txt and the 402 body.",
+ "delivery_policy": "If a paid result cannot be produced, the call returns 402 and is NOT settled (you are not charged). Delivery happens only after x402 settlement succeeds on Base.",
+ "measurement_probe": "https://api.hergertsynthora.com/sla/sla.json",
+ "terms": "https://hergertsynthora.com/terms",
+ "contact": "info@hergertsynthora.com",
+ "notes": "Best-effort SLA for machine consumers; no monetary penalties. Measured, not promised."
+}

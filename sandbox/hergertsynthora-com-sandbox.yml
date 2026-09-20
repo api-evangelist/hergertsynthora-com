@@ -1,0 +1,46 @@
+generated: '2026-09-19'
+method: searched
+source: >-
+  https://hergertsynthora.com/muestras/ (free samples + pricing), https://api.hergertsynthora.com/llms.txt (free
+  tier statement), https://catalog.hergertsynthora.com/catalog.json (features.free_trial, products[].free_trial_calls),
+  the 402 bodies observed on notary.hergertsynthora.com/service (freeTier.callsPerWallet 3) and
+  api.hergertsynthora.com/v1/wallet-enrich (freeTier.callsPerWallet 1), and the x-free-tier response header.
+description: >-
+  There is no sandbox environment, no test mode and no test keys: the mesh is wallet-native and the "sandbox" is
+  a free tier keyed on the caller's real Base wallet address, plus downloadable signed sample reports and a
+  free dataset sample. No test values are invented here; every number below is published by the provider.
+modes:
+  test_vs_live: none - a single production surface; the only distinction is free-tier vs paid calls
+  free_tier:
+    mechanism: 'send header X-WALLET: 0x<your Base address> (no payment)'
+    published_limits:
+    - 'api.hergertsynthora.com/llms.txt: "Free tier: 1 llamada por wallet (+3/dia/IP) en productos de datos"'
+    - 'catalog.json features.free_trial: "3 free calls per Base wallet"; products[].free_trial_calls: 3'
+    - 'notary 402 body freeTier: {callsPerWallet: 3, header: X-WALLET}; response header x-free-tier: 3'
+    - 'api gateway 402 body (wallet-enrich) freeTier: {callsPerWallet: 1, header: X-WALLET}; response header x-free-tier: 1'
+    note: The published free-tier count differs by product (1 on the gateway product probed, 3 on the notary and in the catalog); read x-free-tier on the 402 for the live value.
+  preflight:
+    operationId: payToPreflight
+    path: POST /preflight (pay.hergertsynthora.com)
+    price_usdc: '0.010'
+    purpose: '"Verify-before-pay check on any x402 endpoint" - the closest thing to a dry run: validate a payTo/resource before committing funds.'
+    source: openapi/hergertsynthora-com-mesh-aggregate-openapi.yml
+samples:
+  - kind: signed sample reports (free download)
+    url: https://hergertsynthora.com/muestras/
+    items:
+    - https://hergertsynthora.com/muestras/cisa-kev-nuevos-exploits-semana-2026-09-03.md
+    - https://hergertsynthora.com/muestras/cisa-kev-estado-exploits-2026-09-02.md
+    - https://hergertsynthora.com/muestras/security-assessment-muestra-2026-09-03.md
+    note: Each report ends with a SHA256 + Ed25519 signature block verifiable against the mesh public key.
+  - kind: free dataset sample
+    url: https://api.hergertsynthora.com/datasets/bioquantum/muestra_50.jsonl
+    manifest: https://api.hergertsynthora.com/datasets/bioquantum/manifest.json (HTTP 200; 800 pairs, sample of 50 free, full pack 49 USDC)
+  - kind: free public data
+    url: https://mundo.hergertsynthora.com/mapstate and https://mundo.hergertsynthora.com/api/capa/<slug>
+    note: Live world-map state and per-layer data (e.g. /api/capa/buques returned 1,662 AIS/GTS vessel points) with no credential - documented at https://hergertsynthora.com/api/.
+  - kind: free discovery endpoints
+    urls: [https://api.hergertsynthora.com/pubkey, https://api.hergertsynthora.com/track_record.json, https://api.hergertsynthora.com/.well-known/x402.json, https://catalog.hergertsynthora.com/catalog.json]
+test_cards_or_accounts: none (no fiat; payment is USDC on Base mainnet, eip155:8453 - no testnet endpoint is published)
+test_clocks: none
+fixtures: none

@@ -1,0 +1,73 @@
+generated: '2026-09-19'
+method: searched
+source: >-
+  https://api.hergertsynthora.com/sla/ (human) and https://api.hergertsynthora.com/sla/sla.json (machine, saved
+  verbatim as lifecycle/hergertsynthora-com-sla.json), https://hergertsynthora.com/terms/ (section 8), the
+  version fields of the saved contracts and cards, and two deprecations observed live on 2026-09-19.
+description: >-
+  Versioning, deprecation, SLA and status posture of the SYNTHORA mesh. The provider publishes a short
+  machine SLA with a written deprecation rule; it publishes no incident status page and no dated changelog.
+versioning:
+  scheme: >-
+    Mixed. The aggregate OpenAPI is date-versioned (info.version 2026.09.03); per-service specs and the notary
+    are semver 1.0.0; the primary agent card is 1.3.2; the MCP server is 1.0.1; the SLA is 1.0; the terms are
+    1.0 (effective 2026-09-03). No version appears in URLs except the gateway prefix /v1/{id}.
+  current:
+    aggregate_openapi: '2026.09.03'
+    agent_card: 1.3.2
+    mcp_server: 1.0.1
+    notary: 1.0.0
+    sla: '1.0'
+    terms: '1.0 (effective 2026-09-03)'
+  policy: >-
+    "No breaking schema changes without a new versioned resource. Response envelopes {ok, niche, result,
+    receipt} are stable; new fields are additive only." (sla.json schema_policy)
+deprecation:
+  policy_documented: true
+  policy: >-
+    "Deprecations announced >= 30 days in llms.txt and the 402 body." (sla.json schema_policy; also on the
+    human SLA page). No Sunset or Deprecation response headers are documented or observed.
+  sunset_header: false
+  deprecation_header: false
+  docs: https://api.hergertsynthora.com/sla/
+  observed_deprecations:
+  - what: GET https://pay.hergertsynthora.com/.well-known/agent.json (operation agentCard in the aggregate spec, servers[] host pay.)
+    status: discontinued
+    evidence: 'HTTP 404 on 2026-09-19 with body {"error": "product not available at this host", "detail": "This endpoint was discontinued. The live catalogue is generated and always current; call any product through the canonical gateway.", "catalogue": "https://api.hergertsynthora.com/.well-known/x402.json", "gateway": "https://api.hergertsynthora.com/v1/{id}", "publicKey": "https://api.hergertsynthora.com/pubkey"}'
+    note: The aggregate OpenAPI still declares the operation without deprecated:true; the overlay marks it.
+  - what: agent card ERC-8004 tokenId 61548
+    status: disowned
+    evidence: 'a2a/hergertsynthora-com-agent-card.json metadata.erc8004.nota: "Materiales antiguos citaban #61548; ese tokenId pertenece a otro agente."'
+  - what: >-
+      53 of the 121 product hosts in the aggregate's x-synthora-products list serve no /openapi.json
+      (404 {"error": "not found"}) though the aggregate promises "Per-service OpenAPI: https://<host>/openapi.json"
+    status: gap
+    evidence: sweep of all 121 hosts on 2026-09-19 (68 x 200 parse as OpenAPI, of which 9 mirror the aggregate; 53 x 404)
+sla:
+  published: true
+  url: https://api.hergertsynthora.com/sla/
+  machine_readable: https://api.hergertsynthora.com/sla/sla.json
+  file: lifecycle/hergertsynthora-com-sla.json
+  effective: '2026-09-03T21:43:48Z'
+  uptime_target: 99% monthly per service (external probe)
+  latency: 402 payment-challenge p50 198 ms, p95 305 ms over 121 hosts, measured 2026-09-03
+  penalties: none ("Best-effort SLA for machine consumers; no monetary penalties. Measured, not promised.")
+  delivery_policy: Undeliverable result -> 402, not settled, not charged; delivery only after x402 settlement succeeds on Base.
+status_page:
+  present: false
+  note: >-
+    No incident/status page. The SLA page reports a single "last probe" figure (121/121 answering) frozen at
+    2026-09-03, and https://api.hergertsynthora.com/panel is a public internal operations console ("centro de
+    mando": GPU state, container alerts, treasury balances, revenue) that regenerates every 120 s - real and
+    revealing, but an ops dashboard rather than a consumer status page, so no StatusPage pointer is emitted.
+    https://brain.hergertsynthora.com/estado (named in api llms.txt as the panel) fails the TLS handshake
+    (curl: LibreSSL SSL_read error 1116) from the probe location.
+  per_product_health: 'GET /health on every product host -> {"ok": true, "node": "mux_earner", "products": 278}; mcp.hergertsynthora.com/health -> {"ok": true, "tools": 30}; notary /health -> {"ok": true, "node": "earner", "network": "eip155:8453", "charging": true}'
+changelog:
+  present: false
+  note: >-
+    No dated changelog. The closest signals are catalog.json updated_at (2026-09-03T14:00:13Z) and the card's
+    metadata.productos_nuevos (three products with verificado_402 2026-09-03). Not enough for a changelog artifact.
+retirement_signals:
+  - 'terms section 8: "Governing jurisdiction: pending designation by the operator (item G7)" - the terms are explicitly unfinished.'
+  - The public ops panel (2026-09-19T23:30Z) reported the inference "cerebro" not resident in VRAM, 12 containers down and a treasury runway of 0.23 days - an operational fragility signal for anyone building on the mesh, recorded as observed on one probe, not as a trend.

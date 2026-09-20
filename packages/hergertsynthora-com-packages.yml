@@ -1,0 +1,25 @@
+generated: '2026-09-19'
+method: searched
+source: >-
+  Registry searches on 2026-09-19 - npm (registry.npmjs.org/-/v1/search?text=synthora), PyPI (pypi.org/pypi/synthora/json,
+  /hergert-synthora/, /hergertsynthora/), GitHub (api.github.com/search/repositories?q=hergertsynthora+OR+"hergert synthora",
+  search/users?q=synthora) - plus the docs (https://hergertsynthora.com/api/), both llms.txt files, the agent card and catalog.json,
+  none of which link an SDK, CLI or source repository.
+description: >-
+  No first-party client library exists. The provider's stated design is "one HTTP call" with no SDK: the
+  contract is the 402 challenge itself. Recorded as an honest absence, with the one name collision noted so it
+  is not mis-credited later.
+package_count: 0
+official_count: 0
+packages: []
+collisions_rejected:
+- registry: pypi
+  name: synthora
+  version: 0.1.15
+  author: Syntropix.AI
+  reason: An unrelated LLM-agent framework by Syntropix.AI; not this company (no hergertsynthora.com link, different publisher).
+- registry: github
+  logins: [synthora, Synthora-AI, synthora-lab, synthorai-io, synthoraai]
+  reason: None reference hergertsynthora.com; the repository search for the company name returned 0 results.
+distribution:
+  note: 'Integration is by HTTP (curl examples on https://hergertsynthora.com/api/), by MCP (https://mcp.hergertsynthora.com/mcp) or by A2A JSON-RPC (https://api.hergertsynthora.com/a2a). No CDN bundle, no npx package.'

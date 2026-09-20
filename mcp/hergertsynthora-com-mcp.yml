@@ -1,0 +1,198 @@
+generated: '2026-09-19'
+method: probed
+status: published
+source: https://mcp.hergertsynthora.com/mcp (JSON-RPC initialize + tools/list, anonymous, 2026-09-19); named by
+  the agent card metadata.mcp, /.well-known/agent-registration.json (services[].MCP, version 2025-06-18) and /muestras/
+description: Hergert Synthora runs a hosted, anonymous-to-list MCP server for its SYNTHORA intelligence mesh, plus
+  a one-tool MCP endpoint on the Agent Notary host. Every tool is a read-only, x402-paid verdict; tools/list and
+  initialize need no credential.
+deployment:
+  mode: remote
+  endpoint: https://mcp.hergertsynthora.com/mcp
+  install: null
+  package: null
+  auth: none
+  auth_note: initialize and tools/list answer anonymously (HTTP 200). tools/call settles per call over x402 (USDC
+    on Base) and a free trial is keyed on an X-WALLET header, so listing is open and execution is pay-per-call;
+    no OAuth discovery document is served on the MCP host (all /.well-known/* paths 404).
+  verified: probed
+server:
+  name: synthora-mcp
+  title: SYNTHORA - Intelligence Mesh
+  version: 1.0.1
+  protocolVersion: '2025-03-26'
+  transport: 'streamable-http (POST JSON-RPC 2.0; GET answers {"error": "MCP endpoint: POST JSON-RPC"})'
+  capabilities:
+    tools: {}
+  websiteUrl: https://hergertsynthora.com
+  health: 'https://mcp.hergertsynthora.com/health -> {"ok": true, "tools": 30}'
+  declared_protocol_version_elsewhere: agent-registration.json says 2025-06-18; the live initialize handshake returns
+    2025-03-26.
+tool_count: 30
+tools_file: mcp/hergertsynthora-com-mcp-tools-list.json
+input_schema_note: 'Every tool declares the same inputSchema {input: string, "parametros del producto (JSON o texto)"}
+  - the per-product parameters live in the tool description text and in the matching per-service OpenAPI, not in
+  the schema. All 30 tools carry annotations readOnlyHint true, destructiveHint false, idempotentHint true, openWorldHint
+  true.'
+tools:
+- name: codeaudit
+  category: x402-paid verdict
+  description: 'Smart Contract Audit: 3 analisis independientes con un unico modelo propio (security, logic, gas)
+    + static pattern scan on Solidity/Vyper source. Severity: clean/low/medium/high/critical. Ed25519-signed, publishable
+    on-c'
+- name: identity_risk
+  category: x402-paid verdict
+  description: 'SYNTHORA identity-risk: brand-impersonation verdict (AUTHENTIC / DOUBTFUL / ACTIVE_IMPERSONATION)
+    over decentralised social identities, correlated across independent sources.'
+- name: polymarket_whales
+  category: x402-paid verdict
+  description: 'Live whale-tracking on Polymarket: the latest large trades (default >= 5000 USD, tunable via min_usd)
+    with wallet, side, outcome, size, price, USD value, market title/slug and tx hash, straight from Polymarket
+    public tra'
+- name: wallet_enrich
+  category: x402-paid verdict
+  description: 'Wallet enrichment for any EVM wallet (0x address or ENS name) in one call: 0-100 risk score with
+    low/medium/high level, sanctions exposure screening (OFAC SDN wallet lists: Tornado Cash, Lazarus, Garantex),
+    on-chain acti'
+- name: daily_intel_brief
+  category: x402-paid verdict
+  description: 'SYNTHORA daily-intel-brief: the daily intelligence briefing in ONE call — funding spreads cross-venue,
+    stablecoin depeg radar, US funding stress (SOFR-EFFR), chokepoint status (PortWatch), narrative tension (GDELT),
+    plus'
+- name: txintent
+  category: x402-paid verdict
+  description: 'Tx Intent Classifier: decodes the REAL intent of an on-chain transaction (Base/Ethereum) and returns
+    an Ed25519-signed risk verdict (safe/review/suspicious/dangerous). Catches unlimited approvals, opaque selectors,
+    value'
+- name: macrobundle
+  category: x402-paid verdict
+  description: 'Macro intel bundle: 7 live macro/market datasets in ONE call (commodity macro, market sentiment,
+    stablecoin supply, ECB forex fixing vs market, DeFi TVL ranking, top crypto, bitcoin fees). Cheaper than buying
+    each separa'
+- name: polymarket_odds_movers
+  category: x402-paid verdict
+  description: 'Polymarket odds movers: active markets ranked by biggest price swing in the last 1h / 24h / 1wk
+    (window param), with yes price, change and direction, best bid/ask, spread, 24h volume, liquidity and end date.
+    The momentum'
+- name: polymarket_resolution_watch
+  category: x402-paid verdict
+  description: 'Polymarket resolution watch: markets ending within N days (default 7) with UMA resolution status
+    (proposed/disputed), UMA bond and reward, hours to resolution, last price, 24h volume, liquidity and a uma_risk
+    flag for co'
+- name: dispute_risk
+  category: x402-paid verdict
+  description: 'Resolution/dispute risk score (0-100) for Polymarket markets: UMA status (proposed/disputed), UMA
+    bond and reward, rules-text ambiguity (length, deadline date, declared resolution source), top-3 holder concentration
+    as a'
+- name: chokepoint_risk
+  category: x402-paid verdict
+  description: 'SYNTHORA chokepoint-risk: SUPERCORRELATED risk verdict per maritime chokepoint (Hormuz, Suez, Panama,
+    Bab el-Mandeb, Malacca, Gibraltar, Taiwan) — crosses REAL TRAFFIC (IMF PortWatch, canonical Polymarket resolution
+    sour'
+- name: resolution_source_feed
+  category: x402-paid verdict
+  description: 'SYNTHORA resolution-source-feed: give a Polymarket market slug, get its official resolution source
+    READ LIVE — current value, threshold, distance and on-track/off-track verdict. Covers IMF PortWatch chokepoint
+    markets (H'
+- name: shipping_alpha
+  category: x402-paid verdict
+  description: 'SYNTHORA shipping-alpha: physical-vs-price divergence for shipping/logistics stocks (ZIM, Maersk
+    AMKBY, Hapag-Lloyd, FedEx, UPS, Matson) — crosses LIVE physical reality (IMF PortWatch chokepoint transits +
+    WaveWatch III '
+- name: sanctions_screen
+  category: x402-paid verdict
+  description: 'SYNTHORA sanctions-screen: sanctions screening with MATCH / CLEAR verdict over 4 official downloads
+    (OFAC SDN primary and alias lists, UN, OpenSanctions). Multilingual, tested on Cyrillic transliterations.'
+- name: resolution_verdict
+  category: x402-paid verdict
+  description: 'Decision verdict for prediction markets (Polymarket): give a market slug, get probability, direction
+    (YES/NO/INDECISO) and 3-5 evidence bullets with declared sources (chokepoints, GDELT tension, fed watch, maritime,
+    weat'
+- name: macro_surprise
+  category: x402-paid verdict
+  description: 'Macro surprise index: z-score of the latest change vs the trailing 12-change distribution for official
+    ECB series (HICP inflation, MRR policy rate, 10Y yield). Flags strong/moderate surprises the moment official
+    data pri'
+- name: insider_radar
+  category: x402-paid verdict
+  description: 'Insider-style trade detection on Polymarket: scans the latest large fills (min_usd, default 10000
+    USD) over lookback_hours (default 24) and flags wallets that are fresh (few lifetime trades), sized big vs the
+    market 24h '
+- name: vessel_sanctions
+  category: x402-paid verdict
+  description: 'SYNTHORA vessel-sanctions: screen any vessel (IMO or name) against the OFAC SDN sanctioned-vessels
+    list (1,524 ships tracked) — the compliance check before touching tanker/shipping trades or chokepoint bets.
+    List mode: f'
+- name: volume_anomaly
+  category: x402-paid verdict
+  description: 'SYNTHORA volume-anomaly: crypto volume-anomaly alerts for arbitrage bots — assets whose 24h turnover
+    (volume/mcap) is anomalously high vs their cohort (z-score), early pump/unusual-activity signal. Composite of
+    CoinGecko'
+- name: emerging_protocols
+  category: x402-paid verdict
+  description: 'SYNTHORA emerging-protocols: early detection of young DeFi protocols with accelerating TVL (on-chain
+    momentum) before they get big — for MEV searchers and alpha bots. Ranked by momentum+acceleration+youth, mega-protocol '
+- name: tvl_concentration
+  category: x402-paid verdict
+  description: 'SYNTHORA tvl-concentration: DeFi TVL drain/concentration signal — protocols anomalously losing TVL
+    while token price has not yet repriced (temporal edge window). For liquidation and risk bots. Source: DeFiLlama.
+    $0.03 US'
+- name: space_weather_risk
+  category: x402-paid verdict
+  description: 'SYNTHORA space-weather-risk: composite operational space-weather risk verdict fusing 4 NOAA SWPC
+    feeds (Kp/G scale, GOES X-ray flare class, solar wind, proton flux) — for defense, aviation, satellites, power
+    grid, precis'
+- name: rwa_gap_watch
+  category: x402-paid verdict
+  description: 'SYNTHORA rwa-gap-watch: the gap between tokenized stocks (Ondo AAPLon, TSLAon, NVDAon, SPYon, HOODon...)
+    trading 24/7 on-chain and their last official NYSE close — on-chain price discovery happens BEFORE TradFi opens
+    (we'
+- name: domain_risk
+  category: x402-paid verdict
+  description: 'SYNTHORA domain-risk: domain risk verdict (LIMPIO/SOSPECHOSO/PELIGROSO) with score, confidence and
+    evidence signals — age, infra, reputation crosses. Pre-interaction safety for agents. $0.03 USDC x402 Base.'
+- name: tx_simulator
+  category: x402-paid verdict
+  description: 'SYNTHORA tx-simulator: simulate an EVM transaction before signing — SAFE/WARN/DANGER verdict, decoded
+    intent, warnings and checks performed. Pre-trade safety for agent wallets. $0.03 USDC x402 Base.'
+- name: threat_exposure
+  category: x402-paid verdict
+  description: 'SYNTHORA threat-exposure: external attack-surface score for any domain/host — exposure breakdown
+    with deterministic evidence (historic IPs, open surfaces). $0.03 USDC x402 Base.'
+- name: funding_spread
+  category: x402-paid verdict
+  description: 'SYNTHORA funding-spread: perp funding rates CROSSED across Binance, Bybit and OKX for top pairs
+    — the max spread between venues and the theoretical carry direction (long where you receive, short where you
+    pay). Funding a'
+- name: asset_risk
+  category: x402-paid verdict
+  description: 'SYNTHORA asset-risk: geoint risk verdict by zone (gibraltar, bab-el-mandeb, bosphorus, algeciras...)
+    or lat/lon+bbox — confidence measured by AGREEMENT between independent sources, discrepancies declared (the
+    moat). $0.0'
+- name: market_sentiment
+  category: x402-paid verdict
+  description: Get real-time market sentiment signals via x402 M2M API. Signed x402 call. 0.03 USDC on Base.
+- name: registry_watch
+  category: x402-paid verdict
+  description: 'SYNTHORA registry-watch: pay-per-event feed of signed Ed25519 deltas from the x402/M2M endpoint
+    registry — new and changed endpoints, payTos and listings. Pull with {"since": "<cursor|ISO>", "slug": "<slug>",
+    "limit": <='
+additional_servers:
+- name: synthora-notario
+  endpoint: https://notary.hergertsynthora.com/mcp
+  mode: remote
+  auth: none
+  verified: probed
+  version: 1.0.0
+  tool_count: 1
+  tools_file: mcp/hergertsynthora-com-notary-mcp-tools-list.json
+  note: 'GET returns {"name": "synthora-notario", "version": "1.0.0", "protocol": "mcp", "hint": "POST JSON-RPC
+    2.0: initialize | tools/list | tools/call"}; tools/list returns the single tool notario with a real inputSchema
+    (op enum notarize/execution/agreement/verify).'
+well_known:
+  oauth_protected_resource: 404 on mcp.hergertsynthora.com
+  oauth_authorization_server: '404'
+  mcp_json: '404'
+listings:
+- a2aregistry.org (4 agents by this operator; A2A, not MCP)
+- 8004scan.io/agents/base/84581 (ERC-8004 registry explorer)

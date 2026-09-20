@@ -1,0 +1,4183 @@
+{
+ "name": "SYNTHORA — Verifiable A2A Data APIs (x402 · Base) · certified-only",
+ "description": "Pay-per-call Web3 intelligence for autonomous agents. USDC micropayments via x402 protocol on Base. Every verdict Ed25519-signed for on-chain verifiability.",
+ "version": "1.0.0",
+ "payment": {
+  "protocol": "x402",
+  "version": 2,
+  "network": "eip155:8453",
+  "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+  "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+ },
+ "resources": [
+  {
+   "resource": "https://agentcard.hergertsynthora.com/service",
+   "name": "agentcard",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://amlscreen.hergertsynthora.com/service",
+   "name": "amlscreen",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://bridgerisk.hergertsynthora.com/service",
+   "name": "bridgerisk",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://businessrisk.hergertsynthora.com/service",
+   "name": "businessrisk",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://coingecko-crypto-price-history.hergertsynthora.com/service",
+   "name": "coingecko-crypto-price-history",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://commodity-macro.hergertsynthora.com/service",
+   "name": "commodity-macro",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://contractwatch.hergertsynthora.com/service",
+   "name": "contractwatch",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://cryptonews.hergertsynthora.com/service",
+   "name": "cryptonews",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://defidata.hergertsynthora.com/service",
+   "name": "defidata",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://deliverability.hergertsynthora.com/service",
+   "name": "deliverability",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://deliver.hergertsynthora.com/service",
+   "name": "deliver",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://derivbundle.hergertsynthora.com/service",
+   "name": "derivbundle",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://dex-pair-price.hergertsynthora.com/service",
+   "name": "dex-pair-price",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://dnsdomain.hergertsynthora.com/service",
+   "name": "dnsdomain",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://fear-greed.hergertsynthora.com/service",
+   "name": "fear-greed",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://funding-rates.hergertsynthora.com/service",
+   "name": "funding-rates",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://inference.hergertsynthora.com/service",
+   "name": "inference",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://lifi-bridge-route-quote.hergertsynthora.com/service",
+   "name": "lifi-bridge-route-quote",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://market-dominance.hergertsynthora.com/service",
+   "name": "market-dominance",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://mcpscan.hergertsynthora.com/service",
+   "name": "mcpscan",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://mtasts.hergertsynthora.com/service",
+   "name": "mtasts",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://ohlcv-candles.hergertsynthora.com/service",
+   "name": "ohlcv-candles",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://onchain.hergertsynthora.com/service",
+   "name": "onchain",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://openinterest.hergertsynthora.com/service",
+   "name": "openinterest",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://perps.hergertsynthora.com/service",
+   "name": "perps",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://polymarket-markets.hergertsynthora.com/service",
+   "name": "polymarket-markets",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://prediction.hergertsynthora.com/service",
+   "name": "prediction",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://prediction-markets.hergertsynthora.com/service",
+   "name": "prediction-markets",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://protocol-revenue.hergertsynthora.com/service",
+   "name": "protocol-revenue",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://protocol-tvl.hergertsynthora.com/service",
+   "name": "protocol-tvl",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://regwatch.hergertsynthora.com/service",
+   "name": "regwatch",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://slippage.hergertsynthora.com/service",
+   "name": "slippage",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://stock-intel.hergertsynthora.com/service",
+   "name": "stock-intel",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://tokenrisk.hergertsynthora.com/service",
+   "name": "tokenrisk",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://translate.hergertsynthora.com/service",
+   "name": "translate",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://usgs-realtime-streamflow.hergertsynthora.com/service",
+   "name": "usgs-realtime-streamflow",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://walletrep.hergertsynthora.com/service",
+   "name": "walletrep",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://websearch.hergertsynthora.com/service",
+   "name": "websearch",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://yahoo-equity-delayed-quote.hergertsynthora.com/service",
+   "name": "yahoo-equity-delayed-quote",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/weather-now",
+   "name": "weather-now",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "6000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA weather-now: current weather for any city or lat,lon — temperature, feels-like, humidity, wind, WMO condition code in plain text, plus the 6h temperature trend (rising/falling/flat), which is the actionable part. Free source: open-meteo.com (ECMWF/NOAA/DWD), no API key, timestamped."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/stablecoin-supply",
+   "name": "stablecoin-supply",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "6000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA stablecoin-supply: circulating USD supply, price and peg deviation in basis points for the top stablecoins (USDT, USDC, DAI...), with a depeg alert flag above 50 bps. Optional symbol filter. Free source: stablecoins.llama.fi (DefiLlama), no API key, timestamped."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/polymarket-whales",
+   "name": "polymarket-whales",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "150000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "Live whale-tracking on Polymarket: the latest large trades (default >= 5000 USD, tunable via min_usd) with wallet, side, outcome, size, price, USD value, market title/slug and tx hash, straight from Polymarket public trades data API. Built for prediction-market agents that track smart money before trading. No charge on service failure. Ed25519-signed. $0.15 USDC per call via x402 on Base. Free tri"
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/polymarket-odds-movers",
+   "name": "polymarket-odds-movers",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "100000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "Polymarket odds movers: active markets ranked by biggest price swing in the last 1h / 24h / 1wk (window param), with yes price, change and direction, best bid/ask, spread, 24h volume, liquidity and end date. The momentum signal prediction bots scan before entering a market. No charge on service failure. Ed25519-signed. $0.10 USDC per call via x402 on Base. Free trial: 3 calls per wallet with heade"
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/polymarket-resolution-watch",
+   "name": "polymarket-resolution-watch",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "100000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "Polymarket resolution watch: markets ending within N days (default 7) with UMA resolution status (proposed/disputed), UMA bond and reward, hours to resolution, last price, 24h volume, liquidity and a uma_risk flag for contested or undecided resolutions. Lets prediction agents avoid or exploit resolution risk. No charge on service failure. Ed25519-signed. $0.10 USDC per call via x402 on Base. Free "
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/dispute-risk",
+   "name": "dispute-risk",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "Resolution/dispute risk score (0-100) for Polymarket markets: UMA status (proposed/disputed), UMA bond and reward, rules-text ambiguity (length, deadline date, declared resolution source), top-3 holder concentration as a vote-manipulation proxy, and days to resolution. Pass a market_slug or condition_id for one market, or nothing to scan the top markets resolving in the next 14 days. Built for pre"
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/insider-radar",
+   "name": "insider-radar",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "30000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "Insider-style trade detection on Polymarket: scans the latest large fills (min_usd, default 10000 USD) over lookback_hours (default 24) and flags wallets that are fresh (few lifetime trades), sized big vs the market 24h volume, or entered at extreme odds right before the market moved. Each alert carries wallet, market, size, tx hash, a 0-100 severity score and explicit reasons; approximations are "
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/market-resolution",
+   "name": "market-resolution",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "10000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "Canonical resolution status for one Polymarket market (market_slug or condition_id required): market state (active/resolving/closed), UMA resolution statuses (proposed/disputed), end date and hours to resolution, declared resolution source plus sources found in the rules text, current outcome prices, UMA bond/reward and estimated payout per outcome (1.00 USDC per winning share, implied EV). The ca"
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/chokepoint-transits",
+   "name": "chokepoint-transits",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "10000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA chokepoint-transits: daily vessel transits through the 28 global maritime chokepoints (Hormuz, Suez, Panama, Bab el-Mandeb, Malacca...). Latest settled day, 7d moving average, deviation vs 30d baseline, per-vessel-type breakdown (a tanker-only drop at Hormuz is the tradeable signal) and anomaly flag. Source: IMF PortWatch (satellite AIS) — the canonical resolution source of Polymarket chokepoint markets. $0.01 USDC via x402 on Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/vessel-sanctions",
+   "name": "vessel-sanctions",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "30000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA vessel-sanctions: screen any vessel (IMO or name) against the OFAC SDN sanctioned-vessels list (1,524 ships tracked) — the compliance check before touching tanker/shipping trades or chokepoint bets. List mode: full sanctioned-fleet snapshot. Source: OFAC SDN (US Treasury, free, no key). $0.03 USDC via x402 on Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/gdelt-tension",
+   "name": "gdelt-tension",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "5000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA gdelt-tension: geopolitical tension index for any topic/country — news-mention spike vs 7d baseline, average tone shift, escalation flag and the headlines causing it. The early signal for Polymarket geopolitical markets (high variance, high spread). Source: GDELT DOC 2.0 (100+ languages, free, no key), 6h-prefetched cache for reliability. $0.005 USDC via x402 on Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/volume-anomaly",
+   "name": "volume-anomaly",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "30000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA volume-anomaly: crypto volume-anomaly alerts for arbitrage bots — assets whose 24h turnover (volume/mcap) is anomalously high vs their cohort (z-score), early pump/unusual-activity signal. Composite of CoinGecko markets + DeFiLlama DEX volume. Keyless. $0.03 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/emerging-protocols",
+   "name": "emerging-protocols",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "30000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA emerging-protocols: early detection of young DeFi protocols with accelerating TVL (on-chain momentum) before they get big — for MEV searchers and alpha bots. Ranked by momentum+acceleration+youth, mega-protocol noise filtered. Source: DeFiLlama. $0.03 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/tvl-concentration",
+   "name": "tvl-concentration",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "30000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA tvl-concentration: DeFi TVL drain/concentration signal — protocols anomalously losing TVL while token price has not yet repriced (temporal edge window). For liquidation and risk bots. Source: DeFiLlama. $0.03 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/space-weather-risk",
+   "name": "space-weather-risk",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "10000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA space-weather-risk: composite operational space-weather risk verdict fusing 4 NOAA SWPC feeds (Kp/G scale, GOES X-ray flare class, solar wind, proton flux) — for defense, aviation, satellites, power grid, precision GPS. $0.01 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/who-gho-timeseries",
+   "name": "who-gho-timeseries",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "5000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA who-gho-timeseries: WHO Global Health Observatory indicator time series by country (life expectancy etc.) — public-health data for research and policy agents. $0.005 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/exchange-rates-verified",
+   "name": "exchange-rates-verified",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "5000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA exchange-rates-verified: FX rates for 160+ currencies CROSS-VERIFIED between two independent sources (ECB official fixing via frankfurter.app vs market aggregate open.er-api.com) with per-currency deviation in bps and divergence alert >50 bps. The product is the discrepancy: a bad rate breaks a financial agent. Free sources, no key. $0.005 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/usgs-earthquakes",
+   "name": "usgs-earthquakes",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "5000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA usgs-earthquakes: latest earthquakes (M>=4.5 default, tunable) with PAGER alert level, tsunami flag and ACTIVE SEISMIC CLUSTER detection (>=3 events same zone in 24h) — the actionable signal for insurance-risk and disaster prediction markets. Source: USGS FDSN (official US, real-time, no key). $0.005 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/marine-wave-forecast",
+   "name": "marine-wave-forecast",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "5000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA marine-wave-forecast: sea state for any coast/port or chokepoint (Hormuz, Suez, Panama, Malacca, Gibraltar, Bab el-Mandeb, Dover presets) — wave height, period, swell, Douglas-scale verdict and navigability flag. Complements chokepoint-transits for shipping disruption markets. Source: open-meteo Marine (ECMWF/NOAA WaveWatch III, no key). $0.005 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/port-watch",
+   "name": "port-watch",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "10000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA port-watch: daily port activity for any of 2,065 ports (Shanghai, Singapore, Rotterdam, LA, Long Beach presets + any name) — port calls, estimated import/export capacity (dwt), 7d moving average vs 30d baseline deviation and anomaly flag. Port volume leads official macro data by weeks: the input for trade/tariff/recession markets. Source: IMF PortWatch (satellite AIS, free, no key). $0.01 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/chokepoint-risk",
+   "name": "chokepoint-risk",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA chokepoint-risk: SUPERCORRELATED risk verdict per maritime chokepoint (Hormuz, Suez, Panama, Bab el-Mandeb, Malacca, Gibraltar, Taiwan) — crosses REAL TRAFFIC (IMF PortWatch, canonical Polymarket resolution source) x NARRATIVE (GDELT global news spike+tone) x NAVIGABILITY (WaveWatch III sea state) into one score with confidence level. The alpha: narrative/traffic divergence (noise without disruption = market overreaction; silent disruption = early signal). Sources declared; degraded sources lower confidence. $0.05 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/hurricane-odds",
+   "name": "hurricane-odds",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "6000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA hurricane-odds: active tropical cyclones CROSS-VERIFIED — official NHC bulletin (category, wind, pressure, movement) crossed with an independent model (ECMWF via open-meteo) at the storm position; discrepancies >15 kt flagged. The input for Polymarket weather/climate markets. Sources: NHC + ECMWF, free, no key. $0.006 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/fed-watch",
+   "name": "fed-watch",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "10000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA fed-watch: US reference-rate funding pulse — SOFR/EFFR/TGCR/BGCR/OBFR with volumes, percentile dispersion and the SOFR-EFFR spread (the funding-stress signal before it hits the news). Cross-check of 5 independent official NY Fed series. The input for Fed/CPI prediction markets. Free official source, no key. $0.01 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/rwa-gap-watch",
+   "name": "rwa-gap-watch",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "30000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA rwa-gap-watch: the gap between tokenized stocks (Ondo AAPLon, TSLAon, NVDAon, SPYon, HOODon...) trading 24/7 on-chain and their last official NYSE close — on-chain price discovery happens BEFORE TradFi opens (weekend/overnight edge for investors). Cross-verified: best-liquidity pool (DexScreener, multi-chain) x official close (Yahoo), zombie/fake pools detected and reported, per-asset confidence by liquidity. $0.03 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/resolution-source-feed",
+   "name": "resolution-source-feed",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA resolution-source-feed: give a Polymarket market slug, get its official resolution source READ LIVE — current value, threshold, distance and on-track/off-track verdict. Covers IMF PortWatch chokepoint markets (Hormuz weekly series, normalization binaries): the answer a trader checks before every weekly resolution. Composes gamma-api rules parsing + live official source. $0.05 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/shipping-alpha",
+   "name": "shipping-alpha",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "50000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA shipping-alpha: physical-vs-price divergence for shipping/logistics stocks (ZIM, Maersk AMKBY, Hapag-Lloyd, FedEx, UPS, Matson) — crosses LIVE physical reality (IMF PortWatch chokepoint transits + WaveWatch III navigability) with the official stock price move. Physical deterioration not yet priced = the investor window. 3 independent free sources crossed, confidence declared. $0.05 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/trending-cross",
+   "name": "trending-cross",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "5000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA trending-cross: crypto trending VERIFIED by two-source consensus — an asset trending on CoinGecko AND gaining on Binance at once is a confirmed signal; trending on one only is noise or a localized pump. Top gainers/losers with volume included. Free sources, no key. $0.005 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/gas-oracle-multi",
+   "name": "gas-oracle-multi",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "5000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA gas-oracle-multi: gas price across 5 chains (ethereum, base, arbitrum, optimism, polygon), each VERIFIED by two independent public RPCs with divergence report — a single RPC can lie or lag; dual-verified is what you time transactions with. Free public RPCs, no key. $0.005 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/noaa-tides",
+   "name": "noaa-tides",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "5000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA noaa-tides: tide and water level for US ports/stations, VERIFIED by crossing NOAA harmonic prediction with the LIVE observation at the same station — the anomaly (observed minus predicted) is the storm-surge/port-disruption signal. Source: NOAA CO-OPS official, free, no key. $0.005 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/stablecoin-depeg",
+   "name": "stablecoin-depeg",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "6000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA stablecoin-depeg: depeg radar for 8 major stablecoins (USDT, USDC, DAI, USDS, USDe, PYUSD, USDD, FDUSD), each measured by TWO independent sources (CoinGecko + DefiLlama) with inter-source discrepancy reported — a real depeg shows in both; a single-source blip is an oracle artifact. Severity levels in bps. Free sources, no key. $0.006 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/domain-risk",
+   "name": "domain-risk",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "30000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA domain-risk: domain risk verdict (LIMPIO/SOSPECHOSO/PELIGROSO) with score, confidence and evidence signals — age, infra, reputation crosses. Pre-interaction safety for agents. $0.03 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/tx-simulator",
+   "name": "tx-simulator",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "30000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA tx-simulator: simulate an EVM transaction before signing — SAFE/WARN/DANGER verdict, decoded intent, warnings and checks performed. Pre-trade safety for agent wallets. $0.03 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/threat-exposure",
+   "name": "threat-exposure",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "30000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA threat-exposure: external attack-surface score for any domain/host — exposure breakdown with deterministic evidence (historic IPs, open surfaces). $0.03 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/headers-audit",
+   "name": "headers-audit",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "5000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA headers-audit: HTTP security headers + TLS audit for any URL — missing headers, score 0-100, cookie flags. $0.005 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/funding-spread",
+   "name": "funding-spread",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "30000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA funding-spread: perp funding rates CROSSED across Binance, Bybit and OKX for top pairs — the max spread between venues and the theoretical carry direction (long where you receive, short where you pay). Funding arb signal, not a wrapper. 3 free public sources crossed. $0.03 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/web-extract",
+   "name": "web-extract",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "5000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA web-extract: any URL to clean agent-ready text (no HTML noise) + title, meta description, link/image counts — context-ready content for agents, stdlib extraction, no third parties. $0.005 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/historical-weather",
+   "name": "historical-weather",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "5000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA historical-weather: verified historical weather for any place and date (1940 → ~5 days ago) from the ERA5 reanalysis — tmax/tmin, precipitation, max wind. For climate-market backtesting and claim verification. Source: open-meteo archive, free, no key. $0.005 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/air-quality",
+   "name": "air-quality",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "5000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA air-quality: live air quality for any city or lat,lon — PM2.5/PM10/ozone/NO2, EU and US AQI, and a WHO-threshold operational verdict (good/moderate/harmful). Source: open-meteo Air Quality (CAMS/ESA Copernicus), free, no key. $0.005 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/ecb-macro",
+   "name": "ecb-macro",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "5000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA ecb-macro: official eurozone macro from the ECB data warehouse — HICP inflation, MRR policy rate, 10Y govt yield, each with previous value, change and direction. For macro/rates agents and prediction markets. Official free source, no key. $0.005 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/defi-yields",
+   "name": "defi-yields",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "5000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA defi-yields: stablecoin DeFi yields ranked with a risk outlier detector — APY vs class median (>=3x median = the excess yield IS the risk price). Only pools with TVL >= $10M. Source: DefiLlama, free, no key. $0.005 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/tor-fetch",
+   "name": "tor-fetch",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "5000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA tor-fetch: fetch any URL (including .onion) via Tor AND directly, compared side by side — status, size, and divergence flag (geo-block / soft censorship detection). Access onion intel sources with no clearnet route. $0.005 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/asset-risk",
+   "name": "asset-risk",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "30000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA asset-risk: geoint risk verdict by zone (gibraltar, bab-el-mandeb, bosphorus, algeciras...) or lat/lon+bbox — confidence measured by AGREEMENT between independent sources, discrepancies declared (the moat). $0.03 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/endpoint-trust",
+   "name": "endpoint-trust",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "5000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA endpoint-trust: trust verdict for any x402 endpoint before paying it — 402 correctness, valid accepts/payTo, bazaar extensions, agent-card published, latency. Observed behavior, not declarations. The pre-payment check for buying agents. $0.005 USDC x402 Base."
+  },
+  {
+   "resource": "https://api.hergertsynthora.com/v1/daily-intel-brief",
+   "name": "daily-intel-brief",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "100000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ],
+   "description": "SYNTHORA daily-intel-brief: the daily intelligence briefing in ONE call — funding spreads cross-venue, stablecoin depeg radar, US funding stress (SOFR-EFFR), chokepoint status (PortWatch), narrative tension (GDELT), plus executive alerts. Each block declares its verified sources. What a trading agent reads every morning. $0.10 USDC x402 Base."
+  },
+  {
+   "resource": "https://pre-trade-safety.hergertsynthora.com/service",
+   "name": "pre-trade-safety",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "250000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://counterparty-clearance.hergertsynthora.com/service",
+   "name": "counterparty-clearance",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "100000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://counterparty-attestation.hergertsynthora.com/service",
+   "name": "counterparty-attestation",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "500000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://resolution-oracle.hergertsynthora.com/service",
+   "name": "resolution-oracle",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "250000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://osint-flash.hergertsynthora.com/service",
+   "name": "osint-flash",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "250000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  },
+  {
+   "resource": "https://osint-deep.hergertsynthora.com/service",
+   "name": "osint-deep",
+   "mimeType": "application/json",
+   "maxTimeoutSeconds": 300,
+   "accepts": [
+    {
+     "scheme": "exact",
+     "network": "eip155:8453",
+     "maxAmountRequired": "990000",
+     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06"
+    }
+   ]
+  }
+ ],
+ "products": [
+  {
+   "id": "agentcard",
+   "name": "Agentcard",
+   "endpoint": "https://agentcard.hergertsynthora.com/service",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "data",
+   "description": "Agent Card Validator (A2A): given an Agent Card URL or JSON, deterministically validates it against the A2A spec — required fields, skill schemas, endpoint reachability, security schemes, provider transparency — and returns a compatibility_score, schema_errors and warnings. The trust layer for the agent economy. Deterministic, Ed25519-signed. 0.01 USDC via x402 on Base. SYNTHORA.",
+   "tags": [
+    "agentcard"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  },
+  {
+   "id": "amlscreen",
+   "name": "Amlscreen",
+   "endpoint": "https://amlscreen.hergertsynthora.com/service",
+   "price_usd": 0.1,
+   "price_atomic": 100000,
+   "category": "security",
+   "description": "Screen a crypto wallet address against global sanctions and illicit-activity intelligence. Cross-checks the on-chain Chainalysis sanctions oracle, TRM screening, OFAC SDN and GoPlus address flags (mixer, phishing, laundering), returning a sanctioned yes/no, matched lists and an AML risk score. Use it for AML compliance, sanctions screening and KYT before onboarding or paying an address. Ed25519-signed. 0.10 USDC on Base.",
+   "tags": [
+    "AML screening",
+    "sanctions screening",
+    "wallet risk / sanctions screening",
+    "OFAC SDN",
+    "Chainalysis",
+    "TRM",
+    "KYT",
+    "illicit activity"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://amlscreen.hergertsynthora.com/service. Pay 0.001 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "bridgerisk",
+   "name": "Bridgerisk",
+   "endpoint": "https://bridgerisk.hergertsynthora.com/service",
+   "price_usd": 0.1,
+   "price_atomic": 100000,
+   "category": "security",
+   "description": "Assess the security risk of a cross-chain bridge before routing funds through it. Combines live DefiLlama TVL and audit status with the full bridge-hack incident history and known-exploit analysis into a 0-100 risk score, a safe/caution/high_risk/critical signal and explicit risk factors. Use it for bridge risk and cross-chain due diligence. Ed25519-signed. 0.10 USDC on Base.",
+   "tags": [
+    "bridge risk",
+    "cross-chain bridge safety",
+    "bridge hack history",
+    "cross-chain due diligence"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://bridgerisk.hergertsynthora.com/service. Pay 0.001 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "businessrisk",
+   "name": "Businessrisk",
+   "endpoint": "https://businessrisk.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "security",
+   "description": "Counterparty business-risk verdict: one call fuses OFAC/EU sanctions screening, on-chain wallet reputation, and token/pool contract risk into a single weighted risk_score (0-100), a kill/pivot/proceed verdict, and reason_codes naming which sub-signal drove it. Weights: sanctions 0.50, wallet 0.30, token 0.20, renormalised if a leg is unavailable; a sanctions hit is a hard KILL floor. Degrades gracefully — a failed sub-check is dropped, never crashes the verdict. Deterministic, no LLM, Ed25519-signed. 0.05 USDC via x402 on Base. SYNTHORA.",
+   "tags": [
+    "counterparty risk",
+    "business risk score",
+    "sanctions screening",
+    "wallet reputation",
+    "token risk"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://businessrisk.hergertsynthora.com/service. Pay 0.001 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "coingecko-crypto-price-history",
+   "name": "Coingecko Crypto Price History",
+   "endpoint": "https://coingecko-crypto-price-history.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "data",
+   "description": "Historical daily price, market-cap and volume time-series for a coin in any fiat currency from CoinGecko's keyless market_chart endpoint (JSON). Serves autonomous crypto-vs-fiat trend agents, backtesting bots, and agent-to-agent analytics needing multi-day price series without a key. First 3 calls FREE per wallet — send header X-WALLET: 0x<addr>. No charge on upstream failure.",
+   "tags": [
+    "coingecko"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  },
+  {
+   "id": "commodity-macro",
+   "name": "Commodity Macro",
+   "endpoint": "https://commodity-macro.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "data",
+   "description": "Gold, silver and major macro FX reference in one call for portfolio-hedging agents. ECB + metals reference. Free source. $0.05 USDC via x402 on Base. SYNTHORA. First 3 calls FREE per wallet — send header X-WALLET: 0x<addr>. No charge on upstream failure.",
+   "tags": [
+    "commodity"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  },
+  {
+   "id": "contractwatch",
+   "name": "Contractwatch",
+   "endpoint": "https://contractwatch.hergertsynthora.com/service",
+   "price_usd": 0.32,
+   "price_atomic": "320000",
+   "category": "security",
+   "description": "SYNTHORA contractwatch: verdict de seguridad de contrato on-chain que SI lee el bytecode (eth_getCode) y slots de proxy (EIP-1967/zeppelinos/UUPS/beacon), owner() y privilegios ocultos: honeypot, rug-pull, hidden mint. Correlacionado entre fuentes independientes y firmado Ed25519. $0.32 USDC x402 Base. Input: {\"address\": \"0x...\", \"chain\": \"base\"}.",
+   "tags": [
+    "contract monitoring",
+    "honeypot change",
+    "ownership change",
+    "proxy upgrade detection",
+    "smart contract watch",
+    "rug alert"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://contractwatch.hergertsynthora.com/service. Pay 0.001 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "cryptonews",
+   "name": "Cryptonews",
+   "endpoint": "https://cryptonews.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "finance",
+   "description": "Real-time crypto news headlines with sentiment, ranked by importance. Aggregates keyless RSS feeds (CryptoPanic, CoinDesk, CoinTelegraph, Decrypt, Bitcoin Magazine) into deduplicated, freshness-and-source-weighted top headlines, each scored with a lexical bull/bear sentiment (very_bullish..very_bearish) plus an overall market sentiment. Filter by asset (BTC, ETH, SOL, XRP, and more) to get only headlines about that coin. Built for trading and quant agents that need a cheap, fast crypto news + sentiment pulse. Ed25519-signed. 0.50 USDC on Base.",
+   "tags": [
+    "crypto news",
+    "news sentiment",
+    "headline sentiment",
+    "bullish bearish"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://cryptonews.hergertsynthora.com/service. Pay 0.001 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "defidata",
+   "name": "Defidata",
+   "endpoint": "https://defidata.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "finance",
+   "description": "DeFi market-data feed: perp open interest, funding rate, mark price and a directional signal across top assets (BTC/ETH/SOL/…), plus optional per-asset verdict. Deterministic, Ed25519-signed. 0.25 USDC via x402 on Base. SYNTHORA. First 3 calls FREE per wallet — send header 'X-WALLET: 0x<your Base address>' (no payment); after that  per call.",
+   "tags": [
+    "perp open interest",
+    "funding rate",
+    "mark price",
+    "DeFi market data",
+    "derivatives data"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://defidata.hergertsynthora.com/service. Pay 0.001 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "deliver",
+   "name": "Deliver",
+   "endpoint": "https://deliver.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "data",
+   "description": "Audit a domain's email deliverability and sender reputation. Checks SPF, DKIM selectors, DMARC policy strength (reject/quarantine/none), BIMI, MX and PTR records, returning a spam score and prioritized fixes. Use it to assess inbox placement, email authentication and domain reputation before sending. Deterministic DNS-only, Ed25519-signed. 0.05 USDC on Base. First 3 calls FREE per wallet — send header X-WALLET: 0x<your Base address> (no payment); then \\ per call.",
+   "tags": [
+    "deliver"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  },
+  {
+   "id": "derivbundle",
+   "name": "Derivbundle",
+   "endpoint": "https://derivbundle.hergertsynthora.com/service",
+   "price_usd": 1.6,
+   "price_atomic": 1600000,
+   "category": "finance",
+   "description": "Pre-trade intel bundle: crypto-news + Hyperliquid perps + open interest + funding + DeFi market data + gas oracle for an asset in ONE $0.002 call (cheaper + fewer round-trips than buying each separately). 5 live datasets, partial degradation (never fails whole), Ed25519-signed. First 3 calls FREE per wallet via X-WALLET header. SYNTHORA.",
+   "tags": [
+    "pre-trade intel bundle",
+    "perps funding open interest bundle",
+    "crypto intel bundle",
+    "one call crypto data"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://derivbundle.hergertsynthora.com/service. Pay 0.001 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "dex-pair-price",
+   "name": "Dex Pair Price",
+   "endpoint": "https://dex-pair-price.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "finance",
+   "description": "Real-time on-chain DEX price, liquidity and 24h volume for any pool/token on any chain via GeckoTerminal. For DeFi routing agents. Free source. $0.05 USDC via x402 on Base. SYNTHORA. First 3 calls FREE per wallet — send header X-WALLET: 0x<addr>. No charge on upstream failure.",
+   "tags": [
+    "DEX price",
+    "pool liquidity",
+    "on-chain price",
+    "token price",
+    "DEX pair"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://dex-pair-price.hergertsynthora.com/service. Pay 0.001 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "fear-greed",
+   "name": "Fear Greed",
+   "endpoint": "https://fear-greed.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "finance",
+   "description": "Real-time crypto Fear & Greed index (0-100) with classification and history. Market-sentiment signal for allocation agents. Free source, deterministic. $0.05 USDC via x402 on Base. SYNTHORA. First 3 calls FREE per wallet — send header X-WALLET: 0x<addr>. No charge on upstream failure.",
+   "tags": [
+    "fear and greed index",
+    "crypto sentiment",
+    "market sentiment"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://fear-greed.hergertsynthora.com/service. Pay 0.001 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "funding-rates",
+   "name": "Funding Rates",
+   "endpoint": "https://funding-rates.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "finance",
+   "description": "Real-time perpetual funding rates + mark price for any Binance futures symbol. Essential for delta-neutral and basis-trading agents. Free source, deterministic, instant JSON. $0.05 USDC via x402 on Base. SYNTHORA. First 3 calls FREE per wallet — send header X-WALLET: 0x<addr>. No charge on upstream failure.",
+   "tags": [
+    "perp funding rate",
+    "perpetual funding",
+    "funding rate",
+    "delta neutral",
+    "basis trading",
+    "mark price"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://funding-rates.hergertsynthora.com/service. Pay 0.001 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "inference",
+   "name": "Inference",
+   "endpoint": "https://inference.hergertsynthora.com/service",
+   "price_usd": 0.02,
+   "price_atomic": 20000,
+   "category": "data",
+   "description": "SYNTHORA Inference Router: pay-per-prompt LLM inference, no API keys to manage. Sovereign constitution-tuned SYNTHORA-Qwen model, local, Ed25519-signed output. POST {\"prompt\":\"...\",\"system\":\"...\",\"max_tokens\":200}.",
+   "tags": [
+    "inference"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  },
+  {
+   "id": "lifi-bridge-route-quote",
+   "name": "Lifi Bridge Route Quote",
+   "endpoint": "https://lifi-bridge-route-quote.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "data",
+   "description": "Returns the best cross-chain bridge/swap route for a given source chain, destination chain, tokens and amount from LI.FI, including chosen bridge tool, estimated output, fees and gas. Powers autonomous cross-chain agents and agent-to-agent treasury movers that pick the cheapest, fastest bridge path for a transfer. First 3 calls FREE per wallet — send header X-WALLET: 0x<addr>. No charge on upstream failure.",
+   "tags": [
+    "lifi"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  },
+  {
+   "id": "market-dominance",
+   "name": "Market Dominance",
+   "endpoint": "https://market-dominance.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "finance",
+   "description": "Real-time global crypto stats: total market cap, 24h volume, BTC/ETH dominance, active coins. Macro context for portfolio agents. Free source. $0.05 USDC via x402 on Base. SYNTHORA. First 3 calls FREE per wallet — send header X-WALLET: 0x<addr>. No charge on upstream failure.",
+   "tags": [
+    "BTC dominance",
+    "market cap",
+    "global crypto stats"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://market-dominance.hergertsynthora.com/service. Pay 0.001 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "mcpscan",
+   "name": "Mcpscan",
+   "endpoint": "https://mcpscan.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "security",
+   "description": "MCP Server Security Scan: probes an MCP server (JSON-RPC initialize + tools/list) and applies a deterministic rule engine over its tools — embedded secrets, dangerous shell/exec/filesystem capabilities, prompt-injection surface, hidden unicode, permissive input schemas, and auth/TLS/CORS headers — returning a security_score + findings[]. The trust layer for the agent economy. Zero-LLM, Ed25519-signed. 0.05 USDC via x402 on Base. SYNTHORA.",
+   "tags": [
+    "MCP server security",
+    "MCP scan",
+    "tool security audit",
+    "prompt injection surface",
+    "agent security"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://mcpscan.hergertsynthora.com/service. Pay 0.001 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "mtasts",
+   "name": "Mtasts",
+   "endpoint": "https://mtasts.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "data",
+   "description": "SMTP transport-security audit: MTA-STS (RFC 8461) + TLS-RPT (RFC 8460). Resolves the policy DNS records, fetches and parses the well-known policy file, cross-validates the policy mx: patterns against the domain's real MX, and returns an enforce/report verdict. Complements SPF/DKIM/DMARC auditing with the TLS transport layer. Deterministic, Ed25519-signed. 0.05 USDC via x402 on Base. SYNTHORA.",
+   "tags": [
+    "mtasts"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  },
+  {
+   "id": "ohlcv-candles",
+   "name": "Ohlcv Candles",
+   "endpoint": "https://ohlcv-candles.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "finance",
+   "description": "Real-time and historical OHLCV candles (open/high/low/close/volume) for any crypto pair, any interval. For backtesting and signal agents. Free source. $0.05 USDC via x402 on Base. SYNTHORA. First 3 calls FREE per wallet — send header X-WALLET: 0x<addr>. No charge on upstream failure.",
+   "tags": [
+    "OHLCV candles",
+    "OHLCV candles for backtest",
+    "candlestick data",
+    "price history",
+    "backtest data",
+    "open high low close volume"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://ohlcv-candles.hergertsynthora.com/service. Pay 0.001 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "onchain",
+   "name": "Onchain",
+   "endpoint": "https://onchain.hergertsynthora.com/service",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "data",
+   "description": "SYNTHORA Onchain Primitives: multichain (Base/Ethereum/Polygon/Arbitrum/Optimism) transaction receipts, tx lookup, wallet nonce, contract/proxy (EIP-1967) detection, ENS resolution, ERC20 + native balances, contract introspection. Deterministic, Ed25519-signed. 0.004 USDC via x402 on Base. First 3 calls FREE per wallet — send header 'X-WALLET: 0x<your Base address>' (no payment); after that  per call.",
+   "tags": [
+    "on-chain primitives",
+    "transaction receipt",
+    "wallet nonce",
+    "ENS resolution",
+    "ERC20 balance",
+    "contract detection",
+    "EIP-1967 proxy"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://onchain.hergertsynthora.com/service. Pay 0.001 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "openinterest",
+   "name": "Openinterest",
+   "endpoint": "https://openinterest.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "finance",
+   "description": "SYNTHORA Open Interest Oracle: live perpetual futures open interest, funding rates, mark price, premium and crowded long/short signal for 230+ assets via Hyperliquid. Ed25519-signed. 0.10 USDC via x402 on Base. First 3 calls FREE per wallet — send header 'X-WALLET: 0x<your Base address>' (no payment); after that  per call.",
+   "tags": [
+    "open interest",
+    "open interest crowded long/short",
+    "crowded long short",
+    "perp open interest",
+    "funding rate",
+    "positioning signal",
+    "Hyperliquid"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://openinterest.hergertsynthora.com/service. Pay 0.001 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "perps",
+   "name": "Perps",
+   "endpoint": "https://perps.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "finance",
+   "description": "SYNTHORA Perps Snapshot: live Hyperliquid perpetual futures snapshot per asset — mark price, oracle price, hourly funding rate (with 8h and APR derivations), open interest (USD), premium and 24h volume for 230+ perps, keyless. Complements the Open Interest oracle with the raw single-shot data a trading agent needs. Ed25519-signed. 0.10 USDC via x402 on Base.",
+   "tags": [
+    "perp funding rate",
+    "perpetual futures",
+    "mark price",
+    "open interest",
+    "Hyperliquid perps",
+    "funding APR",
+    "basis trade"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://perps.hergertsynthora.com/service. Pay 0.001 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "polymarket-markets",
+   "name": "Polymarket Markets",
+   "endpoint": "https://polymarket-markets.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "data",
+   "description": "Search prediction markets ACROSS PLATFORMS (Polymarket + Kalshi) in one call: live prices, implied probability, volume, liquidity, end date and market conviction. Server-side search that actually finds the market (bitcoin, fed, election, geopolitics). For trading and forecasting agents tracking event odds. $0.05 USDC x402 Base. Input: {\"input\": \"bitcoin\"} (optional filter).",
+   "tags": [
+    "prediction-markets",
+    "polymarket",
+    "kalshi",
+    "multi-platform",
+    "event-odds",
+    "forecasting",
+    "trading",
+    "x402",
+    "synthora"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  },
+  {
+   "id": "prediction",
+   "name": "Prediction",
+   "endpoint": "https://prediction.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "data",
+   "description": "Prediction Market Probability Oracle — real Polymarket odds (p_yes/p_no, volume, liquidity), not LLM guesses. POST a question; Ed25519-signed. For agents needing calibrated event probabilities.",
+   "tags": [
+    "prediction"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  },
+  {
+   "id": "prediction-markets",
+   "name": "Prediction Markets",
+   "endpoint": "https://prediction-markets.hergertsynthora.com/service",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "data",
+   "description": "Real-time prediction-market odds and liquidity from Polymarket for any topic (elections, crypto, macro). For forecasting and hedging agents. Free source. $0.02 USDC via x402 on Base. SYNTHORA. First 3 calls FREE per wallet — send header X-WALLET: 0x<addr>. No charge on upstream failure.",
+   "tags": [
+    "prediction"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  },
+  {
+   "id": "protocol-revenue",
+   "name": "Protocol Revenue",
+   "endpoint": "https://protocol-revenue.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "finance",
+   "description": "Real-time fee revenue and 24h/7d/30d earnings for any DeFi protocol via DefiLlama Fees API.",
+   "tags": [
+    "protocol revenue",
+    "protocol fees",
+    "DeFi earnings"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://protocol-revenue.hergertsynthora.com/service. Pay 0.001 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "protocol-tvl",
+   "name": "Protocol Tvl",
+   "endpoint": "https://protocol-tvl.hergertsynthora.com/service",
+   "price_usd": 0.02,
+   "price_atomic": 20000,
+   "category": "finance",
+   "description": "Total Value Locked for any DeFi protocol, per-chain breakdown, historical trend via DefiLlama. First 3 calls FREE per wallet — send header X-WALLET: 0x<addr>. No charge on upstream failure.",
+   "tags": [
+    "protocol TVL",
+    "total value locked",
+    "DeFi protocol TVL"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://protocol-tvl.hergertsynthora.com/service. Pay 0.001 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "regwatch",
+   "name": "Regwatch",
+   "endpoint": "https://regwatch.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "data",
+   "description": "x402 Registry Watch: signed Ed25519 deltas of the x402/A2A endpoint registry (payTo/listings/endpoints). Pay-per-event feed pull. POST {\"since\":\"<cursor|ISO>\",\"slug\":\"<slug>\",\"limit\":<=200}.",
+   "tags": [
+    "regwatch"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  },
+  {
+   "id": "slippage",
+   "name": "Slippage",
+   "endpoint": "https://slippage.hergertsynthora.com/service",
+   "price_usd": 0.1,
+   "price_atomic": 100000,
+   "category": "finance",
+   "description": "Slippage and price-impact oracle for any crypto pair: estimates expected slippage, price impact and effective execution price for a given trade size from live order-book depth and liquidity. Answers 'expected slippage for this swap', 'price impact of my order', 'orderbook liquidity / slippage', 'how much will I move the market' for execution and routing agents. Deterministic, Ed25519-signed. $0.10 USDC via x402 on Base. First 3 calls FREE per wallet — send header X-WALLET: 0x<your Base address>. No charge on upstream failure. SYNTHORA.",
+   "tags": [
+    "slippage estimate",
+    "orderbook liquidity / slippage",
+    "price impact",
+    "expected slippage",
+    "execution cost",
+    "slippage oracle"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://slippage.hergertsynthora.com/service. Pay 0.001 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "tokenrisk",
+   "name": "Tokenrisk",
+   "endpoint": "https://tokenrisk.hergertsynthora.com/service",
+   "price_usd": 0.32,
+   "price_atomic": 320000,
+   "category": "security",
+   "description": "Detect honeypots, rug-pulls and malicious tokens before buying or approving. Combines GoPlus token-security (honeypot simulation, buy/sell tax, mintable, pausable, hidden owner, LP concentration, holder count) with bytecode analysis and owner-renounce checks into a safe/caution/risky/rug_pull verdict. Use it for token security, rug-pull detection and smart-contract risk. Ed25519-signed. 0.32 USDC on Base.",
+   "tags": [
+    "token security",
+    "is this token a honeypot",
+    "honeypot check",
+    "rug pull detection",
+    "token risk score",
+    "token security check before approve",
+    "buy sell tax",
+    "mintable pausable",
+    "hidden owner",
+    "ownership renounced",
+    "smart contract risk",
+    "GoPlus"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://tokenrisk.hergertsynthora.com/service. Pay 0.001 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "translate",
+   "name": "Translate",
+   "endpoint": "https://translate.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "data",
+   "description": "Translate any text between 100+ languages with automatic source-language detection. Preserves tone, formatting and placeholders. Deterministic JSON output, Ed25519-signed. 0.05 USDC via x402 on Base. SYNTHORA.",
+   "tags": [
+    "translate"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  },
+  {
+   "id": "usgs-realtime-streamflow",
+   "name": "Usgs Realtime Streamflow",
+   "endpoint": "https://usgs-realtime-streamflow.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "data",
+   "description": "Returns real-time instantaneous streamflow (discharge) and gage height for any USGS water-monitoring site as JSON from USGS Water Services, keyless. Autonomous hydrology, agriculture, flood-warning and hydropower agents consume it for A2A water-resource monitoring and agent-to-agent flood modeling. Ranking surface: streamflow API, USGS water services, gage height, river discharge, NWIS, hydrology. First 3 calls FREE per wallet — send header X-WALLET: 0x<addr>. No charge on upstream failure.",
+   "tags": [
+    "usgs"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  },
+  {
+   "id": "walletrep",
+   "name": "Walletrep",
+   "endpoint": "https://walletrep.hergertsynthora.com/service",
+   "price_usd": 0.32,
+   "price_atomic": 320000,
+   "category": "security",
+   "description": "Score the risk and reputation of any EVM wallet address before you transact with it. Combines on-chain sanctions screening (Chainalysis oracle, TRM, OFAC) and GoPlus address-security flags (phishing, blacklist, mixer, malicious activity) with contract-vs-EOA detection, transaction history and balance into a 0-100 score and clean/suspicious/blacklisted tier. Use it for wallet screening, counterparty due diligence and KYT. Ed25519-signed. 0.32 USDC on Base.",
+   "tags": [
+    "wallet risk score",
+    "wallet reputation",
+    "wallet risk / sanctions screening",
+    "sanctions screening",
+    "OFAC",
+    "counterparty risk",
+    "phishing address",
+    "blacklist check",
+    "KYT"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://walletrep.hergertsynthora.com/service. Pay 0.001 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "websearch",
+   "name": "Websearch",
+   "endpoint": "https://websearch.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "data",
+   "description": "Keyless web search for AI agents, pay-per-call, no API key and no signup: natural-language query in, ranked organic results out (title, url, snippet) with source list. Neutral web access for research, RAG grounding and fact-check agents that cannot hold search API keys. $0.05 USDC x402 Base. Input: {\"input\": \"your query\"}.",
+   "tags": [
+    "web-search",
+    "search-api",
+    "keyless",
+    "rag",
+    "research",
+    "fact-check",
+    "agents",
+    "x402",
+    "synthora"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  },
+  {
+   "id": "yahoo-equity-delayed-quote",
+   "name": "Yahoo Equity Delayed Quote",
+   "endpoint": "https://yahoo-equity-delayed-quote.hergertsynthora.com/service",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "data",
+   "description": "Delayed real-time quote and intraday OHLCV for any stock or ETF ticker (price, day high/low, 52-week range, volume) from Yahoo Finance's keyless chart endpoint (JSON). Powers autonomous equity-screening agents and agent-to-agent trading bots needing per-symbol quotes without an API key. First 3 calls FREE per wallet — send header X-WALLET: 0x<addr>. No charge on upstream failure.",
+   "tags": [
+    "yahoo"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  },
+  {
+   "id": "weather-now",
+   "name": "Weather Now",
+   "endpoint": "https://api.hergertsynthora.com/v1/weather-now",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "data",
+   "description": "SYNTHORA weather-now: current weather for any city or lat,lon — temperature, feels-like, humidity, wind, WMO condition code in plain text, plus the 6h temperature trend (rising/falling/flat), which is the actionable part. Free source: open-meteo.com (ECMWF/NOAA/DWD), no API key, timestamped.",
+   "tags": [
+    "data",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "stablecoin-supply",
+   "name": "Stablecoin Supply",
+   "endpoint": "https://api.hergertsynthora.com/v1/stablecoin-supply",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "defi",
+   "description": "SYNTHORA stablecoin-supply: circulating USD supply, price and peg deviation in basis points for the top stablecoins (USDT, USDC, DAI...), with a depeg alert flag above 50 bps. Optional symbol filter. Free source: stablecoins.llama.fi (DefiLlama), no API key, timestamped.",
+   "tags": [
+    "defi",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "polymarket-whales",
+   "name": "Polymarket Whales",
+   "endpoint": "https://api.hergertsynthora.com/v1/polymarket-whales",
+   "price_usd": 0.15,
+   "price_atomic": 150000,
+   "category": "prediction",
+   "description": "Live whale-tracking on Polymarket: the latest large trades (default >= 5000 USD, tunable via min_usd) with wallet, side, outcome, size, price, USD value, market title/slug and tx hash, straight from Polymarket public trades data API. Built for prediction-market agents that track smart money before trading. No charge on service failure. Ed25519-signed. $0.15 USDC per call via x402 on Base. Free trial: 3 calls per wallet with header X-WALLET.",
+   "tags": [
+    "prediction",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "polymarket-odds-movers",
+   "name": "Polymarket Odds Movers",
+   "endpoint": "https://api.hergertsynthora.com/v1/polymarket-odds-movers",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "prediction",
+   "description": "Polymarket odds movers: active markets ranked by biggest price swing in the last 1h / 24h / 1wk (window param), with yes price, change and direction, best bid/ask, spread, 24h volume, liquidity and end date. The momentum signal prediction bots scan before entering a market. No charge on service failure. Ed25519-signed. $0.10 USDC per call via x402 on Base. Free trial: 3 calls per wallet with header X-WALLET.",
+   "tags": [
+    "prediction",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "polymarket-resolution-watch",
+   "name": "Polymarket Resolution Watch",
+   "endpoint": "https://api.hergertsynthora.com/v1/polymarket-resolution-watch",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "prediction",
+   "description": "Polymarket resolution watch: markets ending within N days (default 7) with UMA resolution status (proposed/disputed), UMA bond and reward, hours to resolution, last price, 24h volume, liquidity and a uma_risk flag for contested or undecided resolutions. Lets prediction agents avoid or exploit resolution risk. No charge on service failure. Ed25519-signed. $0.10 USDC per call via x402 on Base. Free trial: 3 calls per wallet with header X-WALLET.",
+   "tags": [
+    "prediction",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "dispute-risk",
+   "name": "Dispute Risk",
+   "endpoint": "https://api.hergertsynthora.com/v1/dispute-risk",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "prediction",
+   "description": "Resolution/dispute risk score (0-100) for Polymarket markets: UMA status (proposed/disputed), UMA bond and reward, rules-text ambiguity (length, deadline date, declared resolution source), top-3 holder concentration as a vote-manipulation proxy, and days to resolution. Pass a market_slug or condition_id for one market, or nothing to scan the top markets resolving in the next 14 days. Built for prediction agents that price resolution risk before trading. No charge on service failure. Ed25519-sign",
+   "tags": [
+    "prediction",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "insider-radar",
+   "name": "Insider Radar",
+   "endpoint": "https://api.hergertsynthora.com/v1/insider-radar",
+   "price_usd": 0.03,
+   "price_atomic": 30000,
+   "category": "prediction",
+   "description": "Insider-style trade detection on Polymarket: scans the latest large fills (min_usd, default 10000 USD) over lookback_hours (default 24) and flags wallets that are fresh (few lifetime trades), sized big vs the market 24h volume, or entered at extreme odds right before the market moved. Each alert carries wallet, market, size, tx hash, a 0-100 severity score and explicit reasons; approximations are declared in the methodology field. For prediction agents tracking informed money. No charge on servi",
+   "tags": [
+    "prediction",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "market-resolution",
+   "name": "Market Resolution",
+   "endpoint": "https://api.hergertsynthora.com/v1/market-resolution",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "prediction",
+   "description": "Canonical resolution status for one Polymarket market (market_slug or condition_id required): market state (active/resolving/closed), UMA resolution statuses (proposed/disputed), end date and hours to resolution, declared resolution source plus sources found in the rules text, current outcome prices, UMA bond/reward and estimated payout per outcome (1.00 USDC per winning share, implied EV). The call a prediction bot makes before and after trading a market. No charge on service failure. Ed25519-s",
+   "tags": [
+    "prediction",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "chokepoint-transits",
+   "name": "Chokepoint Transits",
+   "endpoint": "https://api.hergertsynthora.com/v1/chokepoint-transits",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "trade",
+   "description": "SYNTHORA chokepoint-transits: daily vessel transits through the 28 global maritime chokepoints (Hormuz, Suez, Panama, Bab el-Mandeb, Malacca...). Latest settled day, 7d moving average, deviation vs 30d baseline, per-vessel-type breakdown (a tanker-only drop at Hormuz is the tradeable signal) and anomaly flag. Source: IMF PortWatch (satellite AIS) — the canonical resolution source of Polymarket chokepoint markets. $0.01 USDC via x402 on Base.",
+   "tags": [
+    "shipping",
+    "chokepoints",
+    "portwatch",
+    "trade",
+    "polymarket",
+    "geopolitics",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "vessel-sanctions",
+   "name": "Vessel Sanctions Screen",
+   "endpoint": "https://api.hergertsynthora.com/v1/vessel-sanctions",
+   "price_usd": 0.03,
+   "price_atomic": 30000,
+   "category": "compliance",
+   "description": "SYNTHORA vessel-sanctions: screen any vessel (IMO or name) against the OFAC SDN sanctioned-vessels list (1,524 ships tracked) — the compliance check before touching tanker/shipping trades or chokepoint bets. List mode: full sanctioned-fleet snapshot. Source: OFAC SDN (US Treasury, free, no key). $0.03 USDC via x402 on Base.",
+   "tags": [
+    "sanctions",
+    "ofac",
+    "vessels",
+    "tankers",
+    "compliance",
+    "shipping",
+    "polymarket",
+    "osint",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "gdelt-tension",
+   "name": "GDELT Tension Index",
+   "endpoint": "https://api.hergertsynthora.com/v1/gdelt-tension",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "geopolitics",
+   "description": "SYNTHORA gdelt-tension: geopolitical tension index for any topic/country — news-mention spike vs 7d baseline, average tone shift, escalation flag and the headlines causing it. The early signal for Polymarket geopolitical markets (high variance, high spread). Source: GDELT DOC 2.0 (100+ languages, free, no key), 6h-prefetched cache for reliability. $0.005 USDC via x402 on Base.",
+   "tags": [
+    "geopolitics",
+    "gdelt",
+    "news",
+    "tension",
+    "polymarket",
+    "osint",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "volume-anomaly",
+   "name": "Volume Anomaly",
+   "endpoint": "https://api.hergertsynthora.com/v1/volume-anomaly",
+   "price_usd": 0.03,
+   "price_atomic": 30000,
+   "category": "crypto",
+   "description": "SYNTHORA volume-anomaly: crypto volume-anomaly alerts for arbitrage bots — assets whose 24h turnover (volume/mcap) is anomalously high vs their cohort (z-score), early pump/unusual-activity signal. Composite of CoinGecko markets + DeFiLlama DEX volume. Keyless. $0.03 USDC x402 Base.",
+   "tags": [
+    "crypto",
+    "intel",
+    "multifuente",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "emerging-protocols",
+   "name": "Emerging Protocols",
+   "endpoint": "https://api.hergertsynthora.com/v1/emerging-protocols",
+   "price_usd": 0.03,
+   "price_atomic": 30000,
+   "category": "defi",
+   "description": "SYNTHORA emerging-protocols: early detection of young DeFi protocols with accelerating TVL (on-chain momentum) before they get big — for MEV searchers and alpha bots. Ranked by momentum+acceleration+youth, mega-protocol noise filtered. Source: DeFiLlama. $0.03 USDC x402 Base.",
+   "tags": [
+    "defi",
+    "intel",
+    "multifuente",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "tvl-concentration",
+   "name": "Tvl Concentration",
+   "endpoint": "https://api.hergertsynthora.com/v1/tvl-concentration",
+   "price_usd": 0.03,
+   "price_atomic": 30000,
+   "category": "defi",
+   "description": "SYNTHORA tvl-concentration: DeFi TVL drain/concentration signal — protocols anomalously losing TVL while token price has not yet repriced (temporal edge window). For liquidation and risk bots. Source: DeFiLlama. $0.03 USDC x402 Base.",
+   "tags": [
+    "defi",
+    "intel",
+    "multifuente",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "space-weather-risk",
+   "name": "Space Weather Risk",
+   "endpoint": "https://api.hergertsynthora.com/v1/space-weather-risk",
+   "price_usd": 0.03,
+   "price_atomic": 30000,
+   "category": "science",
+   "description": "SYNTHORA space-weather-risk: composite operational space-weather risk verdict fusing 4 NOAA SWPC feeds (Kp/G scale, GOES X-ray flare class, solar wind, proton flux) — for defense, aviation, satellites, power grid, precision GPS. $0.01 USDC x402 Base.",
+   "tags": [
+    "science",
+    "intel",
+    "multifuente",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "who-gho-timeseries",
+   "name": "Who Gho Timeseries",
+   "endpoint": "https://api.hergertsynthora.com/v1/who-gho-timeseries",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "health",
+   "description": "SYNTHORA who-gho-timeseries: WHO Global Health Observatory indicator time series by country (life expectancy etc.) — public-health data for research and policy agents. $0.005 USDC x402 Base.",
+   "tags": [
+    "health",
+    "intel",
+    "multifuente",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "exchange-rates-verified",
+   "name": "Exchange Rates Verified",
+   "endpoint": "https://api.hergertsynthora.com/v1/exchange-rates-verified",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "fintech",
+   "description": "SYNTHORA exchange-rates-verified: FX rates for 160+ currencies CROSS-VERIFIED between two independent sources (ECB official fixing via frankfurter.app vs market aggregate open.er-api.com) with per-currency deviation in bps and divergence alert >50 bps. The product is the discrepancy: a bad rate breaks a financial agent. Free sources, no key. $0.005 USDC x402 Base.",
+   "tags": [
+    "fintech",
+    "verificado",
+    "multifuente",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "usgs-earthquakes",
+   "name": "Usgs Earthquakes",
+   "endpoint": "https://api.hergertsynthora.com/v1/usgs-earthquakes",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "science",
+   "description": "SYNTHORA usgs-earthquakes: latest earthquakes (M>=4.5 default, tunable) with PAGER alert level, tsunami flag and ACTIVE SEISMIC CLUSTER detection (>=3 events same zone in 24h) — the actionable signal for insurance-risk and disaster prediction markets. Source: USGS FDSN (official US, real-time, no key). $0.005 USDC x402 Base.",
+   "tags": [
+    "science",
+    "verificado",
+    "multifuente",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "marine-wave-forecast",
+   "name": "Marine Wave Forecast",
+   "endpoint": "https://api.hergertsynthora.com/v1/marine-wave-forecast",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "shipping",
+   "description": "SYNTHORA marine-wave-forecast: sea state for any coast/port or chokepoint (Hormuz, Suez, Panama, Malacca, Gibraltar, Bab el-Mandeb, Dover presets) — wave height, period, swell, Douglas-scale verdict and navigability flag. Complements chokepoint-transits for shipping disruption markets. Source: open-meteo Marine (ECMWF/NOAA WaveWatch III, no key). $0.005 USDC x402 Base.",
+   "tags": [
+    "shipping",
+    "verificado",
+    "multifuente",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "port-watch",
+   "name": "Port Watch",
+   "endpoint": "https://api.hergertsynthora.com/v1/port-watch",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "trade",
+   "description": "SYNTHORA port-watch: daily port activity for any of 2,065 ports (Shanghai, Singapore, Rotterdam, LA, Long Beach presets + any name) — port calls, estimated import/export capacity (dwt), 7d moving average vs 30d baseline deviation and anomaly flag. Port volume leads official macro data by weeks: the input for trade/tariff/recession markets. Source: IMF PortWatch (satellite AIS, free, no key). $0.01 USDC x402 Base.",
+   "tags": [
+    "shipping",
+    "ports",
+    "portwatch",
+    "trade",
+    "macro",
+    "polymarket",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "chokepoint-risk",
+   "name": "Chokepoint Risk Verdict",
+   "endpoint": "https://api.hergertsynthora.com/v1/chokepoint-risk",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "intelligence",
+   "description": "SYNTHORA chokepoint-risk: SUPERCORRELATED risk verdict per maritime chokepoint (Hormuz, Suez, Panama, Bab el-Mandeb, Malacca, Gibraltar, Taiwan) — crosses REAL TRAFFIC (IMF PortWatch, canonical Polymarket resolution source) x NARRATIVE (GDELT global news spike+tone) x NAVIGABILITY (WaveWatch III sea state) into one score with confidence level. The alpha: narrative/traffic divergence (noise without disruption = market overreaction; silent disruption = early signal). Sources declared; degraded sources lower confidence. $0.05 USDC x402 Base.",
+   "tags": [
+    "intelligence",
+    "supercorrelated",
+    "chokepoints",
+    "polymarket",
+    "geopolitics",
+    "multifuente",
+    "verified",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "hurricane-odds",
+   "name": "Hurricane Odds",
+   "endpoint": "https://api.hergertsynthora.com/v1/hurricane-odds",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "weather",
+   "description": "SYNTHORA hurricane-odds: active tropical cyclones CROSS-VERIFIED — official NHC bulletin (category, wind, pressure, movement) crossed with an independent model (ECMWF via open-meteo) at the storm position; discrepancies >15 kt flagged. The input for Polymarket weather/climate markets. Sources: NHC + ECMWF, free, no key. $0.006 USDC x402 Base.",
+   "tags": [
+    "hurricane",
+    "weather",
+    "nhc",
+    "climate",
+    "polymarket",
+    "verified",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "fed-watch",
+   "name": "Fed Watch",
+   "endpoint": "https://api.hergertsynthora.com/v1/fed-watch",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "macro",
+   "description": "SYNTHORA fed-watch: US reference-rate funding pulse — SOFR/EFFR/TGCR/BGCR/OBFR with volumes, percentile dispersion and the SOFR-EFFR spread (the funding-stress signal before it hits the news). Cross-check of 5 independent official NY Fed series. The input for Fed/CPI prediction markets. Free official source, no key. $0.01 USDC x402 Base.",
+   "tags": [
+    "fed",
+    "sofr",
+    "effr",
+    "macro",
+    "rates",
+    "polymarket",
+    "verified",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "rwa-gap-watch",
+   "name": "RWA Gap Watch",
+   "endpoint": "https://api.hergertsynthora.com/v1/rwa-gap-watch",
+   "price_usd": 0.03,
+   "price_atomic": 30000,
+   "category": "intelligence",
+   "description": "SYNTHORA rwa-gap-watch: the gap between tokenized stocks (Ondo AAPLon, TSLAon, NVDAon, SPYon, HOODon...) trading 24/7 on-chain and their last official NYSE close — on-chain price discovery happens BEFORE TradFi opens (weekend/overnight edge for investors). Cross-verified: best-liquidity pool (DexScreener, multi-chain) x official close (Yahoo), zombie/fake pools detected and reported, per-asset confidence by liquidity. $0.03 USDC x402 Base.",
+   "tags": [
+    "rwa",
+    "tokenized-stocks",
+    "ondo",
+    "equities",
+    "gap",
+    "price-discovery",
+    "verified",
+    "multifuente",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "resolution-source-feed",
+   "name": "Resolution Source Feed",
+   "endpoint": "https://api.hergertsynthora.com/v1/resolution-source-feed",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "intelligence",
+   "description": "SYNTHORA resolution-source-feed: give a Polymarket market slug, get its official resolution source READ LIVE — current value, threshold, distance and on-track/off-track verdict. Covers IMF PortWatch chokepoint markets (Hormuz weekly series, normalization binaries): the answer a trader checks before every weekly resolution. Composes gamma-api rules parsing + live official source. $0.05 USDC x402 Base.",
+   "tags": [
+    "polymarket",
+    "resolution",
+    "uma",
+    "portwatch",
+    "prediction-markets",
+    "verified",
+    "multifuente",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "shipping-alpha",
+   "name": "Shipping Alpha",
+   "endpoint": "https://api.hergertsynthora.com/v1/shipping-alpha",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "intelligence",
+   "description": "SYNTHORA shipping-alpha: physical-vs-price divergence for shipping/logistics stocks (ZIM, Maersk AMKBY, Hapag-Lloyd, FedEx, UPS, Matson) — crosses LIVE physical reality (IMF PortWatch chokepoint transits + WaveWatch III navigability) with the official stock price move. Physical deterioration not yet priced = the investor window. 3 independent free sources crossed, confidence declared. $0.05 USDC x402 Base.",
+   "tags": [
+    "shipping",
+    "stocks",
+    "divergence",
+    "portwatch",
+    "equities",
+    "verified",
+    "multifuente",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "trending-cross",
+   "name": "Trending Cross",
+   "endpoint": "https://api.hergertsynthora.com/v1/trending-cross",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "crypto",
+   "description": "SYNTHORA trending-cross: crypto trending VERIFIED by two-source consensus — an asset trending on CoinGecko AND gaining on Binance at once is a confirmed signal; trending on one only is noise or a localized pump. Top gainers/losers with volume included. Free sources, no key. $0.005 USDC x402 Base.",
+   "tags": [
+    "crypto",
+    "trending",
+    "verified",
+    "multifuente",
+    "coingecko",
+    "binance",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "gas-oracle-multi",
+   "name": "Gas Oracle Multi-Chain",
+   "endpoint": "https://api.hergertsynthora.com/v1/gas-oracle-multi",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "onchain",
+   "description": "SYNTHORA gas-oracle-multi: gas price across 5 chains (ethereum, base, arbitrum, optimism, polygon), each VERIFIED by two independent public RPCs with divergence report — a single RPC can lie or lag; dual-verified is what you time transactions with. Free public RPCs, no key. $0.005 USDC x402 Base.",
+   "tags": [
+    "gas",
+    "oracle",
+    "multichain",
+    "ethereum",
+    "base",
+    "verified",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "noaa-tides",
+   "name": "NOAA Tides Verified",
+   "endpoint": "https://api.hergertsynthora.com/v1/noaa-tides",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "shipping",
+   "description": "SYNTHORA noaa-tides: tide and water level for US ports/stations, VERIFIED by crossing NOAA harmonic prediction with the LIVE observation at the same station — the anomaly (observed minus predicted) is the storm-surge/port-disruption signal. Source: NOAA CO-OPS official, free, no key. $0.005 USDC x402 Base.",
+   "tags": [
+    "tides",
+    "noaa",
+    "ports",
+    "shipping",
+    "storm-surge",
+    "verified",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "stablecoin-depeg",
+   "name": "Stablecoin Depeg Radar",
+   "endpoint": "https://api.hergertsynthora.com/v1/stablecoin-depeg",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "defi",
+   "description": "SYNTHORA stablecoin-depeg: depeg radar for 8 major stablecoins (USDT, USDC, DAI, USDS, USDe, PYUSD, USDD, FDUSD), each measured by TWO independent sources (CoinGecko + DefiLlama) with inter-source discrepancy reported — a real depeg shows in both; a single-source blip is an oracle artifact. Severity levels in bps. Free sources, no key. $0.006 USDC x402 Base.",
+   "tags": [
+    "stablecoin",
+    "depeg",
+    "usdt",
+    "usdc",
+    "verified",
+    "multifuente",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "domain-risk",
+   "name": "Domain Risk",
+   "endpoint": "https://api.hergertsynthora.com/v1/domain-risk",
+   "price_usd": 0.03,
+   "price_atomic": 30000,
+   "category": "security",
+   "description": "SYNTHORA domain-risk: domain risk verdict (LIMPIO/SOSPECHOSO/PELIGROSO) with score, confidence and evidence signals — age, infra, reputation crosses. Pre-interaction safety for agents. $0.03 USDC x402 Base.",
+   "tags": [
+    "security",
+    "security",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "tx-simulator",
+   "name": "Tx Simulator",
+   "endpoint": "https://api.hergertsynthora.com/v1/tx-simulator",
+   "price_usd": 0.03,
+   "price_atomic": 30000,
+   "category": "security",
+   "description": "SYNTHORA tx-simulator: simulate an EVM transaction before signing — SAFE/WARN/DANGER verdict, decoded intent, warnings and checks performed. Pre-trade safety for agent wallets. $0.03 USDC x402 Base.",
+   "tags": [
+    "security",
+    "security",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "threat-exposure",
+   "name": "Threat Exposure",
+   "endpoint": "https://api.hergertsynthora.com/v1/threat-exposure",
+   "price_usd": 0.03,
+   "price_atomic": 30000,
+   "category": "security",
+   "description": "SYNTHORA threat-exposure: external attack-surface score for any domain/host — exposure breakdown with deterministic evidence (historic IPs, open surfaces). $0.03 USDC x402 Base.",
+   "tags": [
+    "security",
+    "security",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "headers-audit",
+   "name": "Headers Audit",
+   "endpoint": "https://api.hergertsynthora.com/v1/headers-audit",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "security",
+   "description": "SYNTHORA headers-audit: HTTP security headers + TLS audit for any URL — missing headers, score 0-100, cookie flags. $0.005 USDC x402 Base.",
+   "tags": [
+    "security",
+    "security",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "funding-spread",
+   "name": "Funding Spread Cross-Venue",
+   "endpoint": "https://api.hergertsynthora.com/v1/funding-spread",
+   "price_usd": 0.03,
+   "price_atomic": 30000,
+   "category": "defi",
+   "description": "SYNTHORA funding-spread: perp funding rates CROSSED across Binance, Bybit and OKX for top pairs — the max spread between venues and the theoretical carry direction (long where you receive, short where you pay). Funding arb signal, not a wrapper. 3 free public sources crossed. $0.03 USDC x402 Base.",
+   "tags": [
+    "funding",
+    "perps",
+    "arbitrage",
+    "binance",
+    "bybit",
+    "okx",
+    "verified",
+    "multifuente",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "web-extract",
+   "name": "Web Extract",
+   "endpoint": "https://api.hergertsynthora.com/v1/web-extract",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "data",
+   "description": "SYNTHORA web-extract: any URL to clean agent-ready text (no HTML noise) + title, meta description, link/image counts — context-ready content for agents, stdlib extraction, no third parties. $0.005 USDC x402 Base.",
+   "tags": [
+    "scrape",
+    "markdown",
+    "extract",
+    "web",
+    "agent-tools",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "historical-weather",
+   "name": "Historical Weather Archive",
+   "endpoint": "https://api.hergertsynthora.com/v1/historical-weather",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "weather",
+   "description": "SYNTHORA historical-weather: verified historical weather for any place and date (1940 → ~5 days ago) from the ERA5 reanalysis — tmax/tmin, precipitation, max wind. For climate-market backtesting and claim verification. Source: open-meteo archive, free, no key. $0.005 USDC x402 Base.",
+   "tags": [
+    "weather",
+    "history",
+    "era5",
+    "climate",
+    "verified",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "air-quality",
+   "name": "Air Quality",
+   "endpoint": "https://api.hergertsynthora.com/v1/air-quality",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "environment",
+   "description": "SYNTHORA air-quality: live air quality for any city or lat,lon — PM2.5/PM10/ozone/NO2, EU and US AQI, and a WHO-threshold operational verdict (good/moderate/harmful). Source: open-meteo Air Quality (CAMS/ESA Copernicus), free, no key. $0.005 USDC x402 Base.",
+   "tags": [
+    "air-quality",
+    "pm25",
+    "aqi",
+    "environment",
+    "health",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "ecb-macro",
+   "name": "ECB Macro",
+   "endpoint": "https://api.hergertsynthora.com/v1/ecb-macro",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "macro",
+   "description": "SYNTHORA ecb-macro: official eurozone macro from the ECB data warehouse — HICP inflation, MRR policy rate, 10Y govt yield, each with previous value, change and direction. For macro/rates agents and prediction markets. Official free source, no key. $0.005 USDC x402 Base.",
+   "tags": [
+    "ecb",
+    "eurozone",
+    "inflation",
+    "rates",
+    "macro",
+    "official",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "defi-yields",
+   "name": "DeFi Yields Risk-Ranked",
+   "endpoint": "https://api.hergertsynthora.com/v1/defi-yields",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "defi",
+   "description": "SYNTHORA defi-yields: stablecoin DeFi yields ranked with a risk outlier detector — APY vs class median (>=3x median = the excess yield IS the risk price). Only pools with TVL >= $10M. Source: DefiLlama, free, no key. $0.005 USDC x402 Base.",
+   "tags": [
+    "defi",
+    "yields",
+    "apy",
+    "risk",
+    "stablecoins",
+    "verified",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "tor-fetch",
+   "name": "Tor Fetch + Divergence",
+   "endpoint": "https://api.hergertsynthora.com/v1/tor-fetch",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "intel",
+   "description": "SYNTHORA tor-fetch: fetch any URL (including .onion) via Tor AND directly, compared side by side — status, size, and divergence flag (geo-block / soft censorship detection). Access onion intel sources with no clearnet route. $0.005 USDC x402 Base.",
+   "tags": [
+    "tor",
+    "onion",
+    "censorship",
+    "geo-block",
+    "osint",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "asset-risk",
+   "name": "Asset Risk Geoint",
+   "endpoint": "https://api.hergertsynthora.com/v1/asset-risk",
+   "price_usd": 0.03,
+   "price_atomic": 30000,
+   "category": "intelligence",
+   "description": "SYNTHORA asset-risk: geoint risk verdict by zone (gibraltar, bab-el-mandeb, bosphorus, algeciras...) or lat/lon+bbox — confidence measured by AGREEMENT between independent sources, discrepancies declared (the moat). $0.03 USDC x402 Base.",
+   "tags": [
+    "geoint",
+    "risk",
+    "chokepoints",
+    "verified",
+    "multifuente",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "endpoint-trust",
+   "name": "Endpoint Trust Score",
+   "endpoint": "https://api.hergertsynthora.com/v1/endpoint-trust",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "trust",
+   "description": "SYNTHORA endpoint-trust: trust verdict for any x402 endpoint before paying it — 402 correctness, valid accepts/payTo, bazaar extensions, agent-card published, latency. Observed behavior, not declarations. The pre-payment check for buying agents. $0.005 USDC x402 Base.",
+   "tags": [
+    "trust",
+    "x402",
+    "verification",
+    "prepayment",
+    "agent-safety",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "daily-intel-brief",
+   "name": "Daily Intel Brief",
+   "endpoint": "https://api.hergertsynthora.com/v1/daily-intel-brief",
+   "price_usd": 0.1,
+   "price_atomic": 100000,
+   "category": "intelligence",
+   "description": "SYNTHORA daily-intel-brief: the daily intelligence briefing in ONE call — funding spreads cross-venue, stablecoin depeg radar, US funding stress (SOFR-EFFR), chokepoint status (PortWatch), narrative tension (GDELT), plus executive alerts. Each block declares its verified sources. What a trading agent reads every morning. $0.10 USDC x402 Base.",
+   "tags": [
+    "intelligence",
+    "briefing",
+    "daily",
+    "macro",
+    "crypto",
+    "verified",
+    "multifuente",
+    "x402",
+    "synthora"
+   ]
+  },
+  {
+   "id": "bitcoin-fees",
+   "name": "Bitcoin Fees",
+   "endpoint": "https://api.hergertsynthora.com/v1/bitcoin-fees",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "bitcoin",
+   "description": "SYNTHORA bitcoin-fees: Bitcoin fee tiers in sat/vB (fastest/half-hour/hour/economy/minimum) plus current block height. Source: mempool.space public API, keyless. Bitcoin only.",
+   "tags": [
+    "bitcoin",
+    "fees",
+    "mempool",
+    "realtime"
+   ],
+   "example_input": {
+    "protocol": "aave"
+   },
+   "verifiable": true,
+   "free_trial_calls": 0,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  },
+  {
+   "id": "codeaudit",
+   "name": "Codeaudit",
+   "endpoint": "https://api.hergertsynthora.com/v1/codeaudit",
+   "price_usd": 0.32,
+   "price_atomic": "320000",
+   "category": "data",
+   "description": "Smart Contract Audit: 3 analisis independientes con un unico modelo propio (security, logic, gas) + static pattern scan on Solidity/Vyper source. Severity: clean/low/medium/high/critical. Ed25519-signed, publishable on-chain. POST {\"source\":\"pragma solidity...\",\"language\":\"solidity\"} or {\"address\":\"0x..\",\"chain\":\"base\"} for Sourcify-verified contracts.",
+   "tags": [
+    "x402",
+    "synthora"
+   ],
+   "example_input": {
+    "source": "pragma solidity ^0.8.0; contract Vault { address public owner; mapping(address=>uint) public bal; constructor(){owner=msg.sender;} function deposit() external payable { bal[msg.sender]+=msg.value; } function withdraw(uint a) external { require(bal[msg.sender]>=a); (bool ok,)=msg.sender.call{value:a}(\"\"); require(ok); bal[msg.sender]-=a; } }",
+    "language": "solidity"
+   },
+   "verifiable": true,
+   "free_trial_calls": 0,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  },
+  {
+   "id": "defi-llama-tvl-ranking",
+   "name": "Defi Llama Tvl Ranking",
+   "endpoint": "https://api.hergertsynthora.com/v1/defi-llama-tvl-ranking",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "defi",
+   "description": "SYNTHORA defi-llama-tvl-ranking: Top DeFi protocols by TVL with rank, chain, category and 1d/7d change, capped list (default 50, max 200 via {\"limit\":N}). Source: api.llama.fi/protocols (DefiLlama), keyless, timestamped.",
+   "tags": [
+    "defi",
+    "tvl",
+    "defillama",
+    "ranking",
+    "realtime"
+   ],
+   "example_input": {
+    "limit": 50
+   },
+   "verifiable": true,
+   "free_trial_calls": 0,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  },
+  {
+   "id": "ecb-forex-fixing-vs-market",
+   "name": "Ecb Forex Fixing Vs Market",
+   "endpoint": "https://api.hergertsynthora.com/v1/ecb-forex-fixing-vs-market",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "forex",
+   "description": "SYNTHORA ecb-forex-fixing-vs-market: ECB daily EUR/USD fixing vs live market rate: deviation in basis points, direction and >25bps alert. Sources: official ECB eurofxref-daily.xml + open.er-api.com, both keyless.",
+   "tags": [
+    "forex",
+    "ecb",
+    "eur-usd",
+    "fixing",
+    "realtime"
+   ],
+   "example_input": {
+    "protocol": "aave"
+   },
+   "verifiable": true,
+   "free_trial_calls": 0,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  },
+  {
+   "id": "github-repo-activity",
+   "name": "Github Repo Activity",
+   "endpoint": "https://api.hergertsynthora.com/v1/github-repo-activity",
+   "price_usd": 0.01,
+   "price_atomic": "10000",
+   "category": "github",
+   "description": "SYNTHORA github-repo-activity: Activity metrics for any public GitHub repo (input owner/repo): stars, forks, open issues, last push, language, archived flag. 10-min in-process cache, stale-on-rate-limit or ok:false. Source: api.github.com, keyless.",
+   "tags": [
+    "github",
+    "repo",
+    "activity",
+    "dev"
+   ],
+   "example_input": {
+    "input": "torvalds/linux"
+   },
+   "verifiable": true,
+   "free_trial_calls": 0,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  },
+  {
+   "id": "identity-risk",
+   "name": "Identity Risk",
+   "endpoint": "https://api.hergertsynthora.com/v1/identity-risk",
+   "price_usd": 0.32,
+   "price_atomic": "320000",
+   "category": "data",
+   "description": "SYNTHORA identity-risk: brand-impersonation verdict (AUTHENTIC / DOUBTFUL / ACTIVE_IMPERSONATION) over decentralised social identities, correlated across independent sources.",
+   "tags": [
+    "x402",
+    "synthora"
+   ],
+   "example_input": {
+    "input": "vitalik.eth"
+   },
+   "verifiable": true,
+   "free_trial_calls": 5,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  },
+  {
+   "id": "llm-fast",
+   "name": "Llm Fast",
+   "endpoint": "https://api.hergertsynthora.com/v1/llm-fast",
+   "price_usd": 0.005,
+   "price_atomic": "5000",
+   "category": "llm",
+   "description": "SYNTHORA LLM Gateway FAST: OpenAI-compatible /v1/chat/completions pay-per-call, no API keys. Fast free-tier models (llama-3.1-8b class) with automatic upstream failover, Ed25519-signed. 0.005 USDC via x402 on Base. POST {\"messages\":[{\"role\":\"user\",\"content\":\"...\"}]} (or {\"prompt\":\"...\"}).",
+   "tags": [
+    "llm",
+    "inference",
+    "openai-compatible",
+    "chat-completions",
+    "x402",
+    "usdc"
+   ],
+   "example_input": {
+    "model": "llm-fast",
+    "messages": [
+     {
+      "role": "user",
+      "content": "Say hello in one word"
+     }
+    ]
+   },
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  },
+  {
+   "id": "llm-smart",
+   "name": "Llm Smart",
+   "endpoint": "https://api.hergertsynthora.com/v1/llm-smart",
+   "price_usd": 0.005,
+   "price_atomic": "5000",
+   "category": "llm",
+   "description": "SYNTHORA LLM Gateway SMART: OpenAI-compatible /v1/chat/completions pay-per-call, no API keys. Large free-tier models (llama-3.3-70b class) with automatic upstream failover, Ed25519-signed. 0.005 USDC via x402 on Base. POST {\"messages\":[{\"role\":\"user\",\"content\":\"...\"}]} (or {\"prompt\":\"...\"}).",
+   "tags": [
+    "llm",
+    "inference",
+    "openai-compatible",
+    "chat-completions",
+    "x402",
+    "usdc"
+   ],
+   "example_input": {
+    "model": "llm-smart",
+    "messages": [
+     {
+      "role": "user",
+      "content": "Say hello in one word"
+     }
+    ]
+   },
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  },
+  {
+   "id": "market-sentiment",
+   "name": "Market Sentiment",
+   "endpoint": "https://api.hergertsynthora.com/v1/market-sentiment",
+   "price_usd": 0.03,
+   "price_atomic": "30000",
+   "category": "data",
+   "description": "Get real-time market sentiment signals via x402 M2M API. Signed x402 call. 0.03 USDC on Base.",
+   "tags": [
+    "x402",
+    "synthora"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 0,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  },
+  {
+   "id": "payto-preflight",
+   "name": "Payto Preflight",
+   "endpoint": "https://payto-preflight.hergertsynthora.com/service",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "data",
+   "description": "x402 PayTo Pre-Flight: verify a payTo address against the live registry before paying. Detects payTo hijacking, stale endpoints and unknown resources. Deterministic, <200ms, no external network. 0.005 USDC via x402 on Base. SYNTHORA.",
+   "tags": [
+    "x402",
+    "synthora"
+   ],
+   "example_input": {
+    "endpoint_url": "https://onchain.hergertsynthora.com/service",
+    "expected_payTo": "0xEf879BFD6C4AccB8F795136de90246e1EC245e06",
+    "chain": "eip155:8453"
+   },
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  },
+  {
+   "id": "protocol-revenue-lite",
+   "name": "Protocol Revenue Lite",
+   "endpoint": "https://api.hergertsynthora.com/v1/protocol-revenue-lite",
+   "price_usd": 0.01,
+   "price_atomic": "10000",
+   "category": "defi",
+   "description": "SYNTHORA protocol-revenue-lite: Protocol Revenue Lite: live protocol REVENUE (24h/7d/30d + 1d/7d change) for any DefiLlama protocol slug, from api.llama.fi. POST {\"protocol\":\"aave\"}.",
+   "tags": [
+    "defi",
+    "revenue",
+    "defillama",
+    "realtime"
+   ],
+   "example_input": {
+    "protocol": "aave"
+   },
+   "verifiable": true,
+   "free_trial_calls": 0,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  },
+  {
+   "id": "registry-watch",
+   "name": "Registry Watch",
+   "endpoint": "https://api.hergertsynthora.com/v1/registry-watch",
+   "price_usd": 0.03,
+   "price_atomic": "30000",
+   "category": "data",
+   "description": "SYNTHORA registry-watch: pay-per-event feed of signed Ed25519 deltas from the x402/M2M endpoint registry — new and changed endpoints, payTos and listings. Pull with {\"since\": \"<cursor|ISO>\", \"slug\": \"<slug>\", \"limit\": <=200}; each delta is individually signed and the full response is signed again (double provenance). $0.03 USDC on Base.",
+   "tags": [
+    "x402",
+    "synthora"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 0,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  },
+  {
+   "id": "safe-to-trade",
+   "name": "Safe To Trade",
+   "endpoint": "https://safe-to-trade.hergertsynthora.com/service",
+   "price_usd": 0.03,
+   "price_atomic": "30000",
+   "category": "data",
+   "description": "SYNTHORA safe-to-trade: pre-trade go/no-go verdict for an EVM token or counterparty. Returns safe_to_trade (bool), risk_score, reason codes and honeypot flags from keyless checks: contract verification, EIP-1967 proxy detection, totalSupply read and OFAC SDN sanctions screening of token and counterparty. Fail-closed: unverifiable checks are reported, never guessed. $0.03 USDC on Base.",
+   "tags": [
+    "x402",
+    "synthora"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 0,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  },
+  {
+   "id": "sanctions-screen",
+   "name": "Sanctions Screen",
+   "endpoint": "https://api.hergertsynthora.com/v1/sanctions-screen",
+   "price_usd": 0.05,
+   "price_atomic": "50000",
+   "category": "data",
+   "description": "SYNTHORA sanctions-screen: sanctions screening with MATCH / CLEAR verdict over 4 official downloads (OFAC SDN primary and alias lists, UN, OpenSanctions). Multilingual, tested on Cyrillic transliterations.",
+   "tags": [
+    "x402",
+    "synthora"
+   ],
+   "example_input": {
+    "name": "Vladimir Putin"
+   },
+   "verifiable": true,
+   "free_trial_calls": 5,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  },
+  {
+   "id": "sentiment",
+   "name": "Sentiment",
+   "endpoint": "https://api.hergertsynthora.com/v1/sentiment",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "data",
+   "description": "Real-time crowd sentiment oracle for any topic or asset: GDELT global-news tone timeline -> sentiment (very_bullish..very_bearish), tone score, trend and trading signal, with top headlines. POST {\"query\":\"bitcoin\",\"timespan\":\"6h\"}. Deterministic, Ed25519-signed. SYNTHORA.",
+   "tags": [
+    "x402",
+    "synthora"
+   ],
+   "example_input": {
+    "query": "bitcoin",
+    "timespan": "6h"
+   },
+   "verifiable": true,
+   "free_trial_calls": 0,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  },
+  {
+   "id": "space-weather",
+   "name": "Space Weather",
+   "endpoint": "https://api.hergertsynthora.com/v1/space-weather",
+   "price_usd": 0.01,
+   "price_atomic": "10000",
+   "category": "data",
+   "description": "SYNTHORA space-weather: live space weather from NOAA SWPC — GOES X-ray flux (solar flare activity), solar wind plasma (speed and density) and planetary Kp geomagnetic index. Optional focus: send xray, wind or kp in the input to get just that series, otherwise the latest reading of all three. Source: services.swpc.noaa.gov, keyless, timestamped. $0.01 USDC on Base.",
+   "tags": [
+    "x402",
+    "synthora"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 0,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  },
+  {
+   "id": "top-crypto",
+   "name": "Top Crypto",
+   "endpoint": "https://api.hergertsynthora.com/v1/top-crypto",
+   "price_usd": 0.01,
+   "price_atomic": 10000,
+   "category": "crypto",
+   "description": "SYNTHORA top-crypto: Top N cryptocurrencies by market cap (default 10, max 50): rank, price, 24h change, volume and market cap in USD. Source: CoinGecko free API, keyless, timestamped.",
+   "tags": [
+    "crypto",
+    "market-cap",
+    "coingecko",
+    "realtime"
+   ],
+   "example_input": {
+    "limit": 10
+   },
+   "verifiable": true,
+   "free_trial_calls": 0,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  },
+  {
+   "id": "txintent",
+   "name": "Txintent",
+   "endpoint": "https://api.hergertsynthora.com/v1/txintent",
+   "price_usd": 0.1,
+   "price_atomic": "100000",
+   "category": "data",
+   "description": "Tx Intent Classifier: decodes the REAL intent of an on-chain transaction (Base/Ethereum) and returns an Ed25519-signed risk verdict (safe/review/suspicious/dangerous). Catches unlimited approvals, opaque selectors, value-to-contract, reverted tx. POST {\"tx_hash\":\"0x..\",\"chain\":\"base\"} or {\"to\":\"0x..\",\"data\":\"0x..\"}.",
+   "tags": [
+    "x402",
+    "synthora"
+   ],
+   "example_input": {
+    "tx_hash": "0xafc895b0138314dcde8a410d309d9080c8cfbc816ba6f371b287e34f2695207f",
+    "chain": "base"
+   },
+   "verifiable": true,
+   "free_trial_calls": 0,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  },
+  {
+   "id": "wallet-enrich",
+   "name": "Wallet Enrich",
+   "endpoint": "https://api.hergertsynthora.com/v1/wallet-enrich",
+   "price_usd": 0.15,
+   "price_atomic": "150000",
+   "category": "data",
+   "description": "Wallet enrichment for any EVM wallet (0x address or ENS name) in one call: 0-100 risk score with low/medium/high level, sanctions exposure screening (OFAC SDN wallet lists: Tornado Cash, Lazarus, Garantex), on-chain activity on Ethereum + Base (native balance, transaction count, contract-vs-EOA detection) and labels (ENS reverse record, GoPlus address-security flags: phishing, mixer, cybercrime, money laundering, blacklist). Built for agents that need wallet enrichment + risk + sanctions data before paying, onboarding or transacting with a counterparty. No charge on service failure. Ed25519-signed. $0.15 USDC per call via x402 on Base. Free trial: 3 calls per wallet with header X-WALLET.",
+   "tags": [
+    "x402",
+    "synthora"
+   ],
+   "example_input": {
+    "address": "vitalik.eth"
+   },
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  },
+  {
+   "id": "code-sandbox",
+   "name": "Python Code Sandbox (pay-per-execution)",
+   "endpoint": "https://api.hergertsynthora.com/v1/code-sandbox",
+   "price_usd": 0.01,
+   "price_atomic": "10000",
+   "category": "compute",
+   "description": "Python code execution as a service for agents: send code, get stdout/stderr/exit code. Isolated (uid nobody, no persistence, hard limits: 10s CPU / 256MB / 64 procs). For agents that need to compute over data, not just read it. $0.01 USDC x402 Base. Input: {\"code\": \"print(sum(range(100)))\", \"timeout_s\": 10}.",
+   "tags": [
+    "compute",
+    "sandbox",
+    "code-execution",
+    "python",
+    "agents",
+    "x402",
+    "synthora"
+   ],
+   "example_input": {
+    "code": "print(sum(range(100)))"
+   },
+   "verifiable": true,
+   "free_trial_calls": 2,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  },
+  {
+   "id": "polymarket-trades",
+   "name": "Polymarket Trades (filtered + wallet aggregation)",
+   "endpoint": "https://api.hergertsynthora.com/v1/polymarket-trades",
+   "price_usd": 0.01,
+   "price_atomic": "10000",
+   "category": "prediction-markets",
+   "description": "Historical Polymarket trade query with filters (market, wallet, side, min_usd) plus per-wallet aggregation: every CLOB fill with wallet, size, price, USD value, market title and tx hash — for agents tracking flow and smart money. Source: Polymarket public trades API (keyless). $0.01 USDC x402 Base. Input: {\"market\": \"bitcoin\", \"min_usd\": 1000, \"limit\": 25, \"agregar_por_wallet\": true} (all optional).",
+   "tags": [
+    "prediction-markets",
+    "polymarket",
+    "trades",
+    "smart-money",
+    "wallet-tracking",
+    "flow",
+    "x402",
+    "synthora"
+   ],
+   "example_input": {
+    "market": "bitcoin",
+    "min_usd": 1000,
+    "limit": 25,
+    "agregar_por_wallet": true
+   },
+   "verifiable": true,
+   "free_trial_calls": 2,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  },
+  {
+   "id": "resolution-verdict",
+   "name": "Resolution Verdict (decision intelligence)",
+   "endpoint": "https://api.hergertsynthora.com/v1/resolution-verdict",
+   "price_usd": 0.05,
+   "price_atomic": "50000",
+   "category": "prediction-markets",
+   "description": "Decision verdict for prediction markets (Polymarket): give a market slug, get probability, direction (YES/NO/INDECISO) and 3-5 evidence bullets with declared sources (chokepoints, GDELT tension, fed watch, maritime, weather) plus main risk. For agents deciding whether to bet or move assets. $0.05 USDC x402 Base. Input: {\"slug\": \"strait-of-hormuz-traffic-returns-to-normal-by-december-31\"}.",
+   "tags": [
+    "prediction-markets",
+    "polymarket",
+    "verdict",
+    "decision",
+    "intelligence",
+    "forecasting",
+    "x402",
+    "synthora"
+   ],
+   "example_input": {
+    "slug": "strait-of-hormuz-traffic-returns-to-normal-by-december-31"
+   },
+   "verifiable": true,
+   "free_trial_calls": 1,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  },
+  {
+   "id": "macrobundle",
+   "name": "Macro Intel Bundle",
+   "endpoint": "https://api.hergertsynthora.com/v1/macrobundle",
+   "price_usd": 0.1,
+   "price_atomic": 100000,
+   "category": "finance",
+   "description": "Macro intel bundle: 7 live macro/market datasets in ONE call (commodity macro, market sentiment, stablecoin supply, ECB forex fixing vs market, DeFi TVL ranking, top crypto, bitcoin fees). Cheaper than buying each separately. Partial degradation (never fails whole), Ed25519-signed. First 3 calls FREE per wallet via X-WALLET header. SYNTHORA.",
+   "tags": [
+    "macro intel bundle",
+    "macro market data bundle",
+    "multi dataset one call",
+    "crypto macro sentiment tvl"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://api.hergertsynthora.com/v1/macrobundle. Pay 0.10 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "macro-surprise",
+   "name": "Macro Surprise Index",
+   "endpoint": "https://api.hergertsynthora.com/v1/macro-surprise",
+   "price_usd": 0.05,
+   "price_atomic": 50000,
+   "category": "finance",
+   "description": "Macro surprise index: z-score of the latest change vs the trailing 12-change distribution for official ECB series (HICP inflation, MRR policy rate, 10Y yield). Flags strong/moderate surprises the moment official data prints. Partial degradation, Ed25519-signed. First 3 calls FREE per wallet via X-WALLET header. SYNTHORA.",
+   "tags": [
+    "macro surprise index",
+    "ecb data z-score",
+    "inflation surprise signal",
+    "macro data for prediction markets"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 2,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+   "x-guidance": "POST JSON to https://api.hergertsynthora.com/v1/macro-surprise. Pay 0.05 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature)."
+  },
+  {
+   "id": "contract-guard",
+   "name": "Contract Guard",
+   "endpoint": "https://contract-guard.hergertsynthora.com/service",
+   "price_usd": 0.32,
+   "price_atomic": "320000",
+   "category": "security",
+   "description": "SYNTHORA contractwatch: verdict de seguridad de contrato on-chain que SI lee el bytecode (eth_getCode) y slots de proxy (EIP-1967/zeppelinos/UUPS/beacon), owner() y privilegios ocultos: honeypot, rug-pull, hidden mint. Correlacionado entre fuentes independientes y firmado Ed25519. $0.32 USDC x402 Base. Input: {\"address\": \"0x...\", \"chain\": \"base\"}.",
+   "tags": [
+    "contract monitoring",
+    "honeypot change",
+    "ownership change",
+    "proxy upgrade detection",
+    "smart contract watch",
+    "rug alert"
+   ],
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 3,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC",
+   "contact": {
+    "name": "Hergert Synthora S.L.U.",
+    "email": "info@hergertsynthora.com"
+   },
+   "x-guidance": "POST JSON to https://contractwatch.hergertsynthora.com/service. Pay 0.001 USDC on Base (eip155:8453) via x402 (gasless transferWithAuthorization), or send header 'X-WALLET: 0x<your Base address>' for 3 free trial calls. Every response is Ed25519-signed (X-Synthora-Signature).",
+   "ownershipProofs": [
+    {
+     "type": "did-web",
+     "id": "did:web:hergertsynthora.com"
+    },
+    {
+     "type": "erc-8004",
+     "chain": "eip155:8453",
+     "registry": "0x8004a169fb4a3325136eb29fa0ceb6d2e539a432",
+     "tokenId": "56572"
+    },
+    {
+     "type": "ed25519",
+     "publicKeyHex": "1383ab71b92d91b8d62decf5018ee5296933e128256825d0e6e436b42e66b272"
+    }
+   ]
+  },
+  {
+   "id": "pre-trade-safety",
+   "name": "Pre-Trade Safety",
+   "price_usd": 0.25,
+   "price_atomic": 250000,
+   "category": "security",
+   "description": "ONE signed JSON verdict before touching a token/contract/wallet: fuses contract-guard + token-risk + AML + sanctions + DEX market data, synthesized by the SYNTHORA intelligence engine. Sources cited, failures reported, sha256 + firma SYNTHORA. 0.25 USDC via x402 on Base.",
+   "tags": [
+    "pre-trade",
+    "safety",
+    "verdict",
+    "token-risk",
+    "contract-guard",
+    "aml",
+    "sanctions",
+    "signed"
+   ],
+   "endpoint": "https://pre-trade-safety.hergertsynthora.com/service",
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 0,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  },
+  {
+   "id": "counterparty-clearance",
+   "name": "Counterparty Clearance",
+   "price_usd": 0.1,
+   "price_atomic": 100000,
+   "category": "compliance",
+   "description": "Due diligence of a counterparty before paying/contracting: multi-list matching (OFAC SDN+aliases, UN, OpenSanctions, EU) + on-chain reputation, signed CLEAR/FLAGGED/BLOCKED ruling with citations. 0.10 USDC via x402 on Base. Full attestation: counterparty-attestation (0.50).",
+   "tags": [
+    "counterparty",
+    "due-diligence",
+    "sanctions",
+    "aml",
+    "clearance",
+    "signed"
+   ],
+   "endpoint": "https://counterparty-clearance.hergertsynthora.com/service",
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 0,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  },
+  {
+   "id": "counterparty-attestation",
+   "name": "Counterparty Attestation",
+   "price_usd": 0.5,
+   "price_atomic": 500000,
+   "category": "compliance",
+   "description": "Full signed counterparty due-diligence attestation, re-verifiable by third parties: multi-list matching with fuzzy entity resolution, per-list evidence, consulted lists with dates, sha256 + SYNTHORA signature. 0.50 USDC via x402 on Base.",
+   "tags": [
+    "counterparty",
+    "attestation",
+    "sanctions",
+    "due-diligence",
+    "signed",
+    "verifiable"
+   ],
+   "endpoint": "https://counterparty-attestation.hergertsynthora.com/service",
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 0,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  },
+  {
+   "id": "resolution-oracle",
+   "name": "Resolution Oracle",
+   "price_usd": 0.25,
+   "price_atomic": 250000,
+   "category": "prediction-markets",
+   "description": "Calibrated probability per outcome + resolution risk of a Polymarket market: live market data + wording/ambiguity/UMA-oracle risk, synthesized by the SYNTHORA engine with cited sources and signature. 0.25 USDC via x402 on Base.",
+   "tags": [
+    "polymarket",
+    "prediction-markets",
+    "resolution-risk",
+    "probability",
+    "oracle",
+    "signed"
+   ],
+   "endpoint": "https://resolution-oracle.hergertsynthora.com/service",
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 0,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  },
+  {
+   "id": "osint-flash",
+   "name": "OSINT Flash",
+   "price_usd": 0.25,
+   "price_atomic": 250000,
+   "category": "intelligence",
+   "description": "Verifiable OSINT brief on any topic/actor/region/event in one call: live GDELT + multi-source web search + 2,300-source collector catalog, synthesized by the SYNTHORA engine. Every claim cited (source + URL + date). sha256 + firma SYNTHORA. 0.25 USDC via x402 on Base.",
+   "tags": [
+    "osint",
+    "brief",
+    "intelligence",
+    "gdelt",
+    "cited",
+    "signed"
+   ],
+   "endpoint": "https://osint-flash.hergertsynthora.com/service",
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 0,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  },
+  {
+   "id": "osint-deep",
+   "name": "OSINT Deep",
+   "price_usd": 0.99,
+   "price_atomic": 990000,
+   "category": "intelligence",
+   "description": "Full OSINT brief + per-source evaluation (reliability and known bias with reasons). Every claim cited (source + URL + date); unverifiable claims listed explicitly. sha256 + firma SYNTHORA. 0.99 USDC via x402 on Base.",
+   "tags": [
+    "osint",
+    "deep",
+    "intelligence",
+    "source-evaluation",
+    "cited",
+    "signed"
+   ],
+   "endpoint": "https://osint-deep.hergertsynthora.com/service",
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 0,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  },
+  {
+   "id": "deep-audit",
+   "name": "Deep Audit",
+   "price_usd": 0.5,
+   "price_atomic": 500000,
+   "category": "intelligence",
+   "description": "Deep OSINT audit of a person / company / domain / username using >=3 tools of the SYNTHORA self-hosted OSINT mesh (username footprint, passive domain scan, sanctions/PEP matching, Tor crawler, phone scan, own metasearch) + web search, synthesized into a signed verdict with real citations. sha256 + firma SYNTHORA. 0.50 USDC via x402 on Base.",
+   "tags": [
+    "osint",
+    "audit",
+    "due-diligence",
+    "person",
+    "company",
+    "domain",
+    "sanctions",
+    "signed"
+   ],
+   "endpoint": "https://deep-audit.hergertsynthora.com/service",
+   "example_input": {},
+   "verifiable": true,
+   "free_trial_calls": 0,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  },
+  {
+   "id": "demand-radar",
+   "name": "Demand Radar",
+   "endpoint": "https://demand-radar.hergertsynthora.com/service",
+   "price_usd": 0.25,
+   "price_atomic": 250000,
+   "category": "data",
+   "description": "Demand Radar: signed x402 demand analytics measured on the mesh itself (real Caddy access logs, weekly aggregate): most-probed endpoints, unpaid 402 interest, 200 conversions, unique IPs, published prices. POST {\"vista\":\"sin_pagar|compradas|nadie_toca|mirados\",\"limit\":<=25}.",
+   "tags": [
+    "demand",
+    "analytics",
+    "x402",
+    "market-intel"
+   ],
+   "example_input": {
+    "vista": "sin_pagar",
+    "limit": 10
+   },
+   "verifiable": true,
+   "free_trial_calls": 5,
+   "certified": true,
+   "network": "eip155:8453",
+   "asset": "USDC"
+  }
+ ],
+ "total_products": 113,
+ "updated_at": "2026-09-03T14:00:13Z",
+ "quality_standard": {
+  "gate": "certified-only",
+  "criteria": "serve() returns ok:true with substantive data, fresh (<24h), fast (<8s); re-verified every 20 min, auto-quarantined on any failure"
+ },
+ "features": {
+  "verifiable": "Every response Ed25519-signed — cryptographically verifiable.",
+  "free_trial": "3 free calls per Base wallet.",
+  "pricing": "Floor pricing from $0.001 USDC/call. No keys, no signup.",
+  "protocol": "x402 micropayments on Base, gasless for buyer.",
+  "quality": "Certified-only storefront."
+ },
+ "services_count": 221,
+ "last_updated": "2026-08-28"
+}

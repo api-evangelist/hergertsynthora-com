@@ -1,23 +1,407 @@
 aid: hergertsynthora-com
 name: Hergert Synthora
-description: 'Hergert Synthora is a company surfaced via the API Evangelist harvest backlog (source: a2a-registry)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'HERGERT SYNTHORA S.L. is a Las Palmas de Gran Canaria (Spain) company that operates SYNTHORA, an autonomous
+  agent mesh selling machine-payable intelligence: 121 pay-per-call verdict products (sanctions and AML screening,
+  wallet and transaction risk, Polymarket and prediction-market signals, maritime AIS, DeFi, macro and OSINT data),
+  an Agent Notary, a 30-tool hosted MCP server and a signed A2A agent card, all settled per call in USDC on Base
+  over the x402 protocol with Ed25519-signed receipts, an ERC-8004 on-chain identity and no accounts or API keys.'
 url: https://raw.githubusercontent.com/api-evangelist/hergertsynthora-com/refs/heads/main/apis.yml
+image: https://hergertsynthora.com/logo.png
 x-type: company
 x-source: harvest:a2a-registry
-x-tier: stub
-x-tier-reason: harvest
+x-tier: enriched
+x-tier-reason: harvest stub profiled by the local enrichment pipeline on 2026-09-19
+position: Producing
 specificationVersion: '0.20'
 created: '2026-09-19'
 modified: '2026-09-19'
 tags:
 - Company
-apis: []
+- Agents
+- A2A
+- MCP
+- x402
+- Web3
+- Intelligence
+- Sanctions Screening
+- Prediction Markets
+- OSINT
+- Blockchain
+- Spain
+apis:
+- name: SYNTHORA Machine-Payable API Mesh
+  description: 'Aggregate contract for the SYNTHORA x402 mesh: pay-per-call intelligence verdicts (contract safety,
+    wallet enrichment, Polymarket whale/odds/resolution/dispute/insider signals) served as POST JSON on the api.hergertsynthora.com/v1/{id}
+    gateway and on per-product hosts, every result Ed25519-signed, settled in USDC on Base via HTTP 402.'
+  humanURL: https://hergertsynthora.com/api/
+  baseURL: https://api.hergertsynthora.com
+  tags:
+  - x402
+  - Prediction Markets
+  - Wallet Risk
+  - Sanctions Screening
+  - Blockchain
+  - Agents
+  properties:
+  - type: OpenAPI
+    url: openapi/hergertsynthora-com-mesh-aggregate-openapi.yml
+  - type: OpenAPI
+    url: https://api.hergertsynthora.com/openapi.json
+    name: Provider-hosted aggregate OpenAPI (also served at pay.hergertsynthora.com/openapi.json)
+  - type: Overlay
+    url: overlays/hergertsynthora-com-mesh-aggregate-overlay.yaml
+  - type: Documentation
+    url: https://hergertsynthora.com/api/
+  - type: LLMsTxt
+    url: llms/hergertsynthora-com-api-llms.txt
+  - type: LLMsTxt
+    url: https://api.hergertsynthora.com/llms.txt
+  - type: ToolCrosswalk
+    url: mcp/hergertsynthora-com-tool-crosswalk.yml
+  - type: X-X402Discovery
+    url: well-known/hergertsynthora-com-x402.json
+  - type: X-X402Discovery
+    url: https://api.hergertsynthora.com/.well-known/x402.json
+  - type: SLA
+    url: https://api.hergertsynthora.com/sla/
+  - type: AgentSkill
+    url: skills/hergertsynthora-com-pay-per-call-x402.md
+  - type: AgentSkill
+    url: skills/hergertsynthora-com-polymarket-signal-sweep.md
+  - type: AgentSkill
+    url: skills/hergertsynthora-com-wallet-and-tx-screening.md
+- name: SYNTHORA Agent Notary
+  description: 'Proof-of-existence, proof-of-execution and proof-of-agreement for machine-to-machine deals: notarize
+    a SHA-256 (content never stored) and receive an Ed25519-signed receipt anyone can verify later. 0.002 USDC per
+    call via x402 on Base, first three calls free per wallet; exposed as REST, A2A JSON-RPC and a one-tool MCP server
+    on the same host.'
+  humanURL: https://notary.hergertsynthora.com/llms.txt
+  baseURL: https://notary.hergertsynthora.com
+  tags:
+  - Notarization
+  - Attestation
+  - x402
+  - Agents
+  - Trust
+  properties:
+  - type: OpenAPI
+    url: openapi/hergertsynthora-com-agent-notary-openapi.yml
+  - type: OpenAPI
+    url: https://notary.hergertsynthora.com/openapi.json
+    name: Provider-hosted notary OpenAPI
+  - type: Overlay
+    url: overlays/hergertsynthora-com-agent-notary-overlay.yaml
+  - type: LLMsTxt
+    url: llms/hergertsynthora-com-notary-llms.txt
+  - type: LLMsTxt
+    url: https://notary.hergertsynthora.com/llms.txt
+  - type: AgentCard
+    url: a2a/hergertsynthora-com-notary-agent-card.json
+    name: Notary agent card (A2A 0.3.0); graded in a2a/hergertsynthora-com-a2a.yml additional_cards
+  - type: MCPServer
+    url: https://notary.hergertsynthora.com/mcp
+    name: synthora-notario MCP endpoint (1 tool)
+  - type: AgentSkill
+    url: skills/hergertsynthora-com-notarize-and-verify.md
+- name: SYNTHORA x402 Per-Service Contracts
+  description: The individual OpenAPI contracts published by the SYNTHORA product hosts under *.hergertsynthora.com
+    - one POST /service operation each (sanctions and AML screening, vessel and chokepoint risk, DeFi TVL and funding
+    data, macro and commodity feeds, OSINT, LLM gateways, translation, web search, email deliverability, MCP server
+    scanning, agent card validation and more). 59 of the 121 hosts listed in the aggregate serve a distinct spec;
+    9 mirror the aggregate; 53 serve none. Each is also reachable as POST https://api.hergertsynthora.com/v1/{id}.
+  humanURL: https://catalog.hergertsynthora.com/catalog.json
+  baseURL: https://api.hergertsynthora.com/v1
+  tags:
+  - x402
+  - Data Products
+  - OSINT
+  - DeFi
+  - Sanctions Screening
+  - Agents
+  properties:
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-agentcard-openapi.json
+    name: SYNTHORA Agent Card Validator (A2A) (agentcard.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-amlscreen-openapi.json
+    name: SYNTHORA AML Screening (amlscreen.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-bridgerisk-openapi.json
+    name: SYNTHORA Bridge Risk Evaluator (bridgerisk.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-businessrisk-openapi.json
+    name: SYNTHORA Counterparty Business-Risk Verdict (businessrisk.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-codeaudit-openapi.json
+    name: SYNTHORA Multi-LLM Code Audit (codeaudit.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-coingecko-crypto-price-history-openapi.json
+    name: SYNTHORA coingecko-crypto-price-history (coingecko-crypto-price-history.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-commodity-macro-openapi.json
+    name: SYNTHORA commodity-macro (commodity-macro.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-contractwatch-openapi.json
+    name: SYNTHORA continuous contract monitoring / change detection (contractwatch.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-cryptonews-openapi.json
+    name: SYNTHORA real-time crypto news + sentiment (cryptonews.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-defidata-openapi.json
+    name: SYNTHORA DeFi Data — perp OI, funding, signals (defidata.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-deliver-openapi.json
+    name: SYNTHORA Email Deliverability Check (deliver.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-demand-radar-openapi.json
+    name: SYNTHORA Demand Radar (demand-radar.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-derivbundle-openapi.json
+    name: SYNTHORA Derivatives Bundle (derivbundle.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-dex-pair-price-openapi.json
+    name: SYNTHORA SYNTHORA DEX Pair Price (dex-pair-price.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-dispute-risk-openapi.json
+    name: SYNTHORA dispute-risk (dispute-risk.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-emerging-protocols-openapi.json
+    name: SYNTHORA emerging_protocols (emerging-protocols.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-fear-greed-openapi.json
+    name: SYNTHORA SYNTHORA Crypto Fear & Greed (fear-greed.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-funding-rates-openapi.json
+    name: SYNTHORA SYNTHORA Perp Funding Rates (funding-rates.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-identity-risk-openapi.json
+    name: SYNTHORA identity-risk (identity-risk.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-inference-openapi.json
+    name: SYNTHORA Inference (inference.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-insider-radar-openapi.json
+    name: SYNTHORA insider-radar (insider-radar.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-lifi-bridge-route-quote-openapi.json
+    name: SYNTHORA lifi-bridge-route-quote (lifi-bridge-route-quote.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-llm-fast-openapi.json
+    name: SYNTHORA LLM Gateway FAST (llm-fast.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-llm-smart-openapi.json
+    name: SYNTHORA LLM Gateway SMART (llm-smart.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-market-dominance-openapi.json
+    name: SYNTHORA SYNTHORA Market Dominance (market-dominance.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-market-resolution-openapi.json
+    name: SYNTHORA market-resolution (market-resolution.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-market-sentiment-openapi.json
+    name: SYNTHORA market_sentiment (market-sentiment.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-mcpscan-openapi.json
+    name: SYNTHORA MCP Server Security Scan (mcpscan.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-mtasts-openapi.json
+    name: SYNTHORA MTA-STS — SMTP transport security audit (mtasts.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-ohlcv-candles-openapi.json
+    name: SYNTHORA SYNTHORA OHLCV Candles (ohlcv-candles.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-onchain-openapi.json
+    name: SYNTHORA Onchain Primitives (multichain) (onchain.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-openinterest-openapi.json
+    name: SYNTHORA Open Interest Oracle (openinterest.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-payto-preflight-openapi.json
+    name: SYNTHORA payto_preflight (payto-preflight.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-perps-openapi.json
+    name: SYNTHORA Hyperliquid perps snapshot (perps.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-polymarket-markets-openapi.json
+    name: SYNTHORA Polymarket Markets Feed (polymarket-markets.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-polymarket-odds-movers-openapi.json
+    name: SYNTHORA polymarket-odds-movers (polymarket-odds-movers.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-polymarket-resolution-watch-openapi.json
+    name: SYNTHORA polymarket-resolution-watch (polymarket-resolution-watch.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-polymarket-whales-openapi.json
+    name: SYNTHORA polymarket-whales (polymarket-whales.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-prediction-markets-openapi.json
+    name: SYNTHORA SYNTHORA Prediction Odds (prediction-markets.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-prediction-openapi.json
+    name: SYNTHORA Prediction Market Oracle (prediction.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-protocol-revenue-openapi.json
+    name: SYNTHORA Protocol Revenue (protocol-revenue.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-protocol-tvl-openapi.json
+    name: SYNTHORA Protocol TVL Oracle (protocol-tvl.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-registry-watch-openapi.json
+    name: SYNTHORA registry_watch (registry-watch.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-regwatch-openapi.json
+    name: SYNTHORA x402 Registry Watch (regwatch.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-safe-to-trade-openapi.json
+    name: SYNTHORA safe_to_trade (safe-to-trade.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-sanctions-screen-openapi.json
+    name: SYNTHORA sanctions-screen (sanctions-screen.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-sentiment-openapi.json
+    name: SYNTHORA News Sentiment Oracle (sentiment.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-slippage-openapi.json
+    name: SYNTHORA Slippage Oracle (slippage.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-space-weather-risk-openapi.json
+    name: SYNTHORA space_weather_risk (space-weather-risk.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-tokenrisk-openapi.json
+    name: SYNTHORA Token Launch Risk (tokenrisk.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-translate-openapi.json
+    name: SYNTHORA Translate — any language, auto-detect (translate.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-tvl-concentration-openapi.json
+    name: SYNTHORA tvl_concentration (tvl-concentration.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-txintent-openapi.json
+    name: SYNTHORA Tx Intent Classifier (txintent.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-usgs-realtime-streamflow-openapi.json
+    name: SYNTHORA usgs-realtime-streamflow (usgs-realtime-streamflow.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-volume-anomaly-openapi.json
+    name: SYNTHORA volume_anomaly (volume-anomaly.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-wallet-enrich-openapi.json
+    name: SYNTHORA wallet-enrich (wallet-enrich.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-walletrep-openapi.json
+    name: SYNTHORA Wallet Reputation Score (walletrep.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-websearch-openapi.json
+    name: SYNTHORA keyless web search for AI agents (websearch.hergertsynthora.com)
+  - type: OpenAPI
+    url: openapi/services/hergertsynthora-com-yahoo-equity-delayed-quote-openapi.json
+    name: SYNTHORA yahoo-equity-delayed-quote (yahoo-equity-delayed-quote.hergertsynthora.com)
+  - type: Documentation
+    url: https://hergertsynthora.com/api/
+- name: SYNTHORA Live World Map API
+  description: 'Public, credential-free JSON behind the mundo.hergertsynthora.com 3D globe: GET /mapstate returns
+    the live state of the mesh map (active layers, objects, sources, timestamps) and GET /api/capa/<slug> returns
+    each live layer (flights, vessels/AIS, earthquakes, satellites, conflicts, sea floor). Documented in prose only;
+    no machine-readable contract is published for it.'
+  humanURL: https://hergertsynthora.com/api/
+  baseURL: https://mundo.hergertsynthora.com
+  tags:
+  - Geospatial
+  - Open Data
+  - AIS
+  - Public API
+  properties:
+  - type: Documentation
+    url: https://hergertsynthora.com/api/
+  - type: Console
+    url: https://mundo.hergertsynthora.com/
+    name: Live globe (the same state the API returns)
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/hergertsynthora-com-domain-security.yml
+- type: Authentication
+  url: authentication/hergertsynthora-com-authentication.yml
 - type: Website
   url: https://hergertsynthora.com/
+- type: Documentation
+  url: https://hergertsynthora.com/api/
+- type: APIReference
+  url: https://api.hergertsynthora.com/openapi.json
+- type: LLMsTxt
+  url: llms/hergertsynthora-com-llms.txt
+- type: LLMsTxt
+  url: https://hergertsynthora.com/llms.txt
+- type: AgentCard
+  url: a2a/hergertsynthora-com-a2a.yml
+- type: AgentCard
+  url: https://hergertsynthora.com/.well-known/agent-card.json
+- type: MCPServer
+  url: mcp/hergertsynthora-com-mcp.yml
+- type: MCPServer
+  url: https://mcp.hergertsynthora.com/mcp
+  name: 'synthora-mcp remote endpoint (30 tools). POST-only JSON-RPC: a GET answers 404 {"error": "MCP endpoint:
+    POST JSON-RPC"} by design; verified live 2026-09-19 with initialize + tools/list.'
+- type: ToolCrosswalk
+  url: mcp/hergertsynthora-com-tool-crosswalk.yml
+- type: WellKnown
+  url: well-known/hergertsynthora-com-well-known.yml
+- type: X-X402Discovery
+  url: well-known/hergertsynthora-com-x402.json
+- type: Conformance
+  url: conformance/hergertsynthora-com-conformance.yml
+- type: ErrorCatalog
+  url: errors/hergertsynthora-com-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/hergertsynthora-com-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/hergertsynthora-com-lifecycle.yml
+- type: SLA
+  url: https://api.hergertsynthora.com/sla/
+- type: Sandbox
+  url: sandbox/hergertsynthora-com-sandbox.yml
+- type: Conventions
+  url: conventions/hergertsynthora-com-conventions.yml
+- type: Plans
+  url: plans/hergertsynthora-com-plans-pricing.yml
+- type: Pricing
+  url: https://hergertsynthora.com/muestras/
+- type: RateLimits
+  url: rate-limits/hergertsynthora-com-rate-limits.yml
+- type: Packages
+  url: packages/hergertsynthora-com-packages.yml
+- type: Components
+  url: components/hergertsynthora-com-components.yml
+- type: DataModel
+  url: data-model/hergertsynthora-com-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: RegulatoryPosture
+  url: regulatory/hergertsynthora-com-regulatory-posture.yml
+- type: DataSubjectRequest
+  url: https://hergertsynthora.com/legal/privacidad/
+- type: TermsOfService
+  url: https://hergertsynthora.com/terms/
+- type: PrivacyPolicy
+  url: https://hergertsynthora.com/legal/privacidad/
+- type: LegalNotice
+  url: https://hergertsynthora.com/legal/aviso-legal/
+- type: CookiePolicy
+  url: https://hergertsynthora.com/legal/cookies/
+- type: Sitemap
+  url: https://hergertsynthora.com/sitemap-index.xml
+- type: Robots
+  url: https://hergertsynthora.com/robots.txt
+- type: About
+  url: https://hergertsynthora.com/grupo/
+- type: Contact
+  url: https://hergertsynthora.com/contacto/
+x-enrichment:
+  date: '2026-09-19'
+  status: enriched
+  artifacts_added: 100
+  pass: local-v3
