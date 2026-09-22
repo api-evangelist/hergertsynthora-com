@@ -309,6 +309,11 @@ apis:
   - Geospatial
   - Open Data
   - AIS
+  - Public APIs
+  tags_raw:
+  - Geospatial
+  - Open Data
+  - AIS
   - Public API
   properties:
   - type: Documentation
