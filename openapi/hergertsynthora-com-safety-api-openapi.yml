@@ -1,0 +1,1387 @@
+openapi: 3.2.0
+info:
+  title: Hergertsynthora Com Safety API
+  version: 2026.09.03
+  contact:
+    email: info@hergertsynthora.com
+  x-sla: https://api.hergertsynthora.com/sla
+  x-terms: https://hergertsynthora.com/terms
+  description: 'Operations tagged safety across 2 of this provider''s published API definitions: hergertsynthora-com-mesh-aggregate-openapi.json, hergertsynthora-com-mesh-aggregate-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://pay.hergertsynthora.com
+  description: Flagship endpoints
+security:
+- x402Payment: []
+tags:
+- name: safety
+  description: Pre-trade and pre-payment safety checks
+paths:
+  /service:
+    post:
+      operationId: contractGuard
+      summary: On-chain contract safety check (0.005 USDC)
+      description: 'Pre-trade safety for agents: honeypot, rug-pull, hidden-mint and owner-privilege detection on a Base contract. Returns an Ed25519-signed verdict.'
+      tags:
+      - safety
+      x-payment-info:
+        price:
+          mode: fixed
+          currency: USD
+          amount: '0.005000'
+        protocols:
+        - x402: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceRequest'
+            example:
+              input: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913'
+      responses:
+        '200':
+          $ref: '#/components/responses/SignedResult'
+        '402':
+          $ref: '#/components/responses/PaymentRequired'
+    servers:
+    - url: https://pay.hergertsynthora.com
+      description: Flagship endpoints
+  /preflight:
+    post:
+      operationId: payToPreflight
+      summary: Verify-before-pay check on any x402 endpoint (0.010 USDC)
+      description: 'Synchronous check that a target x402 endpoint and its payTo are alive and unchanged immediately before you pay, so an agent never sends USDC to a dead, changed or hijacked payTo. Returns an Ed25519-signed verdict: safe | changed | down | unknown.'
+      tags:
+      - safety
+      x-payment-info:
+        price:
+          mode: fixed
+          currency: USD
+          amount: '0.010000'
+        protocols:
+        - x402: {}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - input
+              properties:
+                input:
+                  type: object
+                  required:
+                  - endpoint_url
+                  - expected_payTo
+                  properties:
+                    endpoint_url:
+                      type: string
+                      format: uri
+                    expected_payTo:
+                      type: string
+                      pattern: ^0x[a-fA-F0-9]{40}$
+            example:
+              input:
+                endpoint_url: https://pay.hergertsynthora.com/service
+                expected_payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+      responses:
+        '200':
+          $ref: '#/components/responses/SignedResult'
+        '402':
+          $ref: '#/components/responses/PaymentRequired'
+    servers:
+    - url: https://pay.hergertsynthora.com
+      description: Flagship endpoints
+components:
+  responses:
+    SignedResult:
+      description: Paid result, Ed25519-signed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignedResult'
+    PaymentRequired:
+      description: Payment required. Read `accepts` for price and payTo, then retry with the X-PAYMENT header.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              x402Version:
+                type: integer
+              error:
+                type: string
+              accepts:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PaymentRequirements'
+  schemas:
+    SignedResult:
+      type: object
+      properties:
+        ok:
+          type: boolean
+        niche:
+          type: string
+        result:
+          type: object
+        receipt:
+          type: object
+          description: Ed25519 signature over the result, plus payment reference.
+    ServiceRequest:
+      type: object
+      required:
+      - input
+      properties:
+        input:
+          type: string
+          description: Primary argument. For contract safety, a 0x contract address on Base.
+    PaymentRequirements:
+      type: object
+      properties:
+        scheme:
+          type: string
+          const: exact
+        network:
+          type: string
+          const: eip155:8453
+        asset:
+          type: string
+          const: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913'
+          description: USDC on Base
+        amount:
+          type: string
+          description: Price in USDC base units (6 decimals)
+        maxAmountRequired:
+          type: string
+        payTo:
+          type: string
+        maxTimeoutSeconds:
+          type: integer
+  securitySchemes:
+    x402Payment:
+      type: apiKey
+      in: header
+      name: X-PAYMENT
+      description: EIP-3009 transferWithAuthorization payload, USDC on Base. Obtained by first calling the endpoint and reading the 402 challenge.
+externalDocs:
+  description: Full x402 discovery manifest (222 live payable resources)
+  url: https://pay.hergertsynthora.com/.well-known/x402.json
+x-refined-from:
+- hergertsynthora-com-mesh-aggregate-openapi.json
+- hergertsynthora-com-mesh-aggregate-openapi.yml
+x-discovery:
+  ownershipProofs:
+  - '0xb107b1c73411f02586b715eba39066d97d331476af401c49a480795c4b53a39f4eb884d52fe8138f02c5d6581c19d6f5bb790e848dbe5bff42074eb44815ab661c'
+x-synthora-products:
+- host: agentcard.hergertsynthora.com
+  url: https://agentcard.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'Agent Card Validator (A2A): given an Agent Card URL or JSON, deterministically validates it against the A2A spec — required fields, skill schemas, endpoint reachability, security schemes, provider transparency — and returns a compatibility_score, schema_errors and warnings. The trust layer for the a'
+  openapi: https://agentcard.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: air-quality.hergertsynthora.com
+  url: https://air-quality.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA air-quality: live air quality for any city or lat,lon — PM2.5/PM10/ozone/NO2, EU and US AQI, and a WHO-threshold operational verdict (good/moderate/harmful). Source: open-meteo Air Quality (CAMS/ESA Copernicus), free, no key. $0.005 USDC x402 Base.'
+  openapi: https://air-quality.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: ais-sanctions-signal.hergertsynthora.com
+  url: https://ais-sanctions-signal.hergertsynthora.com/service
+  price_usdc: 2.0
+  description: 'SYNTHORA AIS x sanctions LIVE SIGNAL: vessels heard by our own AIS listener crossed against sanctions lists and PSC detentions (deterministic, cron 2h). Real signal verified 2026-09-02: HELION (MMSI 538012094, ua_war_sanctions) in Gibraltar. Tier estandar: 2 USDC per call via x402 on Base.'
+  openapi: https://ais-sanctions-signal.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: amlscreen.hergertsynthora.com
+  url: https://amlscreen.hergertsynthora.com/service
+  price_usdc: 0.1
+  description: Screen a crypto wallet address against global sanctions and illicit-activity intelligence. Cross-checks the on-chain Chainalysis sanctions oracle, TRM screening, OFAC SDN and GoPlus address flags (mixer, phishing, laundering), returning a sanctioned yes/no, matched lists and an AML risk score. Use i
+  openapi: https://amlscreen.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: asset-risk.hergertsynthora.com
+  url: https://asset-risk.hergertsynthora.com/service
+  price_usdc: 0.03
+  description: 'SYNTHORA asset-risk: geoint risk verdict by zone (gibraltar, bab-el-mandeb, bosphorus, algeciras...) or lat/lon+bbox — confidence measured by AGREEMENT between independent sources, discrepancies declared (the moat). $0.03 USDC x402 Base.'
+  openapi: https://asset-risk.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: bitcoin-fees.hergertsynthora.com
+  url: https://bitcoin-fees.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA bitcoin-fees: Bitcoin fee tiers in sat/vB (fastest/half-hour/hour/economy/minimum) plus current block height. Source: mempool.space public API, keyless. Bitcoin only.'
+  openapi: https://bitcoin-fees.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: bridgerisk.hergertsynthora.com
+  url: https://bridgerisk.hergertsynthora.com/service
+  price_usdc: 0.1
+  description: Assess the security risk of a cross-chain bridge before routing funds through it. Combines live DefiLlama TVL and audit status with the full bridge-hack incident history and known-exploit analysis into a 0-100 risk score, a safe/caution/high_risk/critical signal and explicit risk factors. Use it for
+  openapi: https://bridgerisk.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: businessrisk.hergertsynthora.com
+  url: https://businessrisk.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'Counterparty business-risk verdict: one call fuses OFAC/EU sanctions screening, on-chain wallet reputation, and token/pool contract risk into a single weighted risk_score (0-100), a kill/pivot/proceed verdict, and reason_codes naming which sub-signal drove it. Weights: sanctions 0.50, wallet 0.30, t'
+  openapi: https://businessrisk.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: chokepoint-risk.hergertsynthora.com
+  url: https://chokepoint-risk.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'SYNTHORA chokepoint-risk: SUPERCORRELATED risk verdict per maritime chokepoint (Hormuz, Suez, Panama, Bab el-Mandeb, Malacca, Gibraltar, Taiwan) — crosses REAL TRAFFIC (IMF PortWatch, canonical Polymarket resolution source) x NARRATIVE (GDELT global news spike+tone) x NAVIGABILITY (WaveWatch III sea'
+  openapi: https://chokepoint-risk.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: chokepoint-transits.hergertsynthora.com
+  url: https://chokepoint-transits.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA chokepoint-transits: daily vessel transits through the 28 global maritime chokepoints (Hormuz, Suez, Panama, Bab el-Mandeb, Malacca...). Latest settled day, 7d moving average, deviation vs 30d baseline, per-vessel-type breakdown (a tanker-only drop at Hormuz is the tradeable signal) and ano'
+  openapi: https://chokepoint-transits.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: code-sandbox.hergertsynthora.com
+  url: https://code-sandbox.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'Python code execution as a service for agents: send code, get stdout/stderr/exit code. Isolated, hard limits. $0.01 USDC x402 Base.'
+  openapi: https://code-sandbox.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: codeaudit.hergertsynthora.com
+  url: https://codeaudit.hergertsynthora.com/service
+  price_usdc: 0.32
+  description: 'Multi-LLM Smart Contract Audit: 3 independent LLM perspectives (security, logic, gas) + static pattern scan on Solidity/Vyper source. Severity: clean/low/medium/high/critical. Ed25519-signed, publishable on-chain. POST {"source":"pragma solidity...","language":"solidity"} or {"address":"0x..","chain'
+  openapi: https://codeaudit.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: coingecko-crypto-price-history.hergertsynthora.com
+  url: https://coingecko-crypto-price-history.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: Historical daily price, market-cap and volume time-series for a coin in any fiat currency from CoinGecko's keyless market_chart endpoint (JSON). Serves autonomous crypto-vs-fiat trend agents, backtesting bots, and agent-to-agent analytics needing multi-day price series without a key. Pay-per-call vi
+  openapi: https://coingecko-crypto-price-history.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: commodity-macro.hergertsynthora.com
+  url: https://commodity-macro.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: Gold, silver and major macro FX reference in one call for portfolio-hedging agents. ECB + metals reference. Free source. $0.05 USDC via x402 on Base. SYNTHORA. Pay-per-call via x402 on Base. No charge on upstream failure.
+  openapi: https://commodity-macro.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: compliance-eu.hergertsynthora.com
+  url: https://compliance-eu.hergertsynthora.com/service
+  price_usdc: 0.1
+  description: 'EU Compliance Triage: AI Act risk classification + MiCA category detection. Automated regulatory analysis for fintechs, exchanges, AI projects.'
+  openapi: https://compliance-eu.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: consensus-fragility.hergertsynthora.com
+  url: https://consensus-fragility.hergertsynthora.com/service
+  price_usdc: 0.1
+  description: 'Consensus Fragility Feed: divergence signals between independent sources. Detect when consensus is fragile before trading.'
+  openapi: https://consensus-fragility.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: contract-guard.hergertsynthora.com
+  url: https://contract-guard.hergertsynthora.com/service
+  price_usdc: 0.32
+  description: 'SYNTHORA contract_guard (endpoint canonico historico, alias de contractwatch): veredicto de seguridad de contrato on-chain que SI lee el bytecode (eth_getCode) y slots de proxy (EIP-1967/zeppelinos/UUPS/beacon), owner() y privilegios ocultos: honeypot, rug-pull, hidden mint. Correlacionado entre fue'
+  openapi: https://contract-guard.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: contractwatch.hergertsynthora.com
+  url: https://contractwatch.hergertsynthora.com/service
+  price_usdc: 0.32
+  description: 'SYNTHORA contractwatch: verdict de seguridad de contrato on-chain que SI lee el bytecode (eth_getCode) y slots de proxy (EIP-1967/zeppelinos/UUPS/beacon), owner() y privilegios ocultos: honeypot, rug-pull, hidden mint. Correlacionado entre fuentes independientes y firmado Ed25519. 0.32 USDC via x402'
+  openapi: https://contractwatch.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: counterparty-attestation.hergertsynthora.com
+  url: https://counterparty-attestation.hergertsynthora.com/service
+  price_usdc: 0.5
+  description: 'SYNTHORA counterparty-attestation: full signed due-diligence attestation on a counterparty, re-verifiable by third parties. Multi-list matching (OFAC/UN/EU/OpenSanctions) with fuzzy entity resolution, per-list evidence, consulted lists with dates, sha256 + SYNTHORA signature over the full ruling. 0.'
+  openapi: https://counterparty-attestation.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: counterparty-clearance.hergertsynthora.com
+  url: https://counterparty-clearance.hergertsynthora.com/service
+  price_usdc: 0.1
+  description: 'SYNTHORA counterparty-clearance (screen): due diligence of a counterparty before paying or contracting. Multi-list matching (OFAC SDN + aliases, UN, OpenSanctions, EU consolidated) + on-chain reputation, fused by the SYNTHORA engine into a signed CLEAR/FLAGGED/BLOCKED ruling with citations to the ex'
+  openapi: https://counterparty-clearance.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: cryptonews.hergertsynthora.com
+  url: https://cryptonews.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'SYNTHORA cryptonews: real-time crypto news headlines with sentiment, ranked by importance. Aggregates keyless RSS feeds (CryptoPanic, CoinDesk, CoinTelegraph, Decrypt, Bitcoin Magazine) into deduplicated, freshness-and-source-weighted top headlines, each scored with a lexical bull/bear sentiment (ve'
+  openapi: https://cryptonews.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: daily-intel-brief.hergertsynthora.com
+  url: https://daily-intel-brief.hergertsynthora.com/service
+  price_usdc: 0.1
+  description: 'SYNTHORA daily-intel-brief: the daily intelligence briefing in ONE call — funding spreads cross-venue, stablecoin depeg radar, US funding stress (SOFR-EFFR), chokepoint status (PortWatch), narrative tension (GDELT), plus executive alerts. Each block declares its verified sources. What a trading agen'
+  openapi: https://daily-intel-brief.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: deep-audit.hergertsynthora.com
+  url: https://deep-audit.hergertsynthora.com/service
+  price_usdc: 0.5
+  description: 'SYNTHORA deep-audit: deep OSINT audit of a person / company / domain / username using >=3 tools from SYNTHORA self-hosted OSINT mesh (username footprint, passive domain scan, sanctions/PEP matching, Tor crawler, phone scan, own metasearch) plus web search, synthesized by the SYNTHORA intelligence en'
+  openapi: https://deep-audit.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: defi-llama-tvl-ranking.hergertsynthora.com
+  url: https://defi-llama-tvl-ranking.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA defi-llama-tvl-ranking: Top DeFi protocols by TVL with rank, chain, category and 1d/7d change, capped list (default 50, max 200 via {"limit":N}). Source: api.llama.fi/protocols (DefiLlama), keyless, timestamped.'
+  openapi: https://defi-llama-tvl-ranking.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: defi-yields.hergertsynthora.com
+  url: https://defi-yields.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA defi-yields: stablecoin DeFi yields ranked with a risk outlier detector — APY vs class median (>=3x median = the excess yield IS the risk price). Only pools with TVL >= $10M. Source: DefiLlama, free, no key. $0.005 USDC x402 Base.'
+  openapi: https://defi-yields.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: defidata.hergertsynthora.com
+  url: https://defidata.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'SYNTHORA defidata: deFi market-data feed: perp open interest, funding rate, mark price and a directional signal across top assets (BTC/ETH/SOL/…), plus optional per-asset verdict. Deterministic, Ed25519-signed. SYNTHORA. First 3 calls FREE per wallet — send header ''X-WALLET: 0x<your Base address>'' ('
+  openapi: https://defidata.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: deliver.hergertsynthora.com
+  url: https://deliver.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: Audit a domain's email deliverability and sender reputation. Checks SPF, DKIM selectors, DMARC policy strength (reject/quarantine/none), BIMI, MX and PTR records, returning a spam score and prioritized fixes. Use it to assess inbox placement, email authentication and domain reputation before sending
+  openapi: https://deliver.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: demand-radar.hergertsynthora.com
+  url: https://demand-radar.hergertsynthora.com/service
+  price_usdc: 0.25
+  description: 'SYNTHORA demand-radar: live demand analytics measured on the mesh itself (Caddy access logs, weekly aggregate): most-probed x402 endpoints, 402 unpaid interest, 200 conversions, unique IPs, published prices. POST {"vista":"sin_pagar|compradas|nadie_toca|mirados","limit":<=25}.'
+  openapi: https://demand-radar.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: derivbundle.hergertsynthora.com
+  url: https://derivbundle.hergertsynthora.com/service
+  price_usdc: 1.6
+  description: 002 call (cheaper + fewer round-trips than buying each separately) 5 live datasets, partial degradation (never fails whole), Ed25519-signed First 3 calls FREE per wallet via X-WALLET header SYNTHORA.
+  openapi: https://derivbundle.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: dex-pair-price.hergertsynthora.com
+  url: https://dex-pair-price.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'Real-time on-chain DEX price, liquidity and 24h volume for any pool/token on any chain via GeckoTerminal. For DeFi routing agents. Free source. $0.01 USDC via x402 on Base. SYNTHORA. First 3 calls FREE per wallet — send header X-WALLET: 0x<addr>. No charge on upstream failure.'
+  openapi: https://dex-pair-price.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: dispute-risk.hergertsynthora.com
+  url: https://dispute-risk.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'Resolution/dispute risk score (0-100) for Polymarket markets: UMA status (proposed/disputed), UMA bond and reward, rules-text ambiguity (length, deadline date, declared resolution source), top-3 holder concentration as a vote-manipulation proxy, and days to resolution. Pass a market_slug or conditio'
+  openapi: https://dispute-risk.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: domain-risk.hergertsynthora.com
+  url: https://domain-risk.hergertsynthora.com/service
+  price_usdc: 0.03
+  description: 'SYNTHORA domain-risk: domain risk verdict (LIMPIO/SOSPECHOSO/PELIGROSO) with score, confidence and evidence signals — age, infra, reputation crosses. Pre-interaction safety for agents. $0.03 USDC x402 Base.'
+  openapi: https://domain-risk.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: ecb-forex-fixing-vs-market.hergertsynthora.com
+  url: https://ecb-forex-fixing-vs-market.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA ecb-forex-fixing-vs-market: ECB daily EUR/USD fixing vs live market rate: deviation in basis points, direction and >25bps alert. Sources: official ECB eurofxref-daily.xml + open.er-api.com, both keyless.'
+  openapi: https://ecb-forex-fixing-vs-market.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: ecb-macro.hergertsynthora.com
+  url: https://ecb-macro.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA ecb-macro: official eurozone macro from the ECB data warehouse — HICP inflation, MRR policy rate, 10Y govt yield, each with previous value, change and direction. For macro/rates agents and prediction markets. Official free source, no key. $0.005 USDC x402 Base.'
+  openapi: https://ecb-macro.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: emerging-protocols.hergertsynthora.com
+  url: https://emerging-protocols.hergertsynthora.com/service
+  price_usdc: 0.03
+  description: 'SYNTHORA emerging-protocols: early detection of young DeFi protocols with accelerating TVL (on-chain momentum) before they get big — for MEV searchers and alpha bots. Ranked by momentum+acceleration+youth, mega-protocol noise filtered. Source: DeFiLlama. $0.03 USDC x402 Base.'
+  openapi: https://emerging-protocols.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: endpoint-trust.hergertsynthora.com
+  url: https://endpoint-trust.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA endpoint-trust: trust verdict for any x402 endpoint before paying it — 402 correctness, valid accepts/payTo, bazaar extensions, agent-card published, latency. Observed behavior, not declarations. The pre-payment check for buying agents. $0.005 USDC x402 Base.'
+  openapi: https://endpoint-trust.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: exchange-rates-verified.hergertsynthora.com
+  url: https://exchange-rates-verified.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA exchange-rates-verified: FX rates for 160+ currencies CROSS-VERIFIED between two independent sources (ECB official fixing via frankfurter.app vs market aggregate open.er-api.com) with per-currency deviation in bps and divergence alert >50 bps. The product is the discrepancy: a bad rate brea'
+  openapi: https://exchange-rates-verified.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: fear-greed.hergertsynthora.com
+  url: https://fear-greed.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'SYNTHORA fear-greed: indice de miedo/codicia con la VARIACION frente a ayer y el cruce de banda, no solo el valor. Fuente: alternative.me, fechada y con hash.'
+  openapi: https://fear-greed.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: fed-watch.hergertsynthora.com
+  url: https://fed-watch.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA fed-watch: US reference-rate funding pulse — SOFR/EFFR/TGCR/BGCR/OBFR with volumes, percentile dispersion and the SOFR-EFFR spread (the funding-stress signal before it hits the news). Cross-check of 5 independent official NY Fed series. The input for Fed/CPI prediction markets. Free officia'
+  openapi: https://fed-watch.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: funding-rates.hergertsynthora.com
+  url: https://funding-rates.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'Real-time perpetual funding rates + mark price for any Binance futures symbol. Essential for delta-neutral and basis-trading agents. Free source, deterministic, instant JSON. $0.01 USDC via x402 on Base. SYNTHORA. First 3 calls FREE per wallet — send header X-WALLET: 0x<addr>. No charge on upstream '
+  openapi: https://funding-rates.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: funding-spread.hergertsynthora.com
+  url: https://funding-spread.hergertsynthora.com/service
+  price_usdc: 0.03
+  description: 'SYNTHORA funding-spread: perp funding rates CROSSED across Binance, Bybit and OKX for top pairs — the max spread between venues and the theoretical carry direction (long where you receive, short where you pay). Funding arb signal, not a wrapper. 3 free public sources crossed. $0.03 USDC x402 Base.'
+  openapi: https://funding-spread.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: gas-oracle-multi.hergertsynthora.com
+  url: https://gas-oracle-multi.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA gas-oracle-multi: gas price across 5 chains (ethereum, base, arbitrum, optimism, polygon), each VERIFIED by two independent public RPCs with divergence report — a single RPC can lie or lag; dual-verified is what you time transactions with. Free public RPCs, no key. $0.005 USDC x402 Base.'
+  openapi: https://gas-oracle-multi.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: gdelt-tension.hergertsynthora.com
+  url: https://gdelt-tension.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA gdelt-tension: geopolitical tension index for any topic/country — news-mention spike vs 7d baseline, average tone shift, escalation flag and the headlines causing it. The early signal for Polymarket geopolitical markets (high variance, high spread). Source: GDELT DOC 2.0 (100+ languages, fr'
+  openapi: https://gdelt-tension.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: github-repo-activity.hergertsynthora.com
+  url: https://github-repo-activity.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA github-repo-activity: Activity metrics for any public GitHub repo (input owner/repo): stars, forks, open issues, last push, language, archived flag. 10-min in-process cache, stale-on-rate-limit or ok:false. Source: api.github.com, keyless.'
+  openapi: https://github-repo-activity.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: headers-audit.hergertsynthora.com
+  url: https://headers-audit.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA headers-audit: HTTP security headers + TLS audit for any URL — missing headers, score 0-100, cookie flags. $0.005 USDC x402 Base.'
+  openapi: https://headers-audit.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: historical-weather.hergertsynthora.com
+  url: https://historical-weather.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA historical-weather: verified historical weather for any place and date (1940 → ~5 days ago) from the ERA5 reanalysis — tmax/tmin, precipitation, max wind. For climate-market backtesting and claim verification. Source: open-meteo archive, free, no key. $0.005 USDC x402 Base.'
+  openapi: https://historical-weather.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: hurricane-odds.hergertsynthora.com
+  url: https://hurricane-odds.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA hurricane-odds: active tropical cyclones CROSS-VERIFIED — official NHC bulletin (category, wind, pressure, movement) crossed with an independent model (ECMWF via open-meteo) at the storm position; discrepancies >15 kt flagged. The input for Polymarket weather/climate markets. Sources: NHC +'
+  openapi: https://hurricane-odds.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: identity-risk.hergertsynthora.com
+  url: https://identity-risk.hergertsynthora.com/service
+  price_usdc: 0.32
+  description: 'SYNTHORA identity-risk: brand-impersonation verdict (AUTHENTIC / DOUBTFUL / ACTIVE_IMPERSONATION) over decentralised social identities, correlated across independent sources.'
+  openapi: https://identity-risk.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: inference.hergertsynthora.com
+  url: https://inference.hergertsynthora.com/service
+  price_usdc: 0.02
+  description: 'SYNTHORA Inference Router: pay-per-prompt LLM inference, no API keys to manage. Sovereign constitution-tuned SYNTHORA-Qwen model, local, Ed25519-signed output. POST {"prompt":"...","system":"...","max_tokens":200}.'
+  openapi: https://inference.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: insider-radar.hergertsynthora.com
+  url: https://insider-radar.hergertsynthora.com/service
+  price_usdc: 0.03
+  description: 'Insider-style trade detection on Polymarket: scans the latest large fills (min_usd, default 10000 USD) over lookback_hours (default 24) and flags wallets that are fresh (few lifetime trades), sized big vs the market 24h volume, or entered at extreme odds right before the market moved. Each alert car'
+  openapi: https://insider-radar.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: lifi-bridge-route-quote.hergertsynthora.com
+  url: https://lifi-bridge-route-quote.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'Returns the best cross-chain bridge/swap route for a given source chain, destination chain, tokens and amount from LI.FI, including chosen bridge tool, estimated output, fees and gas. Powers autonomous cross-chain agents and agent-to-agent treasury movers that pick the cheapest, fastest bridge path '
+  openapi: https://lifi-bridge-route-quote.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: llm-fast.hergertsynthora.com
+  url: https://llm-fast.hergertsynthora.com/service
+  price_usdc: 0.005
+  description: 'SYNTHORA LLM Gateway FAST: OpenAI-compatible /v1/chat/completions pay-per-call, no API keys. Fast free-tier models (llama-3.1-8b class) with automatic upstream failover, Ed25519-signed. 0.005 USDC via x402 on Base. POST {"messages":[{"role":"user","content":"..."}]} (or {"prompt":"..."}).'
+  openapi: https://llm-fast.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: llm-smart.hergertsynthora.com
+  url: https://llm-smart.hergertsynthora.com/service
+  price_usdc: 0.005
+  description: 'SYNTHORA LLM Gateway SMART: OpenAI-compatible /v1/chat/completions pay-per-call, no API keys. Large free-tier models (llama-3.3-70b class) with automatic upstream failover, Ed25519-signed. 0.005 USDC via x402 on Base. POST {"messages":[{"role":"user","content":"..."}]} (or {"prompt":"..."}).'
+  openapi: https://llm-smart.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: macro-surprise.hergertsynthora.com
+  url: https://macro-surprise.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'SYNTHORA macro surprise index: z-score of the latest change vs the trailing 12-change distribution for official ECB series (HICP inflation, MRR policy rate, 10Y yield). Flags strong/moderate surprises the moment official data prints. Partial degradation, Ed25519-signed. First 3 calls FREE per wallet'
+  openapi: https://macro-surprise.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: macrobundle.hergertsynthora.com
+  url: https://macrobundle.hergertsynthora.com/service
+  price_usdc: 0.1
+  description: 'SYNTHORA macro intel bundle: 7 live macro/market datasets in ONE call (commodity macro, market sentiment, stablecoin supply, ECB forex fixing vs market, DeFi TVL ranking, top crypto, bitcoin fees). Cheaper than buying each separately. Partial degradation (never fails whole), Ed25519-signed. First 3 '
+  openapi: https://macrobundle.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: marine-wave-forecast.hergertsynthora.com
+  url: https://marine-wave-forecast.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA marine-wave-forecast: sea state for any coast/port or chokepoint (Hormuz, Suez, Panama, Malacca, Gibraltar, Bab el-Mandeb, Dover presets) — wave height, period, swell, Douglas-scale verdict and navigability flag. Complements chokepoint-transits for shipping disruption markets. Source: open-'
+  openapi: https://marine-wave-forecast.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: market-dominance.hergertsynthora.com
+  url: https://market-dominance.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'SYNTHORA market-dominance: BTC and ETH market dominance contrasted between TWO independent providers (CoinGecko and Coinlore), reporting the discrepancy in percentage points and a confidence grade — you get not just the number but whether the number can be trusted. Deterministic, Ed25519-signed. $0.'
+  openapi: https://market-dominance.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: market-resolution.hergertsynthora.com
+  url: https://market-resolution.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'Canonical resolution status for one Polymarket market (market_slug or condition_id required): market state (active/resolving/closed), UMA resolution statuses (proposed/disputed), end date and hours to resolution, declared resolution source plus sources found in the rules text, current outcome prices'
+  openapi: https://market-resolution.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: market-sentiment.hergertsynthora.com
+  url: https://market-sentiment.hergertsynthora.com/service
+  price_usdc: 0.03
+  description: Get real-time market sentiment signals via x402 M2M API. Signed x402 call. 0.03 USDC on Base.
+  openapi: https://market-sentiment.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: mcpscan.hergertsynthora.com
+  url: https://mcpscan.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'MCP Server Security Scan: probes an MCP server (JSON-RPC initialize + tools/list) and applies a deterministic rule engine over its tools — embedded secrets, dangerous shell/exec/filesystem capabilities, prompt-injection surface, hidden unicode, permissive input schemas, and auth/TLS/CORS headers — r'
+  openapi: https://mcpscan.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: mtasts.hergertsynthora.com
+  url: https://mtasts.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'SYNTHORA mtasts: sMTP transport-security audit: MTA-STS (RFC 8461) + TLS-RPT (RFC 8460). Resolves the policy DNS records, fetches and parses the well-known policy file, cross-validates the policy mx: patterns against the domain''s real MX, and returns an enforce/report verdict. Complements SPF/DKIM/D'
+  openapi: https://mtasts.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: noaa-tides.hergertsynthora.com
+  url: https://noaa-tides.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA noaa-tides: tide and water level for US ports/stations, VERIFIED by crossing NOAA harmonic prediction with the LIVE observation at the same station — the anomaly (observed minus predicted) is the storm-surge/port-disruption signal. Source: NOAA CO-OPS official, free, no key. $0.005 USDC x40'
+  openapi: https://noaa-tides.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: ohlcv-candles.hergertsynthora.com
+  url: https://ohlcv-candles.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'Real-time and historical OHLCV candles (open/high/low/close/volume) for any crypto pair, any interval. For backtesting and signal agents. Free source. $0.01 USDC via x402 on Base. SYNTHORA. First 3 calls FREE per wallet — send header X-WALLET: 0x<addr>. No charge on upstream failure.'
+  openapi: https://ohlcv-candles.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: onchain.hergertsynthora.com
+  url: https://onchain.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA Onchain Primitives: multichain (Base/Ethereum/Polygon/Arbitrum/Optimism) transaction receipts, tx lookup, wallet nonce, contract/proxy (EIP-1967) detection, ENS resolution, ERC20 + native balances, contract introspection. Deterministic, Ed25519-signed. 0.001 USDC via x402 on Base. First 3 c'
+  openapi: https://onchain.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: openinterest.hergertsynthora.com
+  url: https://openinterest.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'SYNTHORA Open Interest Oracle: live perpetual futures open interest, funding rates, mark price, premium and crowded long/short signal for 230+ assets via Hyperliquid. Ed25519-signed. First 3 calls FREE per wallet — send header ''X-WALLET: 0x<your Base address>'' (no payment).'
+  openapi: https://openinterest.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: osint-deep.hergertsynthora.com
+  url: https://osint-deep.hergertsynthora.com/service
+  price_usdc: 0.99
+  description: 'SYNTHORA osint-deep: full OSINT brief + per-source evaluation (reliability and known bias, with reasons) on any topic/actor/region/event. Every claim cited (source + URL + date); unverifiable claims listed explicitly. sha256 + firma SYNTHORA. 0.99 USDC via x402 on Base. POST {"topic":"...","days":14'
+  openapi: https://osint-deep.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: osint-flash.hergertsynthora.com
+  url: https://osint-flash.hergertsynthora.com/service
+  price_usdc: 0.25
+  description: 'SYNTHORA osint-flash: verifiable OSINT brief on any topic/actor/region/event in one call. Live GDELT coverage (volume/tone/articles) + multi-source web search + SYNTHORA''s 2,300-source collector catalog, synthesized by the SYNTHORA engine into a 10-15 line brief where EVERY claim carries a citation '
+  openapi: https://osint-flash.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: payto-preflight.hergertsynthora.com
+  url: https://payto-preflight.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'x402 PayTo Pre-Flight: verify a payTo address against the live registry before paying. Detects payTo hijacking, stale endpoints and unknown resources. Deterministic, <200ms, no external network. 0.005 USDC via x402 on Base. SYNTHORA.'
+  openapi: https://payto-preflight.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: perps.hergertsynthora.com
+  url: https://perps.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'SYNTHORA Perps Snapshot: live Hyperliquid perpetual futures snapshot per asset — mark price, oracle price, hourly funding rate (with 8h and APR derivations), open interest (USD), premium and 24h volume for 230+ perps, keyless. Complements the Open Interest oracle with the raw single-shot data a trad'
+  openapi: https://perps.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: pharma-deep.hergertsynthora.com
+  url: https://pharma-deep.hergertsynthora.com/service
+  price_usdc: 0.5
+  description: 'SYNTHORA pharma-deep: deep pharmaceutical intelligence report on a drug / active ingredient / manufacturer using OPEN official sources (openFDA label, FAERS adverse events aggregated, FDA recalls/enforcement, NDC catalog, ClinicalTrials.gov v2, Europe PMC literature, EMBL-EBI ChEMBL, NIH RxNav, NLM '
+  openapi: https://pharma-deep.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: polymarket-markets.hergertsynthora.com
+  url: https://polymarket-markets.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'Search prediction markets ACROSS PLATFORMS (Polymarket + Kalshi) in one call: live prices, implied probability, volume, liquidity, end date and market conviction. Server-side search that actually finds the market (bitcoin, fed, election, geopolitics). For trading and forecasting agents tracking even'
+  openapi: https://polymarket-markets.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: polymarket-odds-movers.hergertsynthora.com
+  url: https://polymarket-odds-movers.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'Polymarket odds movers: active markets ranked by biggest price swing in the last 1h / 24h / 1wk (window param), with yes price, change and direction, best bid/ask, spread, 24h volume, liquidity and end date. The momentum signal prediction bots scan before entering a market. No charge on service fail'
+  openapi: https://polymarket-odds-movers.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: polymarket-resolution-watch.hergertsynthora.com
+  url: https://polymarket-resolution-watch.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'Polymarket resolution watch: markets ending within N days (default 7) with UMA resolution status (proposed/disputed), UMA bond and reward, hours to resolution, last price, 24h volume, liquidity and a uma_risk flag for contested or undecided resolutions. Lets prediction agents avoid or exploit resolu'
+  openapi: https://polymarket-resolution-watch.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: polymarket-trades.hergertsynthora.com
+  url: https://polymarket-trades.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: Historical Polymarket trade query with filters plus per-wallet aggregation. $0.01 USDC x402 Base.
+  openapi: https://polymarket-trades.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: polymarket-whales.hergertsynthora.com
+  url: https://polymarket-whales.hergertsynthora.com/service
+  price_usdc: 0.15
+  description: 'Live whale-tracking on Polymarket: the latest large trades (default >= 5000 USD, tunable via min_usd) with wallet, side, outcome, size, price, USD value, market title/slug and tx hash, straight from Polymarket public trades data API. Built for prediction-market agents that track smart money before t'
+  openapi: https://polymarket-whales.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: port-watch.hergertsynthora.com
+  url: https://port-watch.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA port-watch: daily port activity for any of 2,065 ports (Shanghai, Singapore, Rotterdam, LA, Long Beach presets + any name) — port calls, estimated import/export capacity (dwt), 7d moving average vs 30d baseline deviation and anomaly flag. Port volume leads official macro data by weeks: the '
+  openapi: https://port-watch.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: pre-trade-safety.hergertsynthora.com
+  url: https://pre-trade-safety.hergertsynthora.com/service
+  price_usdc: 0.25
+  description: 'SYNTHORA pre-trade-safety: ONE signed JSON verdict before touching a token/contract/wallet. Fuses contract-guard + token-risk + AML screening + sanctions lists + DEX market data, synthesized by the SYNTHORA intelligence engine into {veredicto, score_riesgo, flags, fuentes citadas, sha256, firma SYNT'
+  openapi: https://pre-trade-safety.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: prediction-market-signal.hergertsynthora.com
+  url: https://prediction-market-signal.hergertsynthora.com/service
+  price_usdc: 0.25
+  description: 'SYNTHORA daily prediction-market signal: hourly snapshot of geopolitical markets on Polymarket and Kalshi, deltas vs baseline and signals when present. Deterministic, no LLM. Tier flash: 0.25 USDC per call via x402 on Base.'
+  openapi: https://prediction-market-signal.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: prediction-markets.hergertsynthora.com
+  url: https://prediction-markets.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'Search prediction markets ACROSS PLATFORMS (Polymarket + Kalshi) in one call: live prices, implied probability, volume, liquidity, end date and market conviction. Server-side search that actually finds the market (bitcoin, fed, election, geopolitics). For trading and forecasting agents tracking even'
+  openapi: https://prediction-markets.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: prediction.hergertsynthora.com
+  url: https://prediction.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: Prediction Market Probability Oracle — real Polymarket odds (p_yes/p_no, volume, liquidity), not LLM guesses. POST a question; Ed25519-signed. For agents needing calibrated event probabilities.
+  openapi: https://prediction.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: protocol-revenue-lite.hergertsynthora.com
+  url: https://protocol-revenue-lite.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA protocol-revenue-lite: Protocol Revenue Lite: live protocol REVENUE (24h/7d/30d + 1d/7d change) for any DefiLlama protocol slug, from api.llama.fi. POST {"protocol":"aave"}.'
+  openapi: https://protocol-revenue-lite.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: protocol-revenue.hergertsynthora.com
+  url: https://protocol-revenue.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: Real-time fee revenue and 24h/7d/30d earnings for any DeFi protocol via DefiLlama Fees API.
+  openapi: https://protocol-revenue.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: protocol-tvl.hergertsynthora.com
+  url: https://protocol-tvl.hergertsynthora.com/service
+  price_usdc: 0.02
+  description: 'SYNTHORA protocol-tvl: tVL de un protocolo con su CUOTA sobre el TVL total y su puesto en el ranking: contexto que el dato suelto no da.'
+  openapi: https://protocol-tvl.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: ransomware-gleif.hergertsynthora.com
+  url: https://ransomware-gleif.hergertsynthora.com/service
+  price_usdc: 2.0
+  description: 'SYNTHORA ransomware victims enriched with GLEIF LEI: our own darknet ransomware-victim findings crossed with the GLEIF legal-entity registry (free, no key). Weekly collector, cumulative dataset. Tier estandar: 2 USDC per call via x402 on Base.'
+  openapi: https://ransomware-gleif.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: registry-watch.hergertsynthora.com
+  url: https://registry-watch.hergertsynthora.com/service
+  price_usdc: 0.03
+  description: 'SYNTHORA registry-watch: pay-per-event feed of signed Ed25519 deltas from the x402/M2M endpoint registry — new and changed endpoints, payTos and listings. Pull with {"since": "<cursor|ISO>", "slug": "<slug>", "limit": <=200}; each delta is individually signed and the full response is signed again (d'
+  openapi: https://registry-watch.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: regwatch.hergertsynthora.com
+  url: https://regwatch.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'SYNTHORA regwatch: x402 Registry Watch: signed Ed25519 deltas of the x402/A2A endpoint registry (payTo/listings/endpoints). Pay-per-event feed pull. POST {"since":"<cursor|ISO>","slug":"<slug>","limit":<=200}.'
+  openapi: https://regwatch.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: resolution-oracle.hergertsynthora.com
+  url: https://resolution-oracle.hergertsynthora.com/service
+  price_usdc: 0.25
+  description: 'SYNTHORA resolution-oracle: calibrated probability per outcome + resolution risk of a Polymarket market. Live market data + wording/ambiguity/oracle-risk scoring, synthesized by the SYNTHORA engine: {probabilidades, riesgo_resolucion (fuente de verdad, criterio, UMA), fuentes citadas, sha256, firma}'
+  openapi: https://resolution-oracle.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: resolution-risk.hergertsynthora.com
+  url: https://resolution-risk.hergertsynthora.com/service
+  price_usdc: 0.1
+  description: 'Resolution Risk Scoring for prediction markets: wording analysis, ambiguity detection, oracle-risk signals. Pre-trade safety for Polymarket/Kalshi traders.'
+  openapi: https://resolution-risk.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: resolution-source-feed.hergertsynthora.com
+  url: https://resolution-source-feed.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'SYNTHORA resolution-source-feed: give a Polymarket market slug, get its official resolution source READ LIVE — current value, threshold, distance and on-track/off-track verdict. Covers IMF PortWatch chokepoint markets (Hormuz weekly series, normalization binaries): the answer a trader checks before '
+  openapi: https://resolution-source-feed.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: resolution-verdict.hergertsynthora.com
+  url: https://resolution-verdict.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'Decision verdict for prediction markets: probability, direction and multi-source evidence with declared sources. $0.05 USDC x402 Base.'
+  openapi: https://resolution-verdict.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: rwa-gap-watch.hergertsynthora.com
+  url: https://rwa-gap-watch.hergertsynthora.com/service
+  price_usdc: 0.03
+  description: 'SYNTHORA rwa-gap-watch: the gap between tokenized stocks (Ondo AAPLon, TSLAon, NVDAon, SPYon, HOODon...) trading 24/7 on-chain and their last official NYSE close — on-chain price discovery happens BEFORE TradFi opens (weekend/overnight edge for investors). Cross-verified: best-liquidity pool (DexScr'
+  openapi: https://rwa-gap-watch.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: safe-to-trade.hergertsynthora.com
+  url: https://safe-to-trade.hergertsynthora.com/service
+  price_usdc: 0.03
+  description: 'SYNTHORA safe-to-trade: pre-trade go/no-go verdict for an EVM token or counterparty. Returns safe_to_trade (bool), risk_score, reason codes and honeypot flags from keyless checks: contract verification, EIP-1967 proxy detection, totalSupply read and OFAC SDN sanctions screening of token and counterp'
+  openapi: https://safe-to-trade.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: sanctions-screen.hergertsynthora.com
+  url: https://sanctions-screen.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'SYNTHORA sanctions-screen: sanctions screening with MATCH / CLEAR verdict over 4 official downloads (OFAC SDN primary and alias lists, UN, OpenSanctions). Multilingual, tested on Cyrillic transliterations.'
+  openapi: https://sanctions-screen.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: sentiment.hergertsynthora.com
+  url: https://sentiment.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'Real-time crowd sentiment oracle for any topic or asset: GDELT global-news tone timeline -> sentiment (very_bullish..very_bearish), tone score, trend and trading signal, with top headlines. POST {"query":"bitcoin","timespan":"6h"}. Deterministic, Ed25519-signed. SYNTHORA.'
+  openapi: https://sentiment.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: shipping-alpha.hergertsynthora.com
+  url: https://shipping-alpha.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'SYNTHORA shipping-alpha: physical-vs-price divergence for shipping/logistics stocks (ZIM, Maersk AMKBY, Hapag-Lloyd, FedEx, UPS, Matson) — crosses LIVE physical reality (IMF PortWatch chokepoint transits + WaveWatch III navigability) with the official stock price move. Physical deterioration not yet'
+  openapi: https://shipping-alpha.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: slippage.hergertsynthora.com
+  url: https://slippage.hergertsynthora.com/service
+  price_usdc: 0.1
+  description: 'Slippage and price-impact oracle for any crypto pair: estimates expected slippage, price impact and effective execution price for a given trade size from live order-book depth and liquidity. Answers ''expected slippage for this swap'', ''price impact of my order'', ''orderbook liquidity / slippage'', ''how'
+  openapi: https://slippage.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: space-weather-risk.hergertsynthora.com
+  url: https://space-weather-risk.hergertsynthora.com/service
+  price_usdc: 0.03
+  description: 'SYNTHORA space-weather-risk: composite operational space-weather risk verdict fusing 4 NOAA SWPC feeds (Kp/G scale, GOES X-ray flare class, solar wind, proton flux) — for defense, aviation, satellites, power grid, precision GPS. $0.01 USDC x402 Base.'
+  openapi: https://space-weather-risk.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: space-weather.hergertsynthora.com
+  url: https://space-weather.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA space-weather: live space weather from NOAA SWPC — GOES X-ray flux (solar flare activity), solar wind plasma (speed and density) and planetary Kp geomagnetic index. Optional focus: send xray, wind or kp in the input to get just that series, otherwise the latest reading of all three. Source:'
+  openapi: https://space-weather.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: stablecoin-depeg.hergertsynthora.com
+  url: https://stablecoin-depeg.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA stablecoin-depeg: depeg radar for 8 major stablecoins (USDT, USDC, DAI, USDS, USDe, PYUSD, USDD, FDUSD), each measured by TWO independent sources (CoinGecko + DefiLlama) with inter-source discrepancy reported — a real depeg shows in both; a single-source blip is an oracle artifact. Severity'
+  openapi: https://stablecoin-depeg.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: stablecoin-supply.hergertsynthora.com
+  url: https://stablecoin-supply.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA stablecoin-supply: circulating USD supply, price and peg deviation in basis points for the top stablecoins (USDT, USDC, DAI...), with a depeg alert flag above 50 bps. Optional symbol filter. Free source: stablecoins.llama.fi (DefiLlama), no API key, timestamped.'
+  openapi: https://stablecoin-supply.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: threat-exposure.hergertsynthora.com
+  url: https://threat-exposure.hergertsynthora.com/service
+  price_usdc: 0.03
+  description: 'SYNTHORA threat-exposure: external attack-surface score for any domain/host — exposure breakdown with deterministic evidence (historic IPs, open surfaces). $0.03 USDC x402 Base.'
+  openapi: https://threat-exposure.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: tokenrisk.hergertsynthora.com
+  url: https://tokenrisk.hergertsynthora.com/service
+  price_usdc: 0.32
+  description: Detect honeypots, rug-pulls and malicious tokens before buying or approving. Combines GoPlus token-security (honeypot simulation, buy/sell tax, mintable, pausable, hidden owner, LP concentration, holder count) with bytecode analysis and owner-renounce checks into a safe/caution/risky/rug_pull verdic
+  openapi: https://tokenrisk.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: top-crypto.hergertsynthora.com
+  url: https://top-crypto.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA top-crypto: Top N cryptocurrencies by market cap (default 10, max 50): rank, price, 24h change, volume and market cap in USD. Source: CoinGecko free API, keyless, timestamped.'
+  openapi: https://top-crypto.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: tor-fetch.hergertsynthora.com
+  url: https://tor-fetch.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA tor-fetch: fetch any URL (including .onion) via Tor AND directly, compared side by side — status, size, and divergence flag (geo-block / soft censorship detection). Access onion intel sources with no clearnet route. $0.005 USDC x402 Base.'
+  openapi: https://tor-fetch.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: translate.hergertsynthora.com
+  url: https://translate.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'SYNTHORA translate: translate any text between 100+ languages with automatic source-language detection. Preserves tone, formatting and placeholders. Deterministic JSON output, Ed25519-signed. SYNTHORA.'
+  openapi: https://translate.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: trending-cross.hergertsynthora.com
+  url: https://trending-cross.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA trending-cross: crypto trending VERIFIED by two-source consensus — an asset trending on CoinGecko AND gaining on Binance at once is a confirmed signal; trending on one only is noise or a localized pump. Top gainers/losers with volume included. Free sources, no key. $0.005 USDC x402 Base.'
+  openapi: https://trending-cross.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: tvl-concentration.hergertsynthora.com
+  url: https://tvl-concentration.hergertsynthora.com/service
+  price_usdc: 0.03
+  description: 'SYNTHORA tvl-concentration: DeFi TVL drain/concentration signal — protocols anomalously losing TVL while token price has not yet repriced (temporal edge window). For liquidation and risk bots. Source: DeFiLlama. $0.03 USDC x402 Base.'
+  openapi: https://tvl-concentration.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: tx-simulator.hergertsynthora.com
+  url: https://tx-simulator.hergertsynthora.com/service
+  price_usdc: 0.03
+  description: 'SYNTHORA tx-simulator: simulate an EVM transaction before signing — SAFE/WARN/DANGER verdict, decoded intent, warnings and checks performed. Pre-trade safety for agent wallets. $0.03 USDC x402 Base.'
+  openapi: https://tx-simulator.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: txintent.hergertsynthora.com
+  url: https://txintent.hergertsynthora.com/service
+  price_usdc: 0.1
+  description: 'Tx Intent Classifier: decodes the REAL intent of an on-chain transaction (Base/Ethereum) and returns an Ed25519-signed risk verdict (safe/review/suspicious/dangerous). Catches unlimited approvals, opaque selectors, value-to-contract, reverted tx. POST {"tx_hash":"0x..","chain":"base"} or {"to":"0x..'
+  openapi: https://txintent.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: usgs-earthquakes.hergertsynthora.com
+  url: https://usgs-earthquakes.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA usgs-earthquakes: latest earthquakes (M>=4.5 default, tunable) with PAGER alert level, tsunami flag and ACTIVE SEISMIC CLUSTER detection (>=3 events same zone in 24h) — the actionable signal for insurance-risk and disaster prediction markets. Source: USGS FDSN (official US, real-time, no ke'
+  openapi: https://usgs-earthquakes.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: usgs-realtime-streamflow.hergertsynthora.com
+  url: https://usgs-realtime-streamflow.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'Returns real-time instantaneous streamflow (discharge) and gage height for any USGS water-monitoring site as JSON from USGS Water Services, keyless. Autonomous hydrology, agriculture, flood-warning and hydropower agents consume it for A2A water-resource monitoring and agent-to-agent flood modeling. '
+  openapi: https://usgs-realtime-streamflow.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: vessel-sanctions.hergertsynthora.com
+  url: https://vessel-sanctions.hergertsynthora.com/service
+  price_usdc: 0.03
+  description: 'SYNTHORA vessel-sanctions: screen any vessel (IMO or name) against the OFAC SDN sanctioned-vessels list (1,524 ships tracked) — the compliance check before touching tanker/shipping trades or chokepoint bets. List mode: full sanctioned-fleet snapshot. Source: OFAC SDN (US Treasury, free, no key). $0.'
+  openapi: https://vessel-sanctions.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: volume-anomaly.hergertsynthora.com
+  url: https://volume-anomaly.hergertsynthora.com/service
+  price_usdc: 0.03
+  description: 'SYNTHORA volume-anomaly: crypto volume-anomaly alerts for arbitrage bots — assets whose 24h turnover (volume/mcap) is anomalously high vs their cohort (z-score), early pump/unusual-activity signal. Composite of CoinGecko markets + DeFiLlama DEX volume. Keyless. $0.03 USDC x402 Base.'
+  openapi: https://volume-anomaly.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: wallet-enrich.hergertsynthora.com
+  url: https://wallet-enrich.hergertsynthora.com/service
+  price_usdc: 0.15
+  description: 'Wallet enrichment for any EVM wallet (0x address or ENS name) in one call: 0-100 risk score with low/medium/high level, sanctions exposure screening (OFAC SDN wallet lists: Tornado Cash, Lazarus, Garantex), on-chain activity on Ethereum + Base (native balance, transaction count, contract-vs-EOA dete'
+  openapi: https://wallet-enrich.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: walletrep.hergertsynthora.com
+  url: https://walletrep.hergertsynthora.com/service
+  price_usdc: 0.32
+  description: Score the risk and reputation of any EVM wallet address before you transact with it. Combines on-chain sanctions screening (Chainalysis oracle, TRM, OFAC) and GoPlus address-security flags (phishing, blacklist, mixer, malicious activity) with contract-vs-EOA detection, transaction history and balanc
+  openapi: https://walletrep.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: weather-now.hergertsynthora.com
+  url: https://weather-now.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA weather-now: current weather for any city or lat,lon — temperature, feels-like, humidity, wind, WMO condition code in plain text, plus the 6h temperature trend (rising/falling/flat), which is the actionable part. Free source: open-meteo.com (ECMWF/NOAA/DWD), no API key, timestamped.'
+  openapi: https://weather-now.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: web-extract.hergertsynthora.com
+  url: https://web-extract.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA web-extract: any URL to clean agent-ready text (no HTML noise) + title, meta description, link/image counts — context-ready content for agents, stdlib extraction, no third parties. $0.005 USDC x402 Base.'
+  openapi: https://web-extract.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: websearch.hergertsynthora.com
+  url: https://websearch.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: 'Keyless web search for AI agents, pay-per-call, no API key and no signup: natural-language query in, ranked organic results out (title, url, snippet) with source list. Neutral web access for research, RAG grounding and fact-check agents that cannot hold search API keys. $0.05 USDC x402 Base. Input: '
+  openapi: https://websearch.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: who-gho-premium.hergertsynthora.com
+  url: https://who-gho-premium.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA who-gho-premium: WORLD-CLASS country health intelligence in ONE call. Bundle of 10 key WHO GHO indicators for the requested country (life expectancy, HALE, UHC coverage, doctors density, NCD mortality, suicide rate, road deaths, skilled birth attendance) + derived analytics (YoY delta, tren'
+  openapi: https://who-gho-premium.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: who-gho-timeseries.hergertsynthora.com
+  url: https://who-gho-timeseries.hergertsynthora.com/service
+  price_usdc: 0.01
+  description: 'SYNTHORA who-gho-timeseries: WHO Global Health Observatory indicator time series by country (life expectancy etc.) — public-health data for research and policy agents. $0.005 USDC x402 Base. Ratings: GET /v1/ratings/who-gho-timeseries.'
+  openapi: https://who-gho-timeseries.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
+- host: yahoo-equity-delayed-quote.hergertsynthora.com
+  url: https://yahoo-equity-delayed-quote.hergertsynthora.com/service
+  price_usdc: 0.05
+  description: Delayed real-time quote and intraday OHLCV for any stock or ETF ticker (price, day high/low, 52-week range, volume) from Yahoo Finance's keyless chart endpoint (JSON). Powers autonomous equity-screening agents and agent-to-agent trading bots needing per-symbol quotes without an API key. Pay-per-call
+  openapi: https://yahoo-equity-delayed-quote.hergertsynthora.com/openapi.json
+  payment:
+    protocol: x402
+    network: eip155:8453
+    asset: USDC
+    payTo: '0xEf879BFD6C4AccB8F795136de90246e1EC245e06'
