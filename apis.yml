@@ -143,36 +143,6 @@ apis:
     url: https://notary.hergertsynthora.com/llms.txt
   - type: AgentCard
     url: a2a/hergertsynthora-com-notary-agent-card.json
-- aid: hergertsynthora-com:hergertsynthora-com-service-api
-  name: Hergert Synthora Service API
-  description: The Service API from Hergert Synthora — 1 operation(s) for service.
-  humanURL: https://hergertsynthora.com/api/
-  baseURL: https://api.hergertsynthora.com
-  tags:
-  - Service
-  properties:
-  - type: OpenAPI
-    url: openapi/hergertsynthora-com-service-api-openapi.yml
-  - type: Documentation
-    url: https://hergertsynthora.com/api/
-  - type: LLMsTxt
-    url: llms/hergertsynthora-com-api-llms.txt
-  - type: LLMsTxt
-    url: https://api.hergertsynthora.com/llms.txt
-  - type: ToolCrosswalk
-    url: mcp/hergertsynthora-com-tool-crosswalk.yml
-  - type: X-X402Discovery
-    url: well-known/hergertsynthora-com-x402.json
-  - type: X-X402Discovery
-    url: https://api.hergertsynthora.com/.well-known/x402.json
-  - type: SLA
-    url: https://api.hergertsynthora.com/sla/
-  - type: LLMsTxt
-    url: llms/hergertsynthora-com-notary-llms.txt
-  - type: LLMsTxt
-    url: https://notary.hergertsynthora.com/llms.txt
-  - type: AgentCard
-    url: a2a/hergertsynthora-com-notary-agent-card.json
 - aid: hergertsynthora-com:hergertsynthora-com-wallet-enrichment-api
   name: Hergert Synthora Wallet Enrichment API
   description: The wallet-enrichment API from Hergert Synthora — 1 operation(s) for wallet-enrichment.

@@ -1,25 +1,21 @@
 {
   "provider": "hergertsynthora-com",
   "sources": [
-    "_original/hergertsynthora-com-mesh-aggregate-openapi.json",
-    "hergertsynthora-com-agent-notary-openapi.yml",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml"
+    "_original/hergertsynthora-com-mesh-aggregate-openapi.json"
   ],
   "outputs": [
     "hergertsynthora-com-discovery-api-openapi.yml",
     "hergertsynthora-com-polymarket-api-openapi.yml",
     "hergertsynthora-com-safety-api-openapi.yml",
-    "hergertsynthora-com-wallet-enrichment-api-openapi.yml",
-    "hergertsynthora-com-service-api-openapi.yml"
+    "hergertsynthora-com-wallet-enrichment-api-openapi.yml"
   ],
   "archived": [
-    "archived openapi/hergertsynthora-com-agent-notary-openapi.yml",
-    "archived openapi/hergertsynthora-com-mesh-aggregate-openapi.yml"
+    "deleted 1 superseded output(s) from the previous generation"
   ],
   "errors": [],
   "warnings": [],
   "notes": [
-    "1 archived document(s) dropped as subsets of other archived documents",
+    "3 archived document(s) dropped as subsets of other archived documents",
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "hergertsynthora-com-mesh-aggregate-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "hergertsynthora-com-mesh-aggregate-openapi.json: declared missing tag: compliance",
@@ -43,38 +39,17 @@
     "hergertsynthora-com-mesh-aggregate-openapi.json: declared missing tag: whale-tracking",
     "hergertsynthora-com-mesh-aggregate-openapi.json: declared missing tag: x402",
     "hergertsynthora-com-mesh-aggregate-openapi.json: multi-axis tagging (22 tags, 4 first tags, 4.64x duplication over 11 operations) \u2014 split on first tag, 7 operations narrowed",
-    "hergertsynthora-com-agent-notary-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "hergertsynthora-com-agent-notary-openapi.yml: tagged paths POST /service -> Service",
-    "hergertsynthora-com-agent-notary-openapi.yml: declared missing tag: Service",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml: declared missing tag: compliance",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml: declared missing tag: dispute",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml: declared missing tag: insider",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml: declared missing tag: kyt",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml: declared missing tag: market-status",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml: declared missing tag: momentum",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml: declared missing tag: odds",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml: declared missing tag: polymarket",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml: declared missing tag: prediction-markets",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml: declared missing tag: resolution",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml: declared missing tag: resolution-risk",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml: declared missing tag: risk",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml: declared missing tag: sanctions",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml: declared missing tag: smart-money",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml: declared missing tag: trading-signal",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml: declared missing tag: uma",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml: declared missing tag: usdc",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml: declared missing tag: wallet-enrichment",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml: declared missing tag: whale-tracking",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml: declared missing tag: x402",
-    "hergertsynthora-com-mesh-aggregate-openapi.yml: multi-axis tagging (22 tags, 4 first tags, 4.64x duplication over 11 operations) \u2014 split on first tag, 7 operations narrowed",
-    "tag 'discovery' spans 2 source specs (hergertsynthora-com-mesh-aggregate-openapi.json, hergertsynthora-com-mesh-aggregate-openapi.yml): per-path servers applied",
-    "tag 'polymarket' spans 2 source specs (hergertsynthora-com-mesh-aggregate-openapi.json, hergertsynthora-com-mesh-aggregate-openapi.yml): per-path servers applied",
-    "tag 'safety' spans 2 source specs (hergertsynthora-com-mesh-aggregate-openapi.json, hergertsynthora-com-mesh-aggregate-openapi.yml): per-path servers applied",
-    "tag 'wallet-enrichment' spans 2 source specs (hergertsynthora-com-mesh-aggregate-openapi.json, hergertsynthora-com-mesh-aggregate-openapi.yml): per-path servers applied",
-    "apis.yml register: written (+5 apis, 6 total)"
+    "superseded outputs removed: hergertsynthora-com-service-api-openapi.yml",
+    "apis.yml register: written (+0 apis, 5 total)"
   ],
   "skipped": [
-    "_original/hergertsynthora-com-agent-notary-openapi.json: archived document superseded by a larger archived document"
+    "_original/hergertsynthora-com-mesh-aggregate-openapi.yml: archived document superseded by a larger archived document",
+    "_original/hergertsynthora-com-agent-notary-openapi.yml: archived document superseded by a larger archived document",
+    "_original/hergertsynthora-com-agent-notary-openapi.json: archived document superseded by a larger archived document",
+    "hergertsynthora-com-discovery-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hergertsynthora-com-polymarket-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hergertsynthora-com-safety-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hergertsynthora-com-service-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hergertsynthora-com-wallet-enrichment-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }

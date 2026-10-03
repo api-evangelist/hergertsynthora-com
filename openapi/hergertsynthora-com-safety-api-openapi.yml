@@ -1,12 +1,12 @@
 openapi: 3.2.0
 info:
-  title: Hergertsynthora Com Safety API
+  title: SYNTHORA Machine-Payable API Mesh (aggregate) Safety API
   version: 2026.09.03
+  description: 'Aggregate OpenAPI for the SYNTHORA x402 mesh: 121 pay-per-call services, each on its own host under *.hergertsynthora.com, path /service, POST JSON. Per-service OpenAPI: https:///openapi.json. Payment: x402, USDC on Base, payTo 0xEf879BFD6C4AccB8F795136de90246e1EC245e06 (Safe 1.3.0). Full machine catalog: https://catalog.hergertsynthora.com/catalog.json'
   contact:
     email: info@hergertsynthora.com
-  x-sla: https://api.hergertsynthora.com/sla
   x-terms: https://hergertsynthora.com/terms
-  description: 'Operations tagged safety across 2 of this provider''s published API definitions: hergertsynthora-com-mesh-aggregate-openapi.json, hergertsynthora-com-mesh-aggregate-openapi.yml. Each path carries the servers of the definition it was published in.'
+  x-sla: https://api.hergertsynthora.com/sla
 servers:
 - url: https://pay.hergertsynthora.com
   description: Flagship endpoints
@@ -43,9 +43,6 @@ paths:
           $ref: '#/components/responses/SignedResult'
         '402':
           $ref: '#/components/responses/PaymentRequired'
-    servers:
-    - url: https://pay.hergertsynthora.com
-      description: Flagship endpoints
   /preflight:
     post:
       operationId: payToPreflight
@@ -90,32 +87,7 @@ paths:
           $ref: '#/components/responses/SignedResult'
         '402':
           $ref: '#/components/responses/PaymentRequired'
-    servers:
-    - url: https://pay.hergertsynthora.com
-      description: Flagship endpoints
 components:
-  responses:
-    SignedResult:
-      description: Paid result, Ed25519-signed.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/SignedResult'
-    PaymentRequired:
-      description: Payment required. Read `accepts` for price and payTo, then retry with the X-PAYMENT header.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              x402Version:
-                type: integer
-              error:
-                type: string
-              accepts:
-                type: array
-                items:
-                  $ref: '#/components/schemas/PaymentRequirements'
   schemas:
     SignedResult:
       type: object
@@ -159,6 +131,28 @@ components:
           type: string
         maxTimeoutSeconds:
           type: integer
+  responses:
+    PaymentRequired:
+      description: Payment required. Read `accepts` for price and payTo, then retry with the X-PAYMENT header.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              x402Version:
+                type: integer
+              error:
+                type: string
+              accepts:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PaymentRequirements'
+    SignedResult:
+      description: Paid result, Ed25519-signed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignedResult'
   securitySchemes:
     x402Payment:
       type: apiKey
@@ -168,9 +162,6 @@ components:
 externalDocs:
   description: Full x402 discovery manifest (222 live payable resources)
   url: https://pay.hergertsynthora.com/.well-known/x402.json
-x-refined-from:
-- hergertsynthora-com-mesh-aggregate-openapi.json
-- hergertsynthora-com-mesh-aggregate-openapi.yml
 x-discovery:
   ownershipProofs:
   - '0xb107b1c73411f02586b715eba39066d97d331476af401c49a480795c4b53a39f4eb884d52fe8138f02c5d6581c19d6f5bb790e848dbe5bff42074eb44815ab661c'
