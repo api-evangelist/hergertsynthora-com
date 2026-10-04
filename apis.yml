@@ -22,7 +22,6 @@ tags:
 - MCP
 - x402
 - Web3
-- Intelligence
 - Sanctions Screening
 - Prediction Markets
 - OSINT
@@ -59,6 +58,8 @@ apis:
   humanURL: https://hergertsynthora.com/api/
   baseURL: https://api.hergertsynthora.com
   tags:
+  - Discovery
+  tags_raw:
   - discovery
   properties:
   - type: OpenAPI
@@ -89,6 +90,8 @@ apis:
   humanURL: https://hergertsynthora.com/api/
   baseURL: https://api.hergertsynthora.com
   tags:
+  - Polymarket
+  tags_raw:
   - polymarket
   properties:
   - type: OpenAPI
@@ -119,6 +122,8 @@ apis:
   humanURL: https://hergertsynthora.com/api/
   baseURL: https://api.hergertsynthora.com
   tags:
+  - Safety
+  tags_raw:
   - safety
   properties:
   - type: OpenAPI
@@ -292,3 +297,5 @@ x-a2a:
   grade: "conformant"
   protocol_version: "1.0"
   control: 404
+x-tags-removed:
+- Intelligence
