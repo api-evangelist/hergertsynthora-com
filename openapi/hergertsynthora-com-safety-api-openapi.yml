@@ -101,14 +101,6 @@ components:
         receipt:
           type: object
           description: Ed25519 signature over the result, plus payment reference.
-    ServiceRequest:
-      type: object
-      required:
-      - input
-      properties:
-        input:
-          type: string
-          description: Primary argument. For contract safety, a 0x contract address on Base.
     PaymentRequirements:
       type: object
       properties:
@@ -131,6 +123,14 @@ components:
           type: string
         maxTimeoutSeconds:
           type: integer
+    ServiceRequest:
+      type: object
+      required:
+      - input
+      properties:
+        input:
+          type: string
+          description: Primary argument. For contract safety, a 0x contract address on Base.
   responses:
     PaymentRequired:
       description: Payment required. Read `accepts` for price and payTo, then retry with the X-PAYMENT header.

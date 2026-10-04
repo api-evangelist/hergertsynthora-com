@@ -9,9 +9,7 @@
     "hergertsynthora-com-safety-api-openapi.yml",
     "hergertsynthora-com-wallet-enrichment-api-openapi.yml"
   ],
-  "archived": [
-    "deleted 1 superseded output(s) from the previous generation"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
@@ -39,8 +37,7 @@
     "hergertsynthora-com-mesh-aggregate-openapi.json: declared missing tag: whale-tracking",
     "hergertsynthora-com-mesh-aggregate-openapi.json: declared missing tag: x402",
     "hergertsynthora-com-mesh-aggregate-openapi.json: multi-axis tagging (22 tags, 4 first tags, 4.64x duplication over 11 operations) \u2014 split on first tag, 7 operations narrowed",
-    "superseded outputs removed: hergertsynthora-com-service-api-openapi.yml",
-    "apis.yml register: written (+0 apis, 5 total)"
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "_original/hergertsynthora-com-mesh-aggregate-openapi.yml: archived document superseded by a larger archived document",
@@ -49,7 +46,6 @@
     "hergertsynthora-com-discovery-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "hergertsynthora-com-polymarket-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "hergertsynthora-com-safety-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "hergertsynthora-com-service-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "hergertsynthora-com-wallet-enrichment-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }
