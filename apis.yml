@@ -14,7 +14,7 @@ x-tier-reason: harvest stub profiled by the local enrichment pipeline on 2026-09
 position: Producing
 specificationVersion: '0.20'
 created: '2026-09-19'
-modified: '2026-09-19'
+modified: '2026-10-06'
 tags:
 - Company
 - Agents
@@ -184,6 +184,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- url: https://hergertsynthora.com/rss.xml
+  type: BlogRSS
 - type: Overlay
   url: overlays/hergertsynthora-com-mesh-aggregate-overlay.yaml
 - type: AgentSkill
