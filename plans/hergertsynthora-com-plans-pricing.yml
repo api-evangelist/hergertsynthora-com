@@ -56,3 +56,45 @@ sample_product_prices:
 - {product: agentcard validator, price_usdc: '0.01', source: catalog.json}
 - {product: bioquantum dataset (full pack), price_usdc: '49', source: api llms.txt}
 enterprise_contact: info@hergertsynthora.com (the company states it does not sell services to third parties beyond the machine channel; the contact page is for investment, partnership, hiring or M&A)
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Productos atomicos (atomic data products)
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Flash (informe relampago)
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Estandar
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Profundo
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Monitorizacion
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Security Assessment (authorized pentest)
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
