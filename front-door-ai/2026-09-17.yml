@@ -1,0 +1,30 @@
+# Front Door AI Index — hergertsynthora-com — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: hergertsynthora-com
+  lexicon_version: '1.0'
+  probed_at: '2026-09-25'
+  host: hergertsynthora.com
+  final_host: hergertsynthora.com
+  ownership: own
+  owner: hergertsynthora-com
+  shares_host_with: null
+  inherited_from: null
+  alias_of: null
+  verdict: scored
+  score: 3
+  band: 3
+  band_label: light
+  host_score: 3
+  density: 4.45
+  words: 674
+  tiers:
+    agentic: 2
+    core: 1
+    model: 0
+  ambiguous: 3
+  top_terms:
+    agent: 3
+    llms.txt: 2
+    LLMs: 1
