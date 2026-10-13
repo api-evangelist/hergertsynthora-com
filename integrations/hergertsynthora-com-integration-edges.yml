@@ -1,0 +1,23 @@
+edges:
+- partner_name: OpenAI
+  partner: openai
+  partner_match: domain
+  type: contract
+  channel: provider-built
+  relationship: compatible
+  direction: provider-built
+  evidence: https://github.com/api-evangelist/hergertsynthora-com/blob/main/openapi/services/hergertsynthora-com-llm-fast-openapi.json#L1
+  contract_reference:
+    repo: hergertsynthora-com
+    spec_file: hergertsynthora-com-llm-fast-openapi.json
+    property: description
+    value: OpenAI-compatible
+    note: 'hergertsynthora-com declares OpenAI compatibility: ''{"openapi":"3.1.0","info":{"contact":{"email":"info@hergertsynthora.com"},"title":"SYNTHORA
+      LLM Gateway FAST","version":"1.0.0","description":"OpenAI-compatible'''
+    detected_by: sweep-model-routing.py
+    detected: '2026-10-13'
+  detected_by: sweep-model-routing.py
+  first_seen: '2026-10-13'
+generated: '2026-10-13'
+method: searched
+checked: []
