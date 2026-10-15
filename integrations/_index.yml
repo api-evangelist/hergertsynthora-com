@@ -20,7 +20,7 @@
     note: 'hergertsynthora-com declares OpenAI compatibility: ''{"openapi":"3.1.0","info":{"contact":{"email":"info@hergertsynthora.com"},"title":"SYNTHORA
       LLM Gateway FAST","version":"1.0.0","description":"OpenAI-compatible'''
     detected_by: sweep-model-routing.py
-    detected: '2026-10-13'
+    detected: '2026-10-15'
   status: not-a-workflow
   arazzo: null
 - slug: hergertsynthora-com-mcp-registry
@@ -39,6 +39,6 @@
     registered_name: com.hergertsynthora/synthora-x402
     register_id: com.hergertsynthora/synthora-x402
     detected_by: sweep-agent-tools.py
-    detected: '2026-10-14'
+    detected: '2026-10-15'
   status: not-a-workflow
   arazzo: null
