@@ -1,0 +1,14 @@
+{
+  "repo": "hergertsynthora-com",
+  "feeds": [
+    {
+      "source": "https://hergertsynthora.com/rss.xml",
+      "feed_url": "https://hergertsynthora.com/rss.xml",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-10-10T13:15:00Z"
+}
