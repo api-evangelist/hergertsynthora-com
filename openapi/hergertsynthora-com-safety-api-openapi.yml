@@ -89,18 +89,6 @@ paths:
           $ref: '#/components/responses/PaymentRequired'
 components:
   schemas:
-    SignedResult:
-      type: object
-      properties:
-        ok:
-          type: boolean
-        niche:
-          type: string
-        result:
-          type: object
-        receipt:
-          type: object
-          description: Ed25519 signature over the result, plus payment reference.
     PaymentRequirements:
       type: object
       properties:
@@ -123,6 +111,18 @@ components:
           type: string
         maxTimeoutSeconds:
           type: integer
+    SignedResult:
+      type: object
+      properties:
+        ok:
+          type: boolean
+        niche:
+          type: string
+        result:
+          type: object
+        receipt:
+          type: object
+          description: Ed25519 signature over the result, plus payment reference.
     ServiceRequest:
       type: object
       required:
@@ -132,6 +132,12 @@ components:
           type: string
           description: Primary argument. For contract safety, a 0x contract address on Base.
   responses:
+    SignedResult:
+      description: Paid result, Ed25519-signed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignedResult'
     PaymentRequired:
       description: Payment required. Read `accepts` for price and payTo, then retry with the X-PAYMENT header.
       content:
@@ -147,12 +153,6 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/PaymentRequirements'
-    SignedResult:
-      description: Paid result, Ed25519-signed.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/SignedResult'
   securitySchemes:
     x402Payment:
       type: apiKey
