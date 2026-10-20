@@ -1,4 +1,35 @@
 edges:
+- partner_name: MCP Registry
+  partner: mcp
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://registry.modelcontextprotocol.io/v0/servers?search=com.hergertsynthora
+  contract_reference:
+    register: registry.modelcontextprotocol.io
+    spec_file: null
+    role: mcp-server-listing
+    registered_name: com.hergertsynthora/synthora-x402
+    register_id: com.hergertsynthora/synthora-x402
+    detected_by: sweep-agent-tools.py
+    detected: '2026-10-19'
+  mcp_registry:
+    servers:
+    - com.hergertsynthora/synthora-x402
+    hosted_remote: 1
+    local_package: 0
+    transports:
+      streamable-http: 1
+    auth_declared: 0
+    catalog_declared: true
+    namespace_domains:
+    - hergertsynthora.com
+  matched_by:
+  - namespace-domain
+  detected_by: sweep-agent-tools.py
+  first_seen: '2026-10-14'
 - partner_name: OpenAI
   partner: openai
   partner_match: domain
@@ -15,40 +46,9 @@ edges:
     note: 'hergertsynthora-com declares OpenAI compatibility: ''{"openapi":"3.1.0","info":{"contact":{"email":"info@hergertsynthora.com"},"title":"SYNTHORA
       LLM Gateway FAST","version":"1.0.0","description":"OpenAI-compatible'''
     detected_by: sweep-model-routing.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
   detected_by: sweep-model-routing.py
   first_seen: '2026-10-13'
-- partner_name: MCP Registry
-  partner: mcp
-  partner_match: register
-  type: register
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://registry.modelcontextprotocol.io/v0/servers?search=com.hergertsynthora
-  contract_reference:
-    register: registry.modelcontextprotocol.io
-    spec_file: null
-    role: mcp-server-listing
-    registered_name: com.hergertsynthora/synthora-x402
-    register_id: com.hergertsynthora/synthora-x402
-    detected_by: sweep-agent-tools.py
-    detected: '2026-10-15'
-  mcp_registry:
-    servers:
-    - com.hergertsynthora/synthora-x402
-    hosted_remote: 1
-    local_package: 0
-    transports:
-      streamable-http: 1
-    auth_declared: 0
-    catalog_declared: true
-    namespace_domains:
-    - hergertsynthora.com
-  matched_by:
-  - namespace-domain
-  detected_by: sweep-agent-tools.py
-  first_seen: '2026-10-14'
 - partner_name: A2A protocol (own Agent Card)
   partner: null
   partner_match: register
@@ -60,13 +60,14 @@ edges:
   relationship: compatible
   shape: a2a
   evidence_kind: own-wellknown
-  degree: near-conformant
+  degree: conformant
   report_only: true
   a2a_card:
-    grade: near-conformant
+    grade: conformant
     verdict: live
     protocol_version: '1.0'
-    deviations: []
+    deviations:
+    - supportedInterfaces-instead-of-additionalInterfaces
     card_subject: api
   contract_reference:
     register: provider's own /.well-known/agent-card.json
@@ -78,7 +79,7 @@ edges:
     matched_domain: hergertsynthora.com
     matched_by: own-domain
     detected_by: sweep-ai-agents.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
   detected_by: sweep-ai-agents.py
   first_seen: '2026-10-15'
 - partner_name: a2aregistry.org
@@ -116,7 +117,7 @@ edges:
     - SYNTHORA regwatch
     - SYNTHORA — M2M Intelligence Mesh
     detected_by: sweep-ai-agents.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
   detected_by: sweep-ai-agents.py
   first_seen: '2026-10-15'
 generated: '2026-10-13'
