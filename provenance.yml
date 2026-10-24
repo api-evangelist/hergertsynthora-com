@@ -33,7 +33,13 @@ artifacts:
   front-door-ai/2026-09-17.yml:
     method: unknown
     evidence: no authorship recorded
-  kin/checks-2026-09-24T161608.yml:
+  integrations/_index.yml:
+    method: generated
+    evidence: carries an API Evangelist house phrase
+  integrations/hergertsynthora-com-integration-edges.yml:
+    method: unknown
+    evidence: no authorship recorded
+  kin/checks-2026-10-11T110117.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-19T193153.yml:
@@ -66,6 +72,21 @@ artifacts:
   kin/score-2026-09-24T161608.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-25T210408.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-25T232841.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-03T000835.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-03T024842.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-11T110117.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   lifecycle/hergertsynthora-com-lifecycle.yml:
     method: searched
     evidence: declared in the artifact
@@ -95,24 +116,38 @@ artifacts:
     evidence: declared in the artifact
   openapi/_original/hergertsynthora-com-agent-notary-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://notary.hergertsynthora.com/openapi.json (sha256 2c9a1f365c10,
+      fetched 2026-10-04)
+  openapi/_original/hergertsynthora-com-agent-notary-openapi.yml:
+    method: harvested
+    evidence: the same operations as https://notary.hergertsynthora.com/openapi.json (sha256 2c9a1f365c10,
+      fetched 2026-10-04)
   openapi/_original/hergertsynthora-com-mesh-aggregate-openapi.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/hergertsynthora-com-agent-notary-openapi.yml:
+  openapi/_original/hergertsynthora-com-mesh-aggregate-openapi.yml:
+    method: harvested
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
+  openapi/hergertsynthora-com-discovery-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/hergertsynthora-com-mesh-aggregate-openapi.yml:
+  openapi/hergertsynthora-com-polymarket-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/hergertsynthora-com-safety-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/hergertsynthora-com-wallet-enrichment-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   overlays/hergertsynthora-com-agent-notary-overlay.yaml:
-    method: searched
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/hergertsynthora-com-mesh-aggregate-overlay.yaml:
-    method: searched
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   packages/hergertsynthora-com-packages.yml:
     method: searched
     evidence: declared in the artifact
