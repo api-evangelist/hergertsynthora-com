@@ -64,12 +64,122 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-HERGERT SYNTHORA S.L. (Las Palmas de Gran Canaria, Spain) operates SYNTHORA, an autonomous agent mesh that sells machine-payable intelligence: 121 pay-per-call verdict products under `*.hergertsynthora.com`, an Agent Notary, a 30-tool hosted MCP server at `mcp.hergertsynthora.com/mcp` and a JWS-signed A2A agent card, all settled per call in USDC on Base over x402 with Ed25519-signed receipts and an ERC-8004 on-chain identity. First seen via the a2aregistry.org listing; profiled by the API Evangelist enrichment pipeline on 2026-09-19.
+HERGERT SYNTHORA S.L. is a Las Palmas de Gran Canaria (Spain) company that operates SYNTHORA, an autonomous agent mesh selling machine-payable intelligence: 121 pay-per-call verdict products (sanctions and AML screening, wallet and transaction risk, Polymarket and prediction-market signals, maritime AIS, DeFi, macro and OSINT data), an Agent Notary, a 30-tool hosted MCP server and a signed A2A agent card, all settled per call in USDC on Base over the x402 protocol with Ed25519-signed receipts, an ERC-8004 on-chain identity and no accounts or API keys.
 
-- Website: https://hergertsynthora.com/
-- API docs: https://hergertsynthora.com/api/
-- Aggregate OpenAPI: https://api.hergertsynthora.com/openapi.json (plus 59 per-service specs under `openapi/services/`)
-- Agent card: https://hergertsynthora.com/.well-known/agent-card.json
-- MCP: https://mcp.hergertsynthora.com/mcp · Notary MCP: https://notary.hergertsynthora.com/mcp
-- x402 discovery manifest: https://api.hergertsynthora.com/.well-known/x402.json
-- Machine SLA: https://api.hergertsynthora.com/sla/ · Terms: https://hergertsynthora.com/terms/
+**Areas:** Company · Agents · A2A · MCP · x402 · Web3 · Sanctions Screening · Prediction Markets · OSINT · Blockchain · Spain
+
+## Hergert Synthora on APIs.io
+
+Everything profiled for Hergert Synthora is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/hergertsynthora-com/](https://apis.io/providers/hergertsynthora-com/)** — or go straight to one of the APIs or properties below.
+
+### APIs (5)
+
+- [SYNTHORA Live World Map API](https://apis.io/apis/hergertsynthora-com/synthora-live-world-map-api/) — Public, credential-free JSON behind the mundo.hergertsynthora.com 3D globe: GET /mapstate returns the live state of the mesh map (active layers, objects,…
+- [Hergert Synthora Discovery API](https://apis.io/apis/hergertsynthora-com/hergertsynthora-com-discovery-api/) — Free machine-readable discovery documents
+- [Hergert Synthora Polymarket API](https://apis.io/apis/hergertsynthora-com/hergertsynthora-com-polymarket-api/) — The polymarket API from Hergert Synthora — 6 operation(s) for polymarket.
+- [Hergert Synthora Safety API](https://apis.io/apis/hergertsynthora-com/hergertsynthora-com-safety-api/) — Pre-trade and pre-payment safety checks
+- [Hergert Synthora Wallet Enrichment API](https://apis.io/apis/hergertsynthora-com/hergertsynthora-com-wallet-enrichment-api/) — The wallet-enrichment API from Hergert Synthora — 1 operation(s) for wallet-enrichment.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (3)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [mcp](https://apis.io/servers/hergertsynthora-com/mcp/)
+- [SYNTHORA - Intelligence Mesh](https://apis.io/servers/hergertsynthora-com/synthora-mcp/)
+- [Moved to /providers/hergertsynthora-com/](https://apis.io/servers/hergertsynthora-com/synthora-notario-mcp-endpoint-1-tool/)
+
+#### Overlays (2)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Hergertsynthora Com Agent Notary Overlay](https://apis.io/overlays/hergertsynthora-com/hergertsynthora-com-agent-notary-overlay/)
+- [Hergertsynthora Com Mesh Aggregate Overlay](https://apis.io/overlays/hergertsynthora-com/hergertsynthora-com-mesh-aggregate-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Hergertsynthora Com Authentication](https://apis.io/security/hergertsynthora-com/hergertsynthora-com-authentication/)
+- [Hergertsynthora Com Domain Security](https://apis.io/security/hergertsynthora-com/hergertsynthora-com-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Hergertsynthora Com Plans Pricing](https://apis.io/plans/hergertsynthora-com/hergertsynthora-com-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Hergertsynthora Com Rate Limits](https://apis.io/rate-limits/hergertsynthora-com/hergertsynthora-com-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://hergertsynthora.com/)
+- [Documentation](https://hergertsynthora.com/api/)
+- [API reference](https://api.hergertsynthora.com/openapi.json)
+- [Pricing](https://hergertsynthora.com/muestras/)
+- [Terms of service](https://hergertsynthora.com/terms/)
+- [Privacy policy](https://hergertsynthora.com/legal/privacidad/)
+
+## API Evangelist rating
+
+**Kin Score 48.0** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 52.7 |
+| Contract governance | 18.2 |
+| Operational transparency | 28.9 |
+| Developer ergonomics | 37.5 |
+| Access clarity | 63.2 |
+
+**Agent readiness 35.2** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | conformant |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 28.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/hergertsynthora-com/](https://apis.io/providers/hergertsynthora-com/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Hergert Synthora: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/hergertsynthora-com/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
